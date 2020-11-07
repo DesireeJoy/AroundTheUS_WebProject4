@@ -1,0 +1,17 @@
+@import url("./__editbtn/profile__editbtn.css");
+@import url("./__avatar/profile__avatar.css");
+@import url("./__info/profile__info.css");
+@import url("./__info-area/profile__info-area.css");
+@import url("./__name/profile__name.css");
+
+.profile {
+  background-image: url(../images/jacques.png);
+  max-width: 880px;
+  margin: 40px 0 51px 0;
+  padding: 0;
+  max-height: 120px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}

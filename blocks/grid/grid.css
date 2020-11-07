@@ -1,0 +1,14 @@
+@import url("./__card/grid__card.css");
+@import url("./__image/grid__image.css");
+@import url("./__list/grid__list.css");
+@import url("./__caption/grid__caption.css");
+@import url("./__card-text/grid__card-text.css");
+@import url("./__heart/grid__heart.css");
+
+.grid {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}

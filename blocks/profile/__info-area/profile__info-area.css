@@ -1,0 +1,9 @@
+.profile__info-area {
+  display: flex;
+  flex-direction: row;
+  font-size: 18px;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
