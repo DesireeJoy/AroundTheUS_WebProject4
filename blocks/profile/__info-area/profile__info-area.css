@@ -6,4 +6,12 @@
   margin: 0;
   padding: 0;
   align-items: center;
+  text-align: center;
+}
+
+@media screen and (max-width: 420px) {
+  .profile__info-area {
+    flex-direction: column;
+    justify-content: center;
+  }
 }

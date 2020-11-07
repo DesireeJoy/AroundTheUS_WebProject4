@@ -3,15 +3,23 @@
 @import url("./__info/profile__info.css");
 @import url("./__info-area/profile__info-area.css");
 @import url("./__name/profile__name.css");
+@import url("./__addbtn/profile__addbtn.css");
 
 .profile {
   background-image: url(../images/jacques.png);
   max-width: 880px;
-  margin: 40px 0 51px 0;
+  margin: 42px auto 36px auto;
   padding: 0;
-  max-height: 120px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+
+@media screen and (max-width: 420px) {
+  .profile {
+    flex-direction: column;
+    min-height: 286px;
+    justify-items: center;
+  }
 }
