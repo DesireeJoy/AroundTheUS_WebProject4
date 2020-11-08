@@ -1,0 +1,8 @@
+.popup__container {
+  margin: 34px 36px 0 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: left;
+  font-family: "Inter", Arial, sans-serif;
+}

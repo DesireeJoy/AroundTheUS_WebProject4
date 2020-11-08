@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="pages/index.css" />
+      <script src="pages/index.js"></script>
+       <link rel="stylesheet" href="pages/index.css" />
     <meta name="description" content="Web Project 4" />
     <meta name="keywords" content="HTML and CSS" />
     <meta name="author" content="Desiree Bradish" />
     <title>From Portland to Portland</title>
   </head>
-
 
 
   <body class="body">
@@ -25,13 +25,13 @@
 
 
 
-
         <section class="profile">
           
           <div class='profile__info-area'>
           <img src='./images/jacques.png' alt='Headshot of explorer Jacques Cousteau' class='profile__avatar'>
           <div class="profile__info">
-            <h1 class='profile__name'>Jacques Cousteau <button class='profile__editbtn link'></h1>
+            <h1 class='profile__name'>Jacques Cousteau
+               <button class='profile__editbtn link' onclick="editProfile()"></h1>
             <p class='profile__title'>Explorer</p></div>
       
       </button>     </div>
@@ -39,14 +39,14 @@
           <button class="profile__addbtn link">&#43;</button>
 
         </section>
-       
+
        
        
         <section class="grid">
 
 <ul class='grid__list'>
 <li class='grid__card'>
-  <img class="grid__image" src="images/kirill-pershin-1088404-unsplash-1.png"
+  <img class="grid__image" src="images/grid__image-yosemite.png"
     alt="black and white photo of mountains with trees coming into the frame" />
 <div class='grid__card-text'>
     <div class="grid__caption">Yosemite Valley 3</div>
@@ -58,7 +58,7 @@
 </li>
 
 <li class='grid__card'>
-  <img class="grid__image" src="images/kirill-pershin-1088404-unsplash.png"
+  <img class="grid__image" src="images/grid__image-lake.png"
     alt="black and white photo of mountains with trees coming into the frame" />
 <div class='grid__card-text'>
     <p class="grid__caption">Lake Louise</p>
@@ -70,7 +70,7 @@
 </li>
 
 <li class='grid__card'>
-  <img class="grid__image" src="images/kirill-pershin-1404681-unsplash-1.png"
+  <img class="grid__image" src="images/grid__image-bald.png"
     alt="black and white photo of mountains with trees coming into the frame" />
 <div class='grid__card-text'>
     <p class="grid__caption">Bald Mountains</p>
@@ -82,7 +82,7 @@
 </li>
 
 <li class='grid__card'>
-  <img class="grid__image" src="images/kirill-pershin-1404681-unsplash-1.png"
+  <img class="grid__image" src="images/grid__image-latemar.png"
     alt="black and white photo of mountains with trees coming into the frame" />
   <div class='grid__card-text'>
     <p class="grid__caption">Latemar</p>
@@ -94,7 +94,7 @@
 </li>
 
 <li class='grid__card'>
-  <img class="grid__image" src="images/kirill-pershin-1404681-unsplash.png"
+  <img class="grid__image" src="images/grid__image-vanoise.png"
     alt="black and white photo of mountains with trees coming into the frame" />
 <div class='grid__card-text'>
     <p class="grid__caption">Vanoise National</p>
@@ -106,7 +106,7 @@
 </li>
 
 <li class='grid__card'>
-  <img class="grid__image" src="images/kirill-pershin-1404681-unsplash.png"
+  <img class="grid__image" src="images/grid__image-lago.png"
     alt="black and white photo of mountains with trees coming into the frame" />
 <div class='grid__card-text'>
     <p class="grid__caption">Lago di Braies</p>
@@ -119,10 +119,39 @@
 
           </div>
         </section>
+
+
+
+
+
       </main>
 <footer class='footer'>&#169; 2020 Around The U.S.
     </div>
+
+
+
+
+
+<!-- Edit name & title -->
+<div class='popup'>
+  <div class='popup__form'>
+    <div class='popup__container'>
+      <form>
+        <h1 class='popup__heading'>Edit Profile</h1>
+        <input type="text" class='popup__input popup__name' placeholder='TheVariable1'>
+        <input type="text" class='popup__input popup__title' placeholder='TheVariable2'>
+        <input type="submit" class='popup__submit'>
+        <div class='popup__close'>&#43;</div>
+      </form>
+    </div>
+  </div>
+
+
+
+
+
   </body>
 
 
 </html>
+
