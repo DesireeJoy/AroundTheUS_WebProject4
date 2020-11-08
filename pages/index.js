@@ -1,4 +1,4 @@
-const editProfileForm = document.querySelector(".popup");
+let editProfileForm = document.querySelector(".popup");
 
 function editProfile() {
   alert("nope");
