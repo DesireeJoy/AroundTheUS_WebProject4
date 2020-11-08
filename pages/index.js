@@ -1,8 +1,8 @@
-let editProfileForm = document.querySelector(".popup");
-
 function editProfile() {
-  alert("nope");
-  editProfileForm.setAttribute("visibility", visible);
+  let popUp = document.querySelector(".popup");
+  popUp.style.display = "block";
 }
-
-editProfileForm.addEventListener("click", editProfile);
+function finishEdit() {
+  let popUp = document.querySelector(".popup");
+  popUp.style.display = "none";
+}
