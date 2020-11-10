@@ -35,6 +35,12 @@ function formSubmitHandler(evt) {
   profileTitle.innerHTML = newTitle;
   popUp.style.display = "none";
 }
+let nameField = document.querySelector(".profile__name-span").value;
+let titleField = document.querySelector(".profile__title").value;
+let updateName = document.querySelector(".popup__name");
+let updateTitle = document.querySelector(".popup__title");
+updateName = innerHTML = nameField;
+updateTitle = innerHTML = titleField;
 
 // Connect the handler to the form:
 // it will watch the submit event
