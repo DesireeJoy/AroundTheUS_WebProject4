@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <script src="pages/index.js"></script>
+      <script src="pages/index.js" async></script>
        <link rel="stylesheet" href="pages/index.css" />
     <meta name="description" content="Web Project 4" />
     <meta name="keywords" content="HTML and CSS" />
@@ -30,8 +30,9 @@
           <div class='profile__info-area'>
           <img src='./images/jacques.png' alt='Headshot of explorer Jacques Cousteau' class='profile__avatar'>
           <div class="profile__info">
-            <h1 class='profile__name'>Jacques Cousteau
-               <button class='profile__editbtn link' onclick="editProfile()"></h1>
+            <h1 class='profile__name'><span class='profile__name-span'>Jacques Cousteau</span>
+               <button class='profile__editbtn link' onclick="editProfile()">
+              </h1>
             <p class='profile__title'>Explorer</p></div>
       
       </button>     </div>
@@ -136,12 +137,12 @@
 <div class='popup'>
   <div class='popup__form'>
     <div class='popup__container'>
-      <form>
+      <form class='popup__form-selector'>
         <h1 class='popup__heading'>Edit Profile</h1>
         <input type="text" class='popup__input popup__name' placeholder='TheVariable1'>
         <input type="text" class='popup__input popup__title' placeholder='TheVariable2'>
         <input type="submit" class='popup__submit'>
-        <button class='popup__close' onclick="finishEdit()">&#43;</button>
+        <button class='popup__close' onclick="closeEdit()">&#43;</button>
       </form>
     </div>
   </div>
