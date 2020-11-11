@@ -9,8 +9,9 @@
   text-align: center;
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 800px) {
   .profile__info-area {
+    max-width: 600%;
     flex-direction: column;
     justify-content: center;
   }

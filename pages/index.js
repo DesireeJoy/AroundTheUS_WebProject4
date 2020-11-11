@@ -1,15 +1,18 @@
 let popUp = document.querySelector(".popup");
+popUp.classList.add("popup__view-hidden");
+
 function editProfile() {
-  popUp.style.display = "block";
+  popUp.classList.add("popup__view-visible");
+  popUp.classList.remove("popup__view-hidden");
 }
 function closeEdit() {
-  popUp.style.display = "none";
+  popUp.classList.remove("popup__view-visible");
+  popUp.classList.add("popup__view-hidden");
 }
 
 // Let's find the form in the DOM
 let popUp2 = document.querySelector(".popup__form");
 let formElement = popUp2.querySelector(".popup__form-selector");
-console.log(popUp2);
 
 // Next is the form submit handler, though
 // it won't submit anywhere just yet
@@ -23,27 +26,19 @@ function formSubmitHandler(evt) {
   let newName = document.querySelector(".popup__name").value; // Use querySelector()
   let newTitle = document.querySelector(".popup__title").value; // Use querySelector()
 
-  console.log(` Name input is ${newName} Job Input is ${newTitle}`);
-  // Select elements where the field values will be entered
-
-  const profileName = document.querySelector(".profile__name-span");
-  const profileTitle = document.querySelector(".profile__title");
-
   // Insert new values using the textContent property of the
   // querySelector() method
-  profileName.innerHTML = newName;
-  profileTitle.innerHTML = newTitle;
-  popUp.style.display = "none";
+  document.querySelector(".profile__name-span").textContent = newName;
+  document.querySelector(".profile__title").textContent = newTitle;
+  popUp.classList.remove(".popup__view-visible");
+  popUp.classList.remove("popup__view-visible");
+  popUp.classList.add("popup__view-hidden");
 }
 let nameField = document.querySelector(".profile__name-span").value;
 let titleField = document.querySelector(".profile__title").value;
 let updateName = document.querySelector(".popup__name");
 let updateTitle = document.querySelector(".popup__title");
-updateName = innerHTML = nameField;
-updateTitle = innerHTML = titleField;
 
 // Connect the handler to the form:
 // it will watch the submit event
 formElement.addEventListener("submit", formSubmitHandler);
-
-console.log(formElement);

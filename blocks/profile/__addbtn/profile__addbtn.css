@@ -10,3 +10,16 @@
   background-color: black;
   color: white;
 }
+@media screen and (max-width: 800px) {
+  .profile__addbtn {
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .profile__addbtn {
+    margin: auto;
+    width: 100px;
+    width: 280px;
+  }
+}

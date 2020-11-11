@@ -13,6 +13,12 @@
   padding: 0;
 }
 
+@media screen and (max-width: 940px) {
+  .grid {
+    margin: min(19px, 5%);
+  }
+}
+
 @media screen and (max-width: 420px) {
   .grid {
     margin: 0 19px;

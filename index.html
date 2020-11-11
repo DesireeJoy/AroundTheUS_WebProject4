@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   
-       <link rel="stylesheet" href="pages/index.css" />
+  <link rel="stylesheet" href="vendor/normalize.css" />
+    <link rel="stylesheet" href="pages/index.css" />
     <meta name="description" content="Web Project 4" />
     <meta name="keywords" content="HTML and CSS" />
     <meta name="author" content="Desiree Bradish" />
@@ -33,7 +33,7 @@
             <h1 class='profile__name'><span class='profile__name-span'>Jacques Cousteau</span>
                <button class='profile__editbtn link' onclick="editProfile()">
               </h1>
-            <p class='profile__title'>Explorer</p></div>
+            <h2 class='profile__title'>Explorer</h2></div>
       
       </button>     </div>
    
@@ -141,8 +141,8 @@
         <h1 class='popup__heading'>Edit Profile</h1>
         <input type="text" class='popup__input popup__name' placeholder='Jacques Cousteau'>
         <input type="text" class='popup__input popup__title' placeholder='Explorer'>
-        <input type="submit" class='popup__submit'>
-        <button class='popup__close' onclick="closeEdit()">&#43;</button>
+        <input type="submit" class='popup__submit link' value='Save'>
+        <button class='popup__close link' onclick="closeEdit()">&#43;</button>
       </form>
     </div>
   </div>

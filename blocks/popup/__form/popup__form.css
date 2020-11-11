@@ -9,3 +9,21 @@
   border-radius: 10px;
   color: black;
 }
+
+@media screen and (max-width: 800px) {
+  .popup__form {
+    width: 350px;
+    height: 350px;
+    left: 200px;
+    top: 20px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .popup__form {
+    width: 283px;
+    height: 322px;
+    left: 19px;
+    top: 123px;
+  }
+}

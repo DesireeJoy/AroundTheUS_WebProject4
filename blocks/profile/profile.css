@@ -4,9 +4,9 @@
 @import url("./__info-area/profile__info-area.css");
 @import url("./__name/profile__name.css");
 @import url("./__addbtn/profile__addbtn.css");
+@import url("./__title/profile__title.css");
 
 .profile {
-  background-image: url(../images/jacques.png);
   max-width: 880px;
   margin: 42px auto 36px auto;
   padding: 0;
@@ -16,7 +16,13 @@
   align-items: center;
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 940px) {
+  .profile {
+    margin: min(19px, 5%);
+  }
+}
+
+@media screen and (max-width: 570px) {
   .profile {
     flex-direction: column;
     min-height: 286px;

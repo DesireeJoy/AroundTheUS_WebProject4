@@ -1,0 +1,13 @@
+.popup__close {
+  position: absolute;
+  height: 40px;
+  width: 40px;
+  left: 450px;
+  top: 0px;
+  transform: rotate(-45deg);
+  color: white;
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  border: none;
+}

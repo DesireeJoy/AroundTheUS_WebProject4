@@ -6,3 +6,8 @@
   text-align: left;
   font-family: "Inter", Arial, sans-serif;
 }
+@media screen and (max-width: 450px) {
+  .popup__container {
+    margin: 25px 22px 0 22px;
+  }
+}
