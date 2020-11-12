@@ -6,11 +6,10 @@
 @import url("./__close/popup__close.css");
 
 .popup {
-  position: absolute;
+  display: flex;
+  flex-direction: column;
   height: 100%;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  top: 0;
-  left: 0;
   display: none;
 }
