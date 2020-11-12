@@ -10,7 +10,7 @@ function closeEdit() {
 
 // Let's find the form in the DOM
 let popUp2 = document.querySelector(".popup__form");
-let formElement = popUp2.querySelector(".popup__form-selector");
+let formElement = popUp2.querySelector(".popup__submit");
 let closeElement = document.querySelector(".popup__close");
 let editBtn = document.querySelector(".profile__editbtn");
 
