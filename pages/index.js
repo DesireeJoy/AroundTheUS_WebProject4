@@ -1,18 +1,18 @@
 let popUp = document.querySelector(".popup");
-popUp.classList.add("popup__view-hidden");
 
+//Show and Hide
 function editProfile() {
   popUp.classList.add("popup__view-visible");
-  popUp.classList.remove("popup__view-hidden");
 }
 function closeEdit() {
   popUp.classList.remove("popup__view-visible");
-  popUp.classList.add("popup__view-hidden");
 }
 
 // Let's find the form in the DOM
 let popUp2 = document.querySelector(".popup__form");
 let formElement = popUp2.querySelector(".popup__form-selector");
+let closeElement = document.querySelector(".popup__close");
+let editBtn = document.querySelector(".profile__editbtn");
 
 // Next is the form submit handler, though
 // it won't submit anywhere just yet
@@ -42,3 +42,5 @@ let updateTitle = document.querySelector(".popup__title");
 // Connect the handler to the form:
 // it will watch the submit event
 formElement.addEventListener("submit", formSubmitHandler);
+closeElement.addEventListener("click", closeEdit);
+editBtn.addEventListener("click", editProfile);

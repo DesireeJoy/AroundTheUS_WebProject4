@@ -4,8 +4,6 @@
 @import url("./__submit/popup__submit.css");
 @import url("./__input/popup__input.css");
 @import url("./__close/popup__close.css");
-@import url("./__view/popup__view-visible.css");
-@import url("./__view/popup__view-hidden.css");
 
 .popup {
   position: absolute;
@@ -14,4 +12,5 @@
   background-color: rgba(0, 0, 0, 0.5);
   top: 0;
   left: 0;
+  display: none;
 }
