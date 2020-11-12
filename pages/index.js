@@ -10,7 +10,6 @@ function closeEdit() {
 
 // Let's find the form in the DOM
 let popUp2 = document.querySelector(".popup__form");
-let formElement = popUp2.querySelector(".popup__submit");
 let closeElement = document.querySelector(".popup__close");
 let editBtn = document.querySelector(".profile__editbtn");
 
@@ -18,6 +17,8 @@ let editBtn = document.querySelector(".profile__editbtn");
 // it won't submit anywhere just yet
 function formSubmitHandler(evt) {
   evt.preventDefault();
+
+  console.log("I submitted");
   // This line stops the browser from submitting the form in the default way.
 
   // Let's find the form fields in the DOM // Get the corresponding Value
@@ -33,6 +34,7 @@ function formSubmitHandler(evt) {
 
 // Connect the handler to the form:
 // it will watch the submit event
-formElement.addEventListener("submit", formSubmitHandler);
+
+popUp2.addEventListener("submit", formSubmitHandler);
 closeElement.addEventListener("click", closeEdit);
 editBtn.addEventListener("click", editProfile);
