@@ -19,8 +19,6 @@ let editBtn = document.querySelector(".profile__editbtn");
 function formSubmitHandler(evt) {
   evt.preventDefault();
   // This line stops the browser from submitting the form in the default way.
-  // Having done so, we can define our own way of submitting the form.
-  // We'll explain it in more detail later.
 
   // Let's find the form fields in the DOM // Get the corresponding Value
   let newName = document.querySelector(".popup__name").value; // Use querySelector()

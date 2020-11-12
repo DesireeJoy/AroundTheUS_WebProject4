@@ -4,10 +4,18 @@
   width: 40px;
   left: 450px;
   top: 0px;
-  transform: rotate(-45deg);
   color: white;
   margin: 0;
   padding: 0;
   background-color: black;
   border: none;
+  background-image: url("../../../images/close-icon.png");
+  background-size: cover;
+}
+
+@media screen and (max-width: 450px) {
+  .popup__close {
+    top: -45px;
+    left: 250px;
+  }
 }
