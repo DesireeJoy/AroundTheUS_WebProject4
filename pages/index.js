@@ -17,10 +17,6 @@ let editBtn = document.querySelector(".profile__editbtn");
 // Next is the form submit handler, though
 // it won't submit anywhere just yet
 function formSubmitHandler(evt) {
-  let nameField = document.querySelector(".profile__name-span").value;
-  let titleField = document.querySelector(".profile__title").value;
-  let updateName = document.querySelector(".popup__name");
-  let updateTitle = document.querySelector(".popup__title");
   evt.preventDefault();
   // This line stops the browser from submitting the form in the default way.
   // Having done so, we can define our own way of submitting the form.

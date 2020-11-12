@@ -1,21 +1,20 @@
 .popup__form {
-  position: absolute;
+  position: relative;
   width: 430px;
   height: 330px;
-  left: 425px;
-  top: 195px;
   background: #ffffff;
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
   color: black;
+  margin: auto;
+  text-align: center;
+  display: flex;
 }
 
 @media screen and (max-width: 800px) {
   .popup__form {
     width: 350px;
     height: 350px;
-    left: 200px;
-    top: 20px;
   }
 }
 
@@ -23,7 +22,5 @@
   .popup__form {
     width: 283px;
     height: 322px;
-    left: 19px;
-    top: 123px;
   }
 }
