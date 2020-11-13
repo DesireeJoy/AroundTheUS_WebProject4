@@ -37,7 +37,7 @@
               <h2 class="profile__title">Explorer</h2>
             </div>
           </div>
-          <button class="profile__addbtn link">&#43;</button>
+          <button class="profile__addbtn link" type="submit">&#43;</button>
         </section>
 
         <!-- Grid Section -->
@@ -54,7 +54,7 @@
               />
               <div class="grid__card-text">
                 <div class="grid__caption">Yosemite Valley 3</div>
-                <button class="grid__heart">
+                <button class="grid__heart" type="submit">
                   <img
                     src="images/Heart.svg"
                     alt="Heart Outline"
@@ -177,20 +177,22 @@
     <div class="popup">
       <div class="popup__form">
         <div class="popup__container">
-          <form class="popup__form-selector">
+          <form class="popup__form-selector" name="profileForm">
             <h1 class="popup__heading">Edit Profile</h1>
             <input
               type="text"
               class="popup__input popup__name"
               value="Jacques Cousteau"
+              name="profileName"
             />
             <input
               type="text"
               class="popup__input popup__title"
               value="Explorer"
+              name="profileTitle"
             />
             <input type="submit" class="popup__submit link" value="Save" />
-            <input type='button' class="popup__close link"></button>
+            <input type="button" class="popup__close link" value="Close" />
           </form>
         </div>
       </div>

@@ -9,6 +9,7 @@
   align-self: center;
   background-color: black;
   color: white;
+  cursor: pointer;
 }
 @media screen and (max-width: 800px) {
   .profile__addbtn {
