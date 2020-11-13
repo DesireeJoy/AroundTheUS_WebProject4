@@ -1,6 +1,6 @@
-.link {
+.button {
   opacity: 1;
 }
-.link:hover {
+.button:hover {
   opacity: 0.6;
 }

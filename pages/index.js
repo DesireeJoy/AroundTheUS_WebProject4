@@ -17,8 +17,6 @@ let editBtn = document.querySelector(".profile__editbtn");
 // it won't submit anywhere just yet
 function formSubmitHandler(evt) {
   evt.preventDefault();
-
-  console.log("I submitted");
   // This line stops the browser from submitting the form in the default way.
 
   // Let's find the form fields in the DOM // Get the corresponding Value

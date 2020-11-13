@@ -7,9 +7,8 @@
   color: white;
   margin: 0;
   padding: 0;
-  background-color: black;
   border: none;
-  background-image: url("../../../images/close-icon.png");
+  background-image: url("../../../images/close-icon.svg");
   background-size: cover;
   cursor: pointer;
 }
