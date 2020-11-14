@@ -11,6 +11,7 @@
   margin: auto;
   text-align: center;
   display: flex;
+  flex-direction: column;
   padding: 34px 36px 36px 36px;
   font-family: "Inter", Arial, sans-serif;
 }

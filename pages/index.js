@@ -1,38 +1,44 @@
 let popUp = document.querySelector(".popup");
 
+// Let's find the elements we need
+let form = document.querySelector(".popup__form");
+let closeElement = document.querySelector(".popup__close");
+let editBtn = document.querySelector(".profile__editbtn");
+let Name = document.querySelector("#inputName");
+let Title = document.querySelector("#inputTitle");
+let currentName = document.querySelector(".profile__name-span");
+let currentTitle = document.querySelector(".profile__title");
+
 //Show and Hide
-function editProfile() {
+function openProfilePopup() {
   popUp.classList.add("popup_visible");
+
+  //Place current Profile Input in Fields
+  document.querySelector("#inputName").value = currentName.innerHTML;
+  document.querySelector("#inputTitle").value = currentTitle.innerHTML;
 }
-function closeEdit() {
+
+function closeProfilePopup() {
   popUp.classList.remove("popup_visible");
 }
 
-// Let's find the form in the DOM
-let popUp2 = document.querySelector(".popup__form");
-let closeElement = document.querySelector(".popup__close");
-let editBtn = document.querySelector(".profile__editbtn");
-
 // Next is the form submit handler, though
 // it won't submit anywhere just yet
-function formSubmitHandler(evt) {
-  evt.preventDefault();
-  // This line stops the browser from submitting the form in the default way.
 
-  // Let's find the form fields in the DOM // Get the corresponding Value
-  let newName = document.querySelector(".popup__input").value; // Use querySelector()
-  let newTitle = document.querySelector(".popup__title").value; // Use querySelector()
+function formSubmitHandler(evt) {
+  // This line stops the browser from submitting the form in the default way.
+  evt.preventDefault();
 
   // Insert new values using the textContent property of the
   // querySelector() method
-  document.querySelector(".profile__name-span").textContent = newName;
-  document.querySelector(".profile__title").textContent = newTitle;
+  currentName.textContent = Name.value;
+  currentTitle.textContent = Title.value;
   popUp.classList.remove("popup_visible");
 }
 
 // Connect the handler to the form:
 // it will watch the submit event
 
-popUp2.addEventListener("submit", formSubmitHandler);
-closeElement.addEventListener("click", closeEdit);
-editBtn.addEventListener("click", editProfile);
+form.addEventListener("submit", formSubmitHandler);
+closeElement.addEventListener("click", closeProfilePopup);
+editBtn.addEventListener("click", openProfilePopup);
