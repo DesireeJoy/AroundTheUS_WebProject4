@@ -1,4 +1,4 @@
-.popup__view-visible {
+.popup_visible {
   display: flex;
   flex-direction: column;
 }

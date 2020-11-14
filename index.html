@@ -14,7 +14,7 @@
     <div class="page">
       <header class="header">
         <img
-          src="./images/Vector.png"
+          src="images/Logo.svg"
           alt="Around the US Logo"
           class="header__logo"
         />
@@ -36,7 +36,11 @@
               <p class="profile__title">Explorer</p>
             </div>
           </div>
-          <button class="profile__addbtn button" type="submit">&#43;</button>
+          <button
+            class="profile__addbtn button"
+            type="submit"
+            name="add_btn"
+          ></button>
         </section>
 
         <!-- Grid Section -->
@@ -175,25 +179,23 @@
     <!-- Edit name & title -->
     <div class="popup">
       <div class="popup__form">
-        <div class="popup__container">
-          <form class="popup__form-selector" name="profileForm">
-            <h1 class="popup__heading">Edit Profile</h1>
-            <input
-              type="text"
-              class="popup__input popup__name"
-              value="Jacques Cousteau"
-              name="profileName"
-            />
-            <input
-              type="text"
-              class="popup__input popup__title"
-              value="Explorer"
-              name="profileTitle"
-            />
-            <input type="submit" class="popup__submit button" value="Save" />
-            <input type="button" class="popup__close button" value="Close" />
-          </form>
-        </div>
+        <form class="popup__form-selector" name="profileForm">
+          <h3 class="popup__heading">Edit Profile</h3>
+          <input
+            type="text"
+            class="popup__input popup__input_type_name"
+            value="Jacques Cousteau"
+            name="profileName"
+          />
+          <input
+            type="text"
+            class="popup__input popup__input_type_title"
+            value="Explorer"
+            name="profileTitle"
+          />
+          <input type="submit" class="popup__submit" value="Save" />
+          <input type="button" class="popup__close button" />
+        </form>
       </div>
     </div>
     <!-- Script here so HTML loads first -->
