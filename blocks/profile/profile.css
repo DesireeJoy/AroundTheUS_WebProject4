@@ -18,11 +18,11 @@
 
 @media screen and (max-width: 940px) {
   .profile {
-    margin: min(19px, 5%);
+    max-width: 602px;
   }
 }
 
-@media screen and (max-width: 570px) {
+@media screen and (max-width: 618px) {
   .profile {
     flex-direction: column;
     justify-items: center;

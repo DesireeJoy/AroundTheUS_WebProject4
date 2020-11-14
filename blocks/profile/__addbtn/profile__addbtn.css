@@ -15,15 +15,9 @@
   background-position: center;
   background-repeat: no-repeat;
 }
-@media screen and (max-width: 800px) {
-  .profile__addbtn {
-    margin: auto;
-  }
-}
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 618px) {
   .profile__addbtn {
-    width: 100px;
-    width: 280px;
+    width: 282px;
   }
 }
