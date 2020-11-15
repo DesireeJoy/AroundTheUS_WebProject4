@@ -6,7 +6,7 @@ let closeElement = document.querySelector(".popup__close");
 let editBtn = document.querySelector(".profile__editbtn");
 let Name = document.querySelector("#inputName");
 let Title = document.querySelector("#inputTitle");
-let currentName = document.querySelector(".profile__name-span");
+let currentName = document.querySelector(".profile__name");
 let currentTitle = document.querySelector(".profile__title");
 
 //Show and Hide
@@ -14,8 +14,8 @@ function openProfilePopup() {
   popUp.classList.add("popup_visible");
 
   //Place current Profile Input in Fields
-  document.querySelector("#inputName").value = currentName.innerHTML;
-  document.querySelector("#inputTitle").value = currentTitle.innerHTML;
+  Name.value = Name.value;
+  Title.value = Title.value;
 }
 
 function closeProfilePopup() {
