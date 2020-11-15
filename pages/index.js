@@ -14,8 +14,8 @@ function openProfilePopup() {
   popUp.classList.add("popup_visible");
 
   //Place current Profile Input in Fields
-  Name.value = Name.value;
-  Title.value = Title.value;
+  Name.value = currentName.textContent;
+  Title.value = currentTitle.textContent;
 }
 
 function closeProfilePopup() {
