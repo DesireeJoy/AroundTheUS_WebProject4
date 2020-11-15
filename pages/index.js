@@ -4,8 +4,8 @@ let popUp = document.querySelector(".popup");
 let form = document.querySelector(".popup__form");
 let closeElement = document.querySelector(".popup__close");
 let editBtn = document.querySelector(".profile__editbtn");
-let Name = document.querySelector("#inputName");
-let Title = document.querySelector("#inputTitle");
+let inputName = document.querySelector("#inputName");
+let inputTitle = document.querySelector("#inputTitle");
 let currentName = document.querySelector(".profile__name");
 let currentTitle = document.querySelector(".profile__title");
 
@@ -14,8 +14,8 @@ function openProfilePopup() {
   popUp.classList.add("popup_visible");
 
   //Place current Profile Input in Fields
-  Name.value = currentName.textContent;
-  Title.value = currentTitle.textContent;
+  inputName.value = currentName.textContent;
+  inputTitle.value = currentTitle.textContent;
 }
 
 function closeProfilePopup() {
@@ -31,9 +31,9 @@ function formSubmitHandler(evt) {
 
   // Insert new values using the textContent property of the
   // querySelector() method
-  currentName.textContent = Name.value;
-  currentTitle.textContent = Title.value;
-  popUp.classList.remove("popup_visible");
+  currentName.textContent = inputName.value;
+  currentTitle.textContent = inputTitle.value;
+  closeProfilePopup();
 }
 
 // Connect the handler to the form:

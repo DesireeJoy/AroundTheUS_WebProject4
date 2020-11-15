@@ -7,7 +7,8 @@
   height: 50.15px;
   background: hsl(0, 0%, 0%);
   border-radius: 2px;
-  font-family: Inter;
+  color: white;
+  font-family: "Inter", Arial, sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -29,7 +30,6 @@
 @media screen and (max-width: 450px) {
   .popup__submit {
     min-width: 238px;
-    margin: 45px 0 0 0;
     font-size: 14px;
     line-height: 17px;
   }
