@@ -50,130 +50,7 @@
 
         <section class="grid">
           <ul class="grid__list">
-            <!-- Place 1 -->
-
-            <li class="grid__card">
-              <button
-                class="grid__btn_del"
-                type="button"
-                aria-label="delete"
-              ></button>
-              <img
-                class="grid__image"
-                src="images/grid__image-yosemite.png"
-                alt="A river flowing towards a mountain lined with pine trees"
-              />
-              <div class="grid__card-text">
-                <h2 class="grid__caption">Yosemite Valley 3</h2>
-                <button
-                  class="grid__heart button"
-                  type="button"
-                  aria-label="like"
-                >
-                  <img src="images/Heart.svg" alt="Heart Outline" />
-                </button>
-              </div>
-            </li>
-
-            <!-- Place 2 -->
-
-            <li class="grid__card">
-              <img
-                class="grid__image"
-                src="images/grid__image-lake.png"
-                alt="A vast lake with two mountains on either side and clouds in the background"
-              />
-              <div class="grid__card-text">
-                <h2 class="grid__caption">Lake Louise</h2>
-                <button
-                  class="grid__heart button"
-                  type="button"
-                  aria-label="like"
-                >
-                  <img src="images/Heart.svg" alt="Heart Outline" />
-                </button>
-              </div>
-            </li>
-
-            <!-- Place 3 -->
-
-            <li class="grid__card">
-              <img
-                class="grid__image"
-                src="images/grid__image-bald.png"
-                alt="Sunset behind several mountains with flares stretching out to the frames edge"
-              />
-              <div class="grid__card-text">
-                <h2 class="grid__caption">Bald Mountains</h2>
-                <button
-                  class="grid__heart button"
-                  type="button"
-                  aria-label="like"
-                >
-                  <img src="images/Heart.svg" alt="Heart Outline" />
-                </button>
-              </div>
-            </li>
-
-            <!-- Place 4 -->
-
-            <li class="grid__card">
-              <img
-                class="grid__image"
-                src="images/grid__image-latemar.png"
-                alt="Mountain peaks in the night under a starry sky"
-              />
-              <div class="grid__card-text">
-                <h2 class="grid__caption">Latemar</h2>
-                <button
-                  class="grid__heart button"
-                  type="button"
-                  aria-label="like"
-                >
-                  <img src="images/Heart.svg" alt="Heart Outline" />
-                </button>
-              </div>
-            </li>
-
-            <!-- Place 5 -->
-
-            <li class="grid__card">
-              <img
-                class="grid__image"
-                src="images/grid__image-vanoise.png"
-                alt="A lake reflecting mountains and a sunset just out of frame"
-              />
-              <div class="grid__card-text">
-                <h2 class="grid__caption">Vanoise National</h2>
-                <button
-                  class="grid__heart button"
-                  type="button"
-                  aria-label="like"
-                >
-                  <img src="images/Heart.svg" alt="Heart Outline" />
-                </button>
-              </div>
-            </li>
-
-            <!-- Place 6 -->
-
-            <li class="grid__card">
-              <img
-                class="grid__image"
-                src="images/grid__image-lago.png"
-                alt="Two boats tied to a dock on a vast lake with mountains towering over them"
-              />
-              <div class="grid__card-text">
-                <h2 class="grid__caption">Lago di Braies</h2>
-                <button
-                  class="grid__heart button"
-                  type="button"
-                  aria-label="like"
-                >
-                  <img src="images/Heart.svg" alt="Heart Outline" />
-                </button>
-              </div>
-            </li>
+            <!-- Generate the  Stuff here PLEASE-->
           </ul>
         </section>
       </main>
@@ -256,17 +133,22 @@
 
     <!-- Card Template  -->
 
-    <li class="grid__card">
-      <button class="grid__btn_del" type="button" aria-label="delete"></button>
-      <img class="grid__image" src="src_image" alt="Desc" />
-      <div class="grid__card-text">
-        <h2 class="grid__caption">Title</h2>
-        <button class="grid__heart button" type="button" aria-label="like">
-          <img src="images/Heart.svg" alt="Heart Outline" />
-        </button>
-      </div>
-    </li>
-
+    <template id="cardTemplate">
+      <li class="grid__card">
+        <button
+          class="grid__btn_del"
+          type="button"
+          aria-label="delete"
+        ></button>
+        <img class="grid__image" src="src_image" alt="Desc" />
+        <div class="grid__card-text">
+          <h2 class="grid__caption">Title</h2>
+          <button class="grid__heart button" type="button" aria-label="like">
+            <img src="images/Heart.svg" alt="Heart Outline" />
+          </button>
+        </div>
+      </li>
+    </template>
     <!-- Script here so HTML loads first -->
 
     <script src="pages/index.js" async></script>

@@ -5,7 +5,7 @@ let popUp = document.querySelector(".popup");
 const initialCards = [
   {
     name: "Ecola State Park",
-    link: "/images/EcolaStatePark.jpeg",
+    link: "EcolaStatePark.jpeg",
   },
   {
     name: "Fontainebleau State Park",
@@ -37,6 +37,35 @@ const inputName = document.querySelector("#inputName");
 const inputTitle = document.querySelector("#inputTitle");
 const currentName = document.querySelector(".profile__name");
 const currentTitle = document.querySelector(".profile__title");
+let cardTemplate = document.querySelector("#cardTemplate").content;
+let gridList = document.querySelector(".grid__list");
+
+for (var i = 0; i < initialCards.length; i++) {
+  // clone content of template tag for cards
+  let cardElement = cardTemplate.cloneNode(true);
+  let newName = initialCards[i].name;
+  let newImg = initialCards[i].link;
+  console.log(initialCards[i].link);
+  cloneName = cardElement.querySelector(".grid__caption");
+  cloneImage = cardElement.querySelector(".grid__image");
+  cloneName.innerHTML = newName;
+  cloneImage.src = "images/" + newImg;
+  gridList.append(cardElement);
+}
+
+// make cards appear
+
+//Add initial Cards
+//for (var i = 0; i < initialCards.length; i++) {
+//var eachCard = initialCards[i];
+//var cardElement = cardTemplate.cloneNode(true);
+//var title = cardElement.querySelector(".grid__caption");
+//title.innerHTML = eachCard.name;
+//var image = cardElement.querySelector(".grid__image");
+//image.src = "images/" + eachCard.link;
+//gridList.append(cardElement);
+//console.log("I am running");
+//}
 
 //Show and Hide
 function openProfilePopup() {
