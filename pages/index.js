@@ -25,7 +25,7 @@ const initialCards = [
   },
   {
     name: "Valley of Fire State Park",
-    link: "ValleyofFireStatePark.jpeg",
+    link: "ValleyOfFireStatePark.jpeg",
   },
 ];
 
