@@ -1,18 +1,46 @@
 let popUp = document.querySelector(".popup");
 
+//Initial Array
+
+const initialCards = [
+  {
+    name: "Ecola State Park",
+    link: "/images/EcolaStatePark.jpeg",
+  },
+  {
+    name: "Fontainebleau State Park",
+    link: "FontainebleauStatePark.jpeg",
+  },
+  {
+    name: "Governor Dodge State Park",
+    link: "GovernorDodgeStatePark.jpeg",
+  },
+  {
+    name: "Hocking Hills State Park",
+    link: "HockingHillsStatePark.jpeg",
+  },
+  {
+    name: "Stone Mountain State Park",
+    link: "StoneMountainStatePark.jpeg",
+  },
+  {
+    name: "Valley of Fire State Park",
+    link: "ValleyofFireStatePark.jpeg",
+  },
+];
+
 // Let's find the elements we need
-let form = document.querySelector(".popup__form");
-let closeElement = document.querySelector(".popup__close");
-let editBtn = document.querySelector(".profile__editbtn");
-let inputName = document.querySelector("#inputName");
-let inputTitle = document.querySelector("#inputTitle");
-let currentName = document.querySelector(".profile__name");
-let currentTitle = document.querySelector(".profile__title");
+const form = document.querySelector(".popup__form");
+const closeElement = document.querySelector(".popup__close");
+const editBtn = document.querySelector(".profile__editbtn");
+const inputName = document.querySelector("#inputName");
+const inputTitle = document.querySelector("#inputTitle");
+const currentName = document.querySelector(".profile__name");
+const currentTitle = document.querySelector(".profile__title");
 
 //Show and Hide
 function openProfilePopup() {
   popUp.classList.add("popup_visible");
-
   //Place current Profile Input in Fields
   inputName.value = currentName.textContent;
   inputTitle.value = currentTitle.textContent;

@@ -53,6 +53,11 @@
             <!-- Place 1 -->
 
             <li class="grid__card">
+              <button
+                class="grid__btn_del"
+                type="button"
+                aria-label="delete"
+              ></button>
               <img
                 class="grid__image"
                 src="images/grid__image-yosemite.png"
@@ -178,6 +183,7 @@
 
       <!-- Div closure for Page-->
     </div>
+
     <!-- Edit name & title -->
     <div class="popup">
       <div class="popup__form">
@@ -211,6 +217,56 @@
         </form>
       </div>
     </div>
+
+    <!-- templates -->
+
+    <!-- popup template -->
+    <div class="popup">
+      <div class="popup__form">
+        <form class="popup__form-selector" name="profileForm">
+          <h3 class="popup__heading">Edit Profile</h3>
+          <input
+            type="text"
+            class="popup__input"
+            id="inputName"
+            value="Jacques Cousteau"
+            name="profileName"
+            placeholder="Jacques Costeau"
+            required
+          />
+
+          <input
+            type="text"
+            class="popup__input"
+            id="inputTitle"
+            value="Explorer"
+            name="profileTitle"
+            placeholder="Explorer"
+            required
+          />
+          <button type="submit" class="popup__submit" value="Save">Save</button>
+          <button
+            type="button"
+            class="popup__close button"
+            aria-label="close"
+          ></button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Card Template  -->
+
+    <li class="grid__card">
+      <button class="grid__btn_del" type="button" aria-label="delete"></button>
+      <img class="grid__image" src="src_image" alt="Desc" />
+      <div class="grid__card-text">
+        <h2 class="grid__caption">Title</h2>
+        <button class="grid__heart button" type="button" aria-label="like">
+          <img src="images/Heart.svg" alt="Heart Outline" />
+        </button>
+      </div>
+    </li>
+
     <!-- Script here so HTML loads first -->
 
     <script src="pages/index.js" async></script>
