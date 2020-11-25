@@ -1,0 +1,15 @@
+@import url("./__form/popup2__form.css");
+@import url("./__submit/popup2__submit.css");
+@import url("./__input/popup2__input.css");
+@import url("./__close/popup2__close.css");
+@import url("./__heading/popup2__heading.css");
+
+.popup2 {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+}

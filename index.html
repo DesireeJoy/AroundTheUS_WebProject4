@@ -95,36 +95,36 @@
       </div>
     </div>
 
-    <!-- templates -->
-
-    <!-- popup template -->
-    <div class="popup">
-      <div class="popup__form">
-        <form class="popup__form-selector" name="profileForm">
-          <h3 class="popup__heading">Edit Profile</h3>
-          <input
-            type="text"
-            class="popup__input"
-            id="inputName"
-            value="Jacques Cousteau"
-            name="profileName"
-            placeholder="Jacques Costeau"
-            required
-          />
+    <!-- add Cards -->
+    <div class="popup2">
+      <div class="popup2__form">
+        <form class="popup2__form-selector" name="profileForm">
+          <h3 class="popup2__heading">New Place</h3>
 
           <input
             type="text"
             class="popup__input"
-            id="inputTitle"
-            value="Explorer"
-            name="profileTitle"
-            placeholder="Explorer"
+            id="inputPlace"
+            name="placeName"
+            placeholder="Title"
+            value=""
             required
           />
-          <button type="submit" class="popup__submit" value="Save">Save</button>
+          <input
+            type="text"
+            class="popup__input"
+            id="inputFile"
+            name="placeFileName"
+            placeholder="Image link"
+            value=""
+            required
+          />
+          <button type="submit" class="popup2__submit" value="Save">
+            Save
+          </button>
           <button
             type="button"
-            class="popup__close button"
+            class="popup2__close button"
             aria-label="close"
           ></button>
         </form>

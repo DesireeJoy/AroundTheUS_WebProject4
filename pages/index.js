@@ -1,84 +1,114 @@
-let popUp = document.querySelector(".popup");
-
 //Initial Array
 
 const initialCards = [
   {
     name: "Ecola State Park",
-    link: "EcolaStatePark.jpeg",
+    link: "images/EcolaStatePark.jpeg",
+    alt: "Tall trees shrouded in mist on a hillside",
   },
   {
     name: "Fontainebleau State Park",
-    link: "FontainebleauStatePark.jpeg",
+    link: "images/FontainebleauStatePark.jpeg",
+    alt:
+      "Orange sunset over a lake with silhouetted black trees in the foreground",
   },
   {
     name: "Governor Dodge State Park",
-    link: "GovernorDodgeStatePark.jpeg",
+    link: "images/GovernorDodgeStatePark.jpeg",
+    alt:
+      "An iced over lake beginning to thaw with trees beginning to grow leaves and a distanct green hill",
   },
   {
     name: "Hocking Hills State Park",
-    link: "HockingHillsStatePark.jpeg",
+    link: "images/HockingHillsStatePark.jpeg",
+    alt:
+      "A small waterfall over a rocky outcropping with a sandy forground and a bridge in the background",
   },
   {
     name: "Stone Mountain State Park",
-    link: "StoneMountainStatePark.jpeg",
+    link: "images/StoneMountainStatePark.jpeg",
+    alt:
+      "A hiker standing on the edge of an overhang looking out at a mountainside covered in trees and shrouded in dense fog",
   },
   {
     name: "Valley of Fire State Park",
-    link: "ValleyOfFireStatePark.jpeg",
+    link: "images/ValleyOfFireStatePark.jpeg",
+    alt:
+      "an arid orange landscape dotted with short round desert plants with several chimney type rock formations",
   },
 ];
 
-// Let's find the elements we need
+// Let's set all the constant we need
 const form = document.querySelector(".popup__form");
+const form2 = document.querySelector(".popup2__form");
 const closeElement = document.querySelector(".popup__close");
+const closeCard = document.querySelector(".popup2__close");
 const editBtn = document.querySelector(".profile__editbtn");
+const addBtn = document.querySelector(".profile__addbtn");
 const inputName = document.querySelector("#inputName");
 const inputTitle = document.querySelector("#inputTitle");
+const inputPlace = document.querySelector("#inputPlace");
+const inputUrl = document.querySelector("#inputFile");
 const currentName = document.querySelector(".profile__name");
 const currentTitle = document.querySelector(".profile__title");
-let cardTemplate = document.querySelector("#cardTemplate").content;
-let gridList = document.querySelector(".grid__list");
+const cardTemplate = document.querySelector("#cardTemplate").content;
+const gridList = document.querySelector(".grid__list");
+const popUpProfile = document.querySelector(".popup");
+const popUpCard = document.querySelector(".popup2");
 
+// Add Initial Set of Cards
 for (var i = 0; i < initialCards.length; i++) {
   // clone content of template tag for cards
   let cardElement = cardTemplate.cloneNode(true);
   let newName = initialCards[i].name;
   let newImg = initialCards[i].link;
-  console.log(initialCards[i].link);
+  let newAlt = initialCards[i].alt;
   cloneName = cardElement.querySelector(".grid__caption");
   cloneImage = cardElement.querySelector(".grid__image");
   cloneName.innerHTML = newName;
-  cloneImage.src = "images/" + newImg;
+  cloneImage.src = newImg;
+  cloneImage.alt = newAlt;
   gridList.append(cardElement);
 }
 
-// make cards appear
+//Add new cards
 
-//Add initial Cards
-//for (var i = 0; i < initialCards.length; i++) {
-//var eachCard = initialCards[i];
-//var cardElement = cardTemplate.cloneNode(true);
-//var title = cardElement.querySelector(".grid__caption");
-//title.innerHTML = eachCard.name;
-//var image = cardElement.querySelector(".grid__image");
-//image.src = "images/" + eachCard.link;
-//gridList.append(cardElement);
-//console.log("I am running");
-//}
+function form2SubmitHandler(evt) {
+  // This line stops the browser from submitting the form in the default way.
+  evt.preventDefault();
+
+  // Insert new values using the textContent property of the
+  // querySelector() method
+  let cardElement = cardTemplate.cloneNode(true);
+  cloneName = cardElement.querySelector(".grid__caption");
+  cloneImage = cardElement.querySelector(".grid__image");
+  cloneName.innerHTML = inputPlace.value;
+  cloneImage.src = inputUrl.value;
+  gridList.append(cardElement);
+  closeProfilePopup();
+}
 
 //Show and Hide
 function openProfilePopup() {
-  popUp.classList.add("popup_visible");
+  popUpProfile.classList.add("popup_visible");
   //Place current Profile Input in Fields
   inputName.value = currentName.textContent;
   inputTitle.value = currentTitle.textContent;
 }
 
 function closeProfilePopup() {
-  popUp.classList.remove("popup_visible");
+  popUpProfile.classList.remove("popup_visible");
 }
 
+function openCardPopup() {
+  popUpCard.classList.add("popup_visible");
+  //Place current Profile Input in Fields
+  inputName.value = currentName.textContent;
+  inputTitle.value = currentTitle.textContent;
+}
+function closeCardPopup() {
+  popUpCard.classList.remove("popup_visible");
+}
 // Next is the form submit handler, though
 // it won't submit anywhere just yet
 
@@ -97,5 +127,8 @@ function formSubmitHandler(evt) {
 // it will watch the submit event
 
 form.addEventListener("submit", formSubmitHandler);
+form2.addEventListener("submit", form2SubmitHandler);
 closeElement.addEventListener("click", closeProfilePopup);
 editBtn.addEventListener("click", openProfilePopup);
+addBtn.addEventListener("click", openCardPopup);
+closeCard.addEventListener("click", closeCardPopup);
