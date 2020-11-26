@@ -67,10 +67,21 @@ for (var i = 0; i < initialCards.length; i++) {
   cloneImage.src = newImg;
   cloneImage.alt = newAlt;
 
+  //Like Callback
+
   cardElement
     .querySelector(".grid__heart")
     .addEventListener("click", function (evt) {
       evt.target.classList.toggle("grid__heart_active");
+    });
+
+  //Delete Callback
+
+  cardElement
+    .querySelector(".grid__btn_del")
+    .addEventListener("click", function (evt) {
+      item = evt.target.closest(".grid__card");
+      item.remove();
     });
 
   gridList.append(cardElement);
@@ -93,6 +104,23 @@ function addCard(evt) {
 
   cloneName.innerHTML = inputPlace.value;
   cloneImage.src = inputUrl.value;
+
+  //Like Callback
+
+  cardElement
+    .querySelector(".grid__heart")
+    .addEventListener("click", function (evt) {
+      evt.target.classList.toggle("grid__heart_active");
+    });
+
+  //Delete Callback
+
+  cardElement
+    .querySelector(".grid__btn_del")
+    .addEventListener("click", function (evt) {
+      item = evt.target.closest(".grid__card");
+      item.remove();
+    });
 
   gridList.append(cardElement);
   closeCardPopup();
@@ -139,6 +167,4 @@ closeElement.addEventListener("click", closeProfilePopup);
 editBtn.addEventListener("click", openProfilePopup);
 closeCard.addEventListener("click", closeCardPopup);
 popUpCard.addEventListener("submit", addCard);
-addBtn.addEventListener("click", function () {
-  openCardPopup();
-});
+addBtn.addEventListener("click", openCardPopup);
