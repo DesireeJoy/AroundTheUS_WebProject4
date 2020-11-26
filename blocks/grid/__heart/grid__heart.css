@@ -1,7 +1,14 @@
 .grid__heart {
+  background: url("../../../images/emptyHeart.svg") center no-repeat;
+  width: 21px;
+  height: 19px;
+  background-size: contain;
   padding: 0;
-  margin: 0;
+  margin: auto;
   border: none;
   background-color: white;
   cursor: pointer;
+  outline: none;
+  opacity: 0.5;
+  transition: 0.3s;
 }

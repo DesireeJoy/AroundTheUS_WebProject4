@@ -47,8 +47,6 @@ const editBtn = document.querySelector(".profile__editbtn");
 const addBtn = document.querySelector(".profile__addbtn");
 const inputName = document.querySelector("#inputName");
 const inputTitle = document.querySelector("#inputTitle");
-const inputPlace = document.querySelector("#inputPlace");
-const inputUrl = document.querySelector("#inputFile");
 const currentName = document.querySelector(".profile__name");
 const currentTitle = document.querySelector(".profile__title");
 const cardTemplate = document.querySelector("#cardTemplate").content;
@@ -68,24 +66,36 @@ for (var i = 0; i < initialCards.length; i++) {
   cloneName.innerHTML = newName;
   cloneImage.src = newImg;
   cloneImage.alt = newAlt;
+
+  cardElement
+    .querySelector(".grid__heart")
+    .addEventListener("click", function (evt) {
+      evt.target.classList.toggle("grid__heart_active");
+    });
+
   gridList.append(cardElement);
 }
 
 //Add new cards
 
-function form2SubmitHandler(evt) {
+function addCard(evt) {
   // This line stops the browser from submitting the form in the default way.
   evt.preventDefault();
+  //Form Values
+  const inputPlace = document.querySelector("#inputPlace");
+  const inputUrl = document.querySelector("#inputFile");
 
-  // Insert new values using the textContent property of the
-  // querySelector() method
+  const cardTemplate = document.querySelector("#cardTemplate").content;
   let cardElement = cardTemplate.cloneNode(true);
+
   cloneName = cardElement.querySelector(".grid__caption");
   cloneImage = cardElement.querySelector(".grid__image");
+
   cloneName.innerHTML = inputPlace.value;
   cloneImage.src = inputUrl.value;
+
   gridList.append(cardElement);
-  closeProfilePopup();
+  closeCardPopup();
 }
 
 //Show and Hide
@@ -103,8 +113,6 @@ function closeProfilePopup() {
 function openCardPopup() {
   popUpCard.classList.add("popup_visible");
   //Place current Profile Input in Fields
-  inputName.value = currentName.textContent;
-  inputTitle.value = currentTitle.textContent;
 }
 function closeCardPopup() {
   popUpCard.classList.remove("popup_visible");
@@ -127,8 +135,10 @@ function formSubmitHandler(evt) {
 // it will watch the submit event
 
 form.addEventListener("submit", formSubmitHandler);
-form2.addEventListener("submit", form2SubmitHandler);
 closeElement.addEventListener("click", closeProfilePopup);
 editBtn.addEventListener("click", openProfilePopup);
-addBtn.addEventListener("click", openCardPopup);
 closeCard.addEventListener("click", closeCardPopup);
+popUpCard.addEventListener("submit", addCard);
+addBtn.addEventListener("click", function () {
+  openCardPopup();
+});

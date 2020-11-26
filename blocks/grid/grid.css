@@ -5,6 +5,7 @@
 @import url("./__card-text/grid__card-text.css");
 @import url("./__heart/grid__heart.css");
 @import url("./__btn_del/grid__btn_del.css");
+@import url("./__image/_active/grid__image_active.css");
 
 .grid {
   -webkit-box-sizing: border-box;
