@@ -1,6 +1,15 @@
 .grid__image_active {
   display: block;
+  position:relative;
   margin: 90px auto 0 auto;
-  height: 540px;
+  max-height: 540px;
+  max-width:80%;
   border-radius: 0;
 }
+
+
+@media screen and (max-width: 450px) {
+  .grid__image_active {
+    max-width: 240px;
+    height:auto;
+  }

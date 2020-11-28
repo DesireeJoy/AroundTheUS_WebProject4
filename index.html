@@ -120,7 +120,7 @@
             required
           />
           <button type="submit" class="popup2__submit" value="Save">
-            Save
+            Create
           </button>
           <button
             type="button"
@@ -136,7 +136,7 @@
     <template id="cardTemplate">
       <li class="grid__card">
         <button
-          class="grid__btn_del"
+          class="grid__btn_del button"
           type="button"
           aria-label="delete"
         ></button>
@@ -159,12 +159,14 @@
 
     <template id="pictureTemplate">
       <div class="popup3">
-        <img class="grid__image_active" src="" alt="" />
-        <button
-          type="button"
-          class="popup3__close button"
-          aria-label="close"
-        ></button>
+        <div class="popup3__cont">
+          <img class="grid__image_active" src="" alt="" />
+          <button
+            type="button"
+            class="popup3__close button"
+            aria-label="close"
+          ></button>
+        </div>
       </div>
     </template>
 

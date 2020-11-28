@@ -2,7 +2,7 @@
   position: absolute;
   height: 40px;
   width: 40px;
-  right: 250px;
+  right: 5%;
   top: 50px;
   color: white;
   margin: 0;
@@ -12,11 +12,4 @@
   background-image: url("../../../images/close-icon.svg");
   background-size: cover;
   cursor: pointer;
-}
-
-@media screen and (max-width: 450px) {
-  .popup3__close {
-    top: -45px;
-    left: 250px;
-  }
 }
