@@ -1,8 +1,6 @@
 .grid__image_active {
-  position: fixed;
   display: block;
-  top: 90px;
-  margin: 0 auto;
+  margin: 90px auto 0 auto;
   height: 540px;
   border-radius: 0;
 }

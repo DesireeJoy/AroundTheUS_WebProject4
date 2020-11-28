@@ -75,6 +75,23 @@ for (var i = 0; i < initialCards.length; i++) {
       evt.target.classList.toggle("grid__heart_active");
     });
 
+  //Enlarge Callback
+  const picTemplate = document.querySelector("#pictureTemplate").content;
+
+  cardElement
+    .querySelector(".grid__btn_popup")
+    .addEventListener("click", function (pic) {
+      let picElement = picTemplate.cloneNode(true);
+      imgSelector = picElement.querySelector(".grid__image_active");
+      imgSelector.src = pic.target.src;
+      let popUpCont = picElement.querySelector(".popup3");
+      console.log(popUpCont);
+      console.log(pic.target.src);
+      popUpCont.classList.add("popup_visible");
+
+      gridList.append(picElement);
+    });
+
   //Delete Callback
 
   cardElement

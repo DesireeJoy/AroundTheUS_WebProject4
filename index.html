@@ -141,7 +141,9 @@
           aria-label="delete"
         ></button>
 
-        <img class="grid__image" src="src_image" alt="Desc" />
+        <button class="grid__btn_popup" type="button" aria-label="view image">
+          <img class="grid__image" src="src_image" alt="Desc" />
+        </button>
         <div class="grid__card-text">
           <h2 class="grid__caption">Title</h2>
           <button
@@ -152,6 +154,20 @@
         </div>
       </li>
     </template>
+
+    <!-- Enlarged Picture Template -->
+
+    <template id="pictureTemplate">
+      <div class="popup3">
+        <img class="grid__image_active" src="" alt="" />
+        <button
+          type="button"
+          class="popup2__close button"
+          aria-label="close"
+        ></button>
+      </div>
+    </template>
+
     <!-- Script here so HTML loads first -->
 
     <script src="pages/index.js" async></script>
