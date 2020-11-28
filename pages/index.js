@@ -161,7 +161,7 @@ function enlarge(ele) {
       let closeImage = document.querySelector(".popup3__close");
       if (!closeImage !== true) {
         closeImage.addEventListener("click", function (evt) {
-          popUpCont.classList.remove("popup_visible");
+          popUpCont.remove();
         });
       }
     });
