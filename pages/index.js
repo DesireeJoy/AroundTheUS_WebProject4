@@ -70,7 +70,7 @@ for (var i = 0; i < initialCards.length; i++) {
   //Like Callback
   likePlace(cardElement);
 
-  //enlarge Callback
+  //Enlarge Callback
   enlarge(cardElement);
 
   //Delete Callback
@@ -157,14 +157,23 @@ function enlarge(ele) {
       let popUpCont = picElement.querySelector(".popup3");
       popUpCont.classList.add("popup_visible");
       gridList.append(picElement);
+
+      let closeImage = document.querySelector(".popup3__close");
+      if (!closeImage !== true) {
+        closeImage.addEventListener("click", function (evt) {
+          popUpCont.classList.remove("popup_visible");
+        });
+      }
     });
 }
+
+// Function for Like Callback
 function likePlace(ele) {
   ele.querySelector(".grid__heart").addEventListener("click", function (evt) {
     evt.target.classList.toggle("grid__heart_active");
   });
 }
-
+// Function for Delete Callback
 function deletePlace(ele) {
   ele.querySelector(".grid__btn_del").addEventListener("click", function (evt) {
     item = evt.target.closest(".grid__card");
