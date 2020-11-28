@@ -15,7 +15,7 @@
 }
 
 @media screen and (max-width: 450px) {
-  .popup2__close {
+  .popup3__close {
     top: -45px;
     left: 250px;
   }

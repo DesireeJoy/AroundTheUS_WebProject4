@@ -23,13 +23,13 @@
 @media screen and (max-width: 800px) {
   .popup2__submit {
     height: 46px;
-    margin: 45px 0 0 0;
+    margin: 36px 0 0 0;
   }
 }
 
 @media screen and (max-width: 450px) {
   .popup2__submit {
-    min-width: 238px;
+    min-width: 200px;
     font-size: 14px;
     line-height: 17px;
   }

@@ -158,7 +158,7 @@ function enlarge(ele) {
       popUpCont.classList.add("popup_visible");
       gridList.append(picElement);
 
-      let closeImage = document.querySelector(".popup3__close");
+      let closeImage = popUpCont.querySelector(".popup3__close");
       if (!closeImage !== true) {
         closeImage.addEventListener("click", function (evt) {
           popUpCont.remove();
@@ -173,6 +173,7 @@ function likePlace(ele) {
     evt.target.classList.toggle("grid__heart_active");
   });
 }
+
 // Function for Delete Callback
 function deletePlace(ele) {
   ele.querySelector(".grid__btn_del").addEventListener("click", function (evt) {
