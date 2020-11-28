@@ -68,38 +68,13 @@ for (var i = 0; i < initialCards.length; i++) {
   cloneImage.alt = newAlt;
 
   //Like Callback
+  likePlace(cardElement);
 
-  cardElement
-    .querySelector(".grid__heart")
-    .addEventListener("click", function (evt) {
-      evt.target.classList.toggle("grid__heart_active");
-    });
-
-  //Enlarge Callback
-  const picTemplate = document.querySelector("#pictureTemplate").content;
-
-  cardElement
-    .querySelector(".grid__btn_popup")
-    .addEventListener("click", function (pic) {
-      let picElement = picTemplate.cloneNode(true);
-      imgSelector = picElement.querySelector(".grid__image_active");
-      imgSelector.src = pic.target.src;
-      let popUpCont = picElement.querySelector(".popup3");
-      console.log(popUpCont);
-      console.log(pic.target.src);
-      popUpCont.classList.add("popup_visible");
-
-      gridList.append(picElement);
-    });
+  //enlarge Callback
+  enlarge(cardElement);
 
   //Delete Callback
-
-  cardElement
-    .querySelector(".grid__btn_del")
-    .addEventListener("click", function (evt) {
-      item = evt.target.closest(".grid__card");
-      item.remove();
-    });
+  deletePlace(cardElement);
 
   gridList.append(cardElement);
 }
@@ -123,21 +98,13 @@ function addCard(evt) {
   cloneImage.src = inputUrl.value;
 
   //Like Callback
+  likePlace(cardElement);
 
-  cardElement
-    .querySelector(".grid__heart")
-    .addEventListener("click", function (evt) {
-      evt.target.classList.toggle("grid__heart_active");
-    });
+  //enlarge Callback
+  enlarge(cardElement);
 
   //Delete Callback
-
-  cardElement
-    .querySelector(".grid__btn_del")
-    .addEventListener("click", function (evt) {
-      item = evt.target.closest(".grid__card");
-      item.remove();
-    });
+  deletePlace(cardElement);
 
   gridList.append(cardElement);
   closeCardPopup();
@@ -174,6 +141,35 @@ function formSubmitHandler(evt) {
   currentName.textContent = inputName.value;
   currentTitle.textContent = inputTitle.value;
   closeProfilePopup();
+}
+
+//FUNCTIONS FOR ALL PLACE CARDS
+
+//Function for Enlarge Callback
+function enlarge(ele) {
+  const picTemplate = document.querySelector("#pictureTemplate").content;
+  ele
+    .querySelector(".grid__btn_popup")
+    .addEventListener("click", function (pic) {
+      let picElement = picTemplate.cloneNode(true);
+      imgSelector = picElement.querySelector(".grid__image_active");
+      imgSelector.src = pic.target.src;
+      let popUpCont = picElement.querySelector(".popup3");
+      popUpCont.classList.add("popup_visible");
+      gridList.append(picElement);
+    });
+}
+function likePlace(ele) {
+  ele.querySelector(".grid__heart").addEventListener("click", function (evt) {
+    evt.target.classList.toggle("grid__heart_active");
+  });
+}
+
+function deletePlace(ele) {
+  ele.querySelector(".grid__btn_del").addEventListener("click", function (evt) {
+    item = evt.target.closest(".grid__card");
+    item.remove();
+  });
 }
 
 // Connect the handler to the form:
