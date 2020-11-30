@@ -1,4 +1,4 @@
-.popup2__input {
+.popup__card_input {
   border: none;
   display: block;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -14,23 +14,23 @@
   width: 358px;
 }
 
-.popup2__input:first-of-type {
+.popup__card_input:first-of-type {
   margin-bottom: 29.4px;
 }
 
 @media screen and (max-width: 800px) {
-  .popup2__input {
+  .popup__card_input {
     width: 300px;
   }
 }
 
 @media screen and (max-width: 450px) {
-  .popup2__input {
+  .popup__card_input {
     padding-bottom: 12px;
     width: 200px;
   }
 
-  .popup2__input:first-of-type {
+  .popup__card_input:first-of-type {
     margin-bottom: 20px;
   }
 }

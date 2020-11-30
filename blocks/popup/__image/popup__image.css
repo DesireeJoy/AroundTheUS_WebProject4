@@ -1,4 +1,5 @@
-.popup2_visible {
+.popup__image_cont {
   display: flex;
   flex-direction: column;
+  width: 80%;
 }

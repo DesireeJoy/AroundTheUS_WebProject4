@@ -1,4 +1,4 @@
-.popup2__submit {
+.popup__card_submit {
   display: block;
   color: white;
   width: 100%;
@@ -17,18 +17,18 @@
   cursor: pointer;
 }
 
-.popup2__submit:hover {
+.popup__card_submit:hover {
   opacity: 0.8;
 }
 @media screen and (max-width: 800px) {
-  .popup2__submit {
+  .popup__card_submit {
     height: 46px;
     margin: 36px 0 0 0;
   }
 }
 
 @media screen and (max-width: 450px) {
-  .popup2__submit {
+  .popup__card_submit {
     min-width: 200px;
     font-size: 14px;
     line-height: 17px;

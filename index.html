@@ -36,6 +36,7 @@
               class="profile__editbtn button"
               aria-label="Edit"
               type="button"
+              name="edit_btn"
             ></button>
           </div>
           <button
@@ -90,20 +91,22 @@
             type="button"
             class="popup__close button"
             aria-label="close"
+            name="close_profile"
           ></button>
         </form>
       </div>
     </div>
 
     <!-- add Cards -->
-    <div class="popup2">
-      <div class="popup2__form">
-        <form class="popup2__form-selector" name="profileForm">
-          <h3 class="popup2__heading">New Place</h3>
+
+    <div class="popup__card">
+      <div class="popup__form popup__card_form">
+        <form class="popup__card_form-selector" name="profileForm">
+          <h3 class="popup__card_heading">New Place</h3>
 
           <input
             type="text"
-            class="popup2__input"
+            class="popup__card_input"
             id="inputPlace"
             name="placeName"
             placeholder="Title"
@@ -112,25 +115,30 @@
           />
           <input
             type="text"
-            class="popup2__input"
+            class="popup__card_input"
             id="inputFile"
             name="placeFileName"
             placeholder="Image link"
             value=""
             required
           />
-          <button type="submit" class="popup2__submit" value="Save">
+          <button
+            type="submit"
+            class="popup__card_submit"
+            value="Save"
+            name="create_btn"
+          >
             Create
           </button>
           <button
             type="button"
-            class="popup2__close button"
+            class="popup__close button"
             aria-label="close"
+            name="close_card"
           ></button>
         </form>
       </div>
     </div>
-
     <!-- Card Template  -->
 
     <template id="cardTemplate">
@@ -155,23 +163,22 @@
       </li>
     </template>
 
-    <!-- Enlarged Picture Template -->
+    <!-- Popup for Enlarged Image -->
 
-    <template id="pictureTemplate">
-      <div class="popup3">
-        <div class="popup3__cont">
-          <img class="grid__image_active" src="" alt="" />
-          <button
-            type="button"
-            class="popup3__close button"
-            aria-label="close"
-          ></button>
-        </div>
+    <div class="popup__image">
+      <div class="popup__image_cont">
+        <img class="grid__image_active" src="" alt="" />
+        <div class="popup__image_capt">Test</div>
+        <button
+          type="button"
+          class="popup__image_close button"
+          aria-label="close"
+        ></button>
       </div>
-    </template>
+    </div>
 
     <!-- Script here so HTML loads first -->
-
+    <script src="pages/initialCards.js"></script>
     <script src="pages/index.js" async></script>
   </body>
 </html>
