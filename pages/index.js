@@ -1,3 +1,5 @@
+//Sorry about that, the git merge failed
+
 "use strict";
 // Let's set all the constant we need
 const userForm = document.querySelector(".popup__form");
@@ -12,6 +14,10 @@ const cardTemplate = document.querySelector("#cardTemplate").content;
 const gridList = document.querySelector(".grid__list");
 const popUpProfile = document.querySelector(".popup");
 const popUpCard = document.querySelector(".popup__card");
+const popupImageBlock = document.querySelector(".popup__image");
+const popupImage = popupImageBlock.querySelector(".grid__image_active");
+const popupCaption = popupImageBlock.querySelector(".popup__image_capt");
+const closeImage = popupImageBlock.querySelector(".popup__image_close");
 
 //Create Initial Cards
 initialCards.forEach((element) => {
@@ -81,24 +87,12 @@ function userFormSubmitHandler(evt) {
 
 //Function for Enlarge Callback
 function enlarge(ele) {
-  const popupImageBlock = document.querySelector(".popup__image");
-
   ele
     .querySelector(".grid__btn_popup")
     .addEventListener("click", function (pic) {
       openPopUp(popupImageBlock);
-
       popupImage.src = pic.target.src;
-
-      const popupCaption = popupImageBlock.querySelector(".popup__image_capt");
-      const newCaption = pic.target;
-
       popupCaption.innerHTML = pic.target.alt;
-
-      const closeImage = popupImageBlock.querySelector(".popup__image_close");
-      closeImage.addEventListener("click", function (evt) {
-        closePopUp(popupImageBlock);
-      });
     });
 }
 
@@ -145,4 +139,7 @@ userForm.querySelector(".popup__close").addEventListener("click", () => {
 });
 cardForm.querySelector(".popup__close").addEventListener("click", () => {
   closePopUp(popUpCard);
+});
+closeImage.addEventListener("click", function (evt) {
+  closePopUp(popupImageBlock);
 });
