@@ -67,11 +67,6 @@ function addCardToDom(cardElement) {
   gridList.prepend(cardElement);
 }
 
-//Show and Hide all Modal Windows
-function openPopUp(thisElement) {
-  thisElement.classList.add("popup_visible");
-}
-
 function userFormSubmitHandler(evt) {
   // This line stops the browser from submitting the form in the default way.
   evt.preventDefault();
@@ -83,11 +78,6 @@ function userFormSubmitHandler(evt) {
   closePopUp(popUpProfile); //
 }
 
-//Closes Modal Window
-function closePopUp(popUpSelect) {
-  popUpSelect.classList.remove("popup_visible");
-}
-
 //FUNCTIONS FOR ALL PLACE CARDS
 
 //Function for Enlarge Callback
@@ -97,7 +87,7 @@ function enlarge(ele) {
   ele
     .querySelector(".grid__btn_popup")
     .addEventListener("click", function (pic) {
-      popupImageBlock.classList.add("popup_visible");
+      openPopUp(popupImageBlock);
 
       const popupImage = popupImageBlock.querySelector(".grid__image_active");
       popupImage.src = pic.target.src;
@@ -107,13 +97,21 @@ function enlarge(ele) {
 
       popupCaption.innerHTML = pic.target.alt;
 
-      console.log(newCaption);
-
       const closeImage = popupImageBlock.querySelector(".popup__image_close");
       closeImage.addEventListener("click", function (evt) {
         closePopUp(popupImageBlock);
       });
     });
+}
+
+//Show and Hide all Modal Windows
+function openPopUp(popUpSelect) {
+  popUpSelect.classList.add("popup_visible");
+}
+
+//Closes Modal Window
+function closePopUp(popUpSelect) {
+  popUpSelect.classList.remove("popup_visible");
 }
 
 // Function for Like Callback
