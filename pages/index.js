@@ -13,21 +13,14 @@ const gridList = document.querySelector(".grid__list");
 const popUpProfile = document.querySelector(".popup");
 const popUpCard = document.querySelector(".popup__card");
 
+//Create Initial Cards
 initialCards.forEach((element) => {
-  const cardElement = cardTemplate.cloneNode(true);
-  const newName = element.name;
-  const newImg = element.link;
-  const newAlt = element.alt;
-  const cloneName = cardElement.querySelector(".grid__caption");
-  const cloneImage = cardElement.querySelector(".grid__image");
-  cloneName.innerHTML = newName;
-  cloneImage.src = newImg;
-  cloneImage.alt = newName;
-
+  const cardElement = createCard(element);
   addCardToDom(cardElement);
 });
 
-function addCard(evt) {
+//Accepts Submit Event for Adding a New Card
+function handleCardFormSubmit(evt) {
   // This line stops the browser from submitting the form in the default way.
   evt.preventDefault();
 
@@ -35,17 +28,43 @@ function addCard(evt) {
   const inputPlace = document.querySelector("#inputPlace");
   const inputUrl = document.querySelector("#inputFile");
 
-  const cardTemplate = document.querySelector("#cardTemplate").content;
-  const cardElement = cardTemplate.cloneNode(true);
-
-  const cloneName = cardElement.querySelector(".grid__caption");
-  const cloneImage = cardElement.querySelector(".grid__image");
-
-  cloneName.innerHTML = inputPlace.value;
-  cloneImage.src = inputUrl.value;
+  //Store Card Information
+  const cardElement = createCard({
+    name: inputPlace.value,
+    link: inputUrl.value,
+    alt: inputPlace.value,
+  });
 
   addCardToDom(cardElement);
-  popUpCard.classList.remove("popup_visible");
+  closePopUp(popUpCard); //
+}
+
+// Create the Card for adding to the Dom
+
+function createCard(cardDatum) {
+  const cardTemplate = document.querySelector("#cardTemplate").content;
+  const cardElement = cardTemplate.cloneNode(true);
+  const cloneName = cardElement.querySelector(".grid__caption");
+  const cloneImage = cardElement.querySelector(".grid__image");
+  cloneName.textContent = cardDatum.name;
+  cloneImage.src = cardDatum.link;
+  cloneImage.alt = cardDatum.alt;
+  return cardElement;
+}
+
+// Add the Created Card to the Dom
+
+function addCardToDom(cardElement) {
+  //Like Callback
+  likePlace(cardElement);
+
+  //Enlarge Callback
+  enlarge(cardElement);
+
+  //Delete Callback
+  deletePlace(cardElement);
+
+  gridList.prepend(cardElement);
 }
 
 //Show and Hide all Modal Windows
@@ -62,16 +81,11 @@ function openPopUp(evt) {
   }
 }
 
-function closePopUp(evt) {
-  if (evt.target.name === "close_card") {
-    popUpCard.classList.remove("popup_visible");
-  }
-  if (evt.target.name === "close_profile") {
-    popUpProfile.classList.remove("popup_visible");
-  }
+//Closes Modal Window
+function closePopUp() {
+  popUpCard.classList.remove("popup_visible");
+  console.log(popUpCard);
 }
-// Next is the form submit handler, though
-// it won't submit anywhere just yet
 
 function userFormSubmitHandler(evt) {
   // This line stops the browser from submitting the form in the default way.
@@ -127,19 +141,6 @@ function deletePlace(ele) {
   });
 }
 
-function addCardToDom(cardElement) {
-  //Like Callback
-  likePlace(cardElement);
-
-  //Enlarge Callback
-  enlarge(cardElement);
-
-  //Delete Callback
-  deletePlace(cardElement);
-
-  gridList.prepend(cardElement);
-}
-
 // Connect the handler to the form:
 // it will watch the submit event
 
@@ -149,4 +150,4 @@ addBtn.addEventListener("click", openPopUp);
 editBtn.addEventListener("click", openPopUp);
 userForm.querySelector(".popup__close").addEventListener("click", closePopUp);
 cardForm.querySelector(".popup__close").addEventListener("click", closePopUp);
-popUpCard.addEventListener("submit", addCard);
+popUpCard.addEventListener("submit", handleCardFormSubmit);
