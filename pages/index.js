@@ -68,23 +68,8 @@ function addCardToDom(cardElement) {
 }
 
 //Show and Hide all Modal Windows
-function openPopUp(evt) {
-  //Place current Profile Input in Fields
-
-  if (evt.target.name == "edit_btn") {
-    inputName.value = currentName.textContent;
-    inputTitle.value = currentTitle.textContent;
-    popUpProfile.classList.add("popup_visible");
-  }
-  if (evt.target.name == "add_btn") {
-    popUpCard.classList.add("popup_visible");
-  }
-}
-
-//Closes Modal Window
-function closePopUp() {
-  popUpCard.classList.remove("popup_visible");
-  console.log(popUpCard);
+function openPopUp(thisElement) {
+  thisElement.classList.add("popup_visible");
 }
 
 function userFormSubmitHandler(evt) {
@@ -95,7 +80,12 @@ function userFormSubmitHandler(evt) {
   // querySelector() method
   currentName.textContent = inputName.value;
   currentTitle.textContent = inputTitle.value;
-  popUpProfile.classList.remove("popup_visible");
+  closePopUp(popUpProfile); //
+}
+
+//Closes Modal Window
+function closePopUp(popUpSelect) {
+  popUpSelect.classList.remove("popup_visible");
 }
 
 //FUNCTIONS FOR ALL PLACE CARDS
@@ -121,7 +111,7 @@ function enlarge(ele) {
 
       const closeImage = popupImageBlock.querySelector(".popup__image_close");
       closeImage.addEventListener("click", function (evt) {
-        popupImageBlock.classList.remove("popup_visible");
+        closePopUp(popupImageBlock);
       });
     });
 }
@@ -145,9 +135,18 @@ function deletePlace(ele) {
 // it will watch the submit event
 
 userForm.addEventListener("submit", userFormSubmitHandler);
-
-addBtn.addEventListener("click", openPopUp);
-editBtn.addEventListener("click", openPopUp);
-userForm.querySelector(".popup__close").addEventListener("click", closePopUp);
-cardForm.querySelector(".popup__close").addEventListener("click", closePopUp);
 popUpCard.addEventListener("submit", handleCardFormSubmit);
+addBtn.addEventListener("click", () => {
+  openPopUp(popUpCard);
+});
+editBtn.addEventListener("click", () => {
+  inputName.value = currentName.textContent;
+  inputTitle.value = currentTitle.textContent;
+  openPopUp(popUpProfile);
+});
+userForm.querySelector(".popup__close").addEventListener("click", () => {
+  closePopUp(popUpProfile);
+});
+cardForm.querySelector(".popup__close").addEventListener("click", () => {
+  closePopUp(popUpCard);
+});
