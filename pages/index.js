@@ -49,12 +49,6 @@ function createCard(cardDatum) {
   cloneName.textContent = cardDatum.name;
   cloneImage.src = cardDatum.link;
   cloneImage.alt = cardDatum.alt;
-  return cardElement;
-}
-
-// Add the Created Card to the Dom
-
-function addCardToDom(cardElement) {
   //Like Callback
   likePlace(cardElement);
 
@@ -63,7 +57,12 @@ function addCardToDom(cardElement) {
 
   //Delete Callback
   deletePlace(cardElement);
+  return cardElement;
+}
 
+// Add the Created Card to the Dom
+
+function addCardToDom(cardElement) {
   gridList.prepend(cardElement);
 }
 
@@ -89,7 +88,6 @@ function enlarge(ele) {
     .addEventListener("click", function (pic) {
       openPopUp(popupImageBlock);
 
-      const popupImage = popupImageBlock.querySelector(".grid__image_active");
       popupImage.src = pic.target.src;
 
       const popupCaption = popupImageBlock.querySelector(".popup__image_capt");
