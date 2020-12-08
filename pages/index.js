@@ -18,6 +18,8 @@ const popupImageBlock = document.querySelector(".popup__image");
 const popupImage = popupImageBlock.querySelector(".grid__image_active");
 const popupCaption = popupImageBlock.querySelector(".popup__image_capt");
 const closeImage = popupImageBlock.querySelector(".popup__image_close");
+const profileForm = document.forms.profileForm;
+const addForm = document.forms.addForm;
 
 //Create Initial Cards
 initialCards.forEach((element) => {
