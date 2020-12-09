@@ -1,5 +1,3 @@
-//Sorry about that, the git merge failed
-
 "use strict";
 // Let's set all the constant we need
 const userForm = document.querySelector(".popup__form");
@@ -19,7 +17,12 @@ const popupImage = popupImageBlock.querySelector(".grid__image_active");
 const popupCaption = popupImageBlock.querySelector(".popup__image_capt");
 const closeImage = popupImageBlock.querySelector(".popup__image_close");
 const profileForm = document.forms.profileForm;
+const name = profileForm.elements.profileName;
+const title = profileForm.elements.profileTitle;
 const addForm = document.forms.addForm;
+const placeName = addForm.elements.placeName;
+const fileName = addForm.elements.placeFileName;
+const addButton = addForm.elements.create_btn;
 
 //Create Initial Cards
 initialCards.forEach((element) => {
