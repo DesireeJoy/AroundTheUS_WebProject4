@@ -13,6 +13,10 @@
   padding-bottom: 13.2px;
   width: 358px;
 }
+.popup__card_input:invalid {
+  border-bottom: 1px solid red;
+}
+
 
 @media screen and (max-width: 800px) {
   .popup__card_input {
@@ -30,3 +34,4 @@
     margin-bottom: 20px;
   }
 }
+\

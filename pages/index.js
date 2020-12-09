@@ -19,10 +19,32 @@ const closeImage = popupImageBlock.querySelector(".popup__image_close");
 const profileForm = document.forms.profileForm;
 const name = profileForm.elements.profileName;
 const title = profileForm.elements.profileTitle;
+
 const addForm = document.forms.addForm;
+
 const placeName = addForm.elements.placeName;
 const fileName = addForm.elements.placeFileName;
 const addButton = addForm.elements.create_btn;
+
+const placeNameError = addForm.querySelector("#titleError");
+
+const placePicError = addForm.querySelector("#picError");
+
+//const settingObjects ={
+//  form: addForm,
+
+//}
+//const settingsObject = {
+//  formSelector: addForm,
+//  placeNameError: planeNameError,
+
+//}
+
+//const enableValidation(args) {
+//  const formList = Array.from(document.querySelectorAll(args.formSelector));
+//  formList.forEach((formElement) => {
+
+//}
 
 //Create Initial Cards
 initialCards.forEach((element) => {
@@ -32,12 +54,13 @@ initialCards.forEach((element) => {
 
 //Accepts Submit Event for Adding a New Card
 function handleCardFormSubmit(evt) {
-  // This line stops the browser from submitting the form in the default way.
-  evt.preventDefault();
-
   //Form Values
   const inputPlace = document.querySelector("#inputPlace");
   const inputUrl = document.querySelector("#inputFile");
+  checkInputValidity(addForm, inputPlace, placeNameError);
+  checkInputValidity(addForm, inputUrl, placePicError);
+
+  //CheckInputs
 
   //Store Card Information
   const cardElement = createCard({
@@ -129,8 +152,8 @@ function deletePlace(ele) {
 // Connect the handler to the form:
 // it will watch the submit event
 
-userForm.addEventListener("submit", userFormSubmitHandler);
-popUpCard.addEventListener("submit", handleCardFormSubmit);
+//userForm.addEventListener("submit", userFormSubmitHandler);
+
 addBtn.addEventListener("click", () => {
   openPopUp(popUpCard);
 });
@@ -147,4 +170,9 @@ cardForm.querySelector(".popup__close").addEventListener("click", () => {
 });
 closeImage.addEventListener("click", function (evt) {
   closePopUp(popupImageBlock);
+});
+cardForm.addEventListener("submit", (evt) => {
+  evt.preventDefault();
+
+  handleCardFormSubmit(evt);
 });

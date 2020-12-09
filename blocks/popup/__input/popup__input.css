@@ -32,3 +32,6 @@
     margin-bottom: 30px;
   }
 }
+.popup__input:invalid {
+  border-bottom: 1px solid rgba(red, 0.2);
+}

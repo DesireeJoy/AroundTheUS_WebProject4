@@ -11,6 +11,9 @@
   </head>
 
   <body class="body">
+    <script src="pages/initialCards.js" defer></script>
+    <script src="pages/validate.js" defer></script>
+    <script src="pages/index.js" defer></script>
     <div class="page">
       <header class="header">
         <img
@@ -119,11 +122,13 @@
             maxlength="30"
             required
           />
-          <div class="popup__card_error error" name="titleError">
-            Please fill out this field.
-          </div>
+          <div
+            class="popup__card_error error"
+            id="titleError"
+            name="titleError"
+          ></div>
           <input
-            type="text"
+            type="url"
             class="popup__card_input"
             id="inputFile"
             name="placeFileName"
@@ -131,12 +136,14 @@
             value=""
             required
           />
-          <div class="popup__card_error error" name="picError">
-            Please enter a web address.
-          </div>
+          <div
+            class="popup__card_error error"
+            id="picError"
+            name="picError"
+          ></div>
           <button
             type="submit"
-            class="popup__card_submit-disabled popup__card_submit"
+            class="popup__card_submit"
             value="Save"
             name="create_btn"
           >
@@ -190,8 +197,5 @@
     </div>
 
     <!-- Script here so HTML loads first -->
-    <script src="pages/initialCards.js"></script>
-    <script src="pages/validate.js" async></script>
-    <script src="pages/index.js" async></script>
   </body>
 </html>
