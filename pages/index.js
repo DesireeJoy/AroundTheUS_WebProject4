@@ -1,7 +1,6 @@
 "use strict";
 // Let's set all the constant we need
-const userForm = document.querySelector(".popup__form");
-const cardForm = document.querySelector(".popup__card_form");
+
 const editBtn = document.querySelector(".profile__editbtn");
 const addBtn = document.querySelector(".profile__addbtn");
 const inputName = document.querySelector("#inputName");
@@ -16,35 +15,16 @@ const popupImageBlock = document.querySelector(".popup__image");
 const popupImage = popupImageBlock.querySelector(".grid__image_active");
 const popupCaption = popupImageBlock.querySelector(".popup__image_capt");
 const closeImage = popupImageBlock.querySelector(".popup__image_close");
+
 const profileForm = document.forms.profileForm;
 const name = profileForm.elements.profileName;
 const title = profileForm.elements.profileTitle;
-
 const addForm = document.forms.addForm;
-
 const placeName = addForm.elements.placeName;
 const fileName = addForm.elements.placeFileName;
 const addButton = addForm.elements.create_btn;
 
-const placeNameError = addForm.querySelector("#titleError");
-
-const placePicError = addForm.querySelector("#picError");
-
-//const settingObjects ={
-//  form: addForm,
-
-//}
-//const settingsObject = {
-//  formSelector: addForm,
-//  placeNameError: planeNameError,
-
-//}
-
-//const enableValidation(args) {
-//  const formList = Array.from(document.querySelectorAll(args.formSelector));
-//  formList.forEach((formElement) => {
-
-//}
+const formList = document.forms;
 
 //Create Initial Cards
 initialCards.forEach((element) => {
@@ -54,13 +34,12 @@ initialCards.forEach((element) => {
 
 //Accepts Submit Event for Adding a New Card
 function handleCardFormSubmit(evt) {
+  // This line stops the browser from submitting the form in the default way.
+  evt.preventDefault();
+
   //Form Values
   const inputPlace = document.querySelector("#inputPlace");
   const inputUrl = document.querySelector("#inputFile");
-  checkInputValidity(addForm, inputPlace, placeNameError);
-  checkInputValidity(addForm, inputUrl, placePicError);
-
-  //CheckInputs
 
   //Store Card Information
   const cardElement = createCard({
@@ -152,8 +131,8 @@ function deletePlace(ele) {
 // Connect the handler to the form:
 // it will watch the submit event
 
-//userForm.addEventListener("submit", userFormSubmitHandler);
-
+profileForm.addEventListener("submit", userFormSubmitHandler);
+popUpCard.addEventListener("submit", handleCardFormSubmit);
 addBtn.addEventListener("click", () => {
   openPopUp(popUpCard);
 });
@@ -162,17 +141,57 @@ editBtn.addEventListener("click", () => {
   inputTitle.value = currentTitle.textContent;
   openPopUp(popUpProfile);
 });
-userForm.querySelector(".popup__close").addEventListener("click", () => {
+profileForm.querySelector(".popup__close").addEventListener("click", () => {
   closePopUp(popUpProfile);
 });
-cardForm.querySelector(".popup__close").addEventListener("click", () => {
+addForm.querySelector(".popup__close").addEventListener("click", () => {
   closePopUp(popUpCard);
 });
 closeImage.addEventListener("click", function (evt) {
   closePopUp(popupImageBlock);
 });
-cardForm.addEventListener("submit", (evt) => {
-  evt.preventDefault();
+// validate stuff
+const showInputError = (formElement, inputElement, errorMessage) => {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  inputElement.classList.add("popup__form_input_type_error");
+  console.log(errorElement);
+  errorElement.textContent = errorMessage;
+  errorElement.classList.remove("popup__form_input_type_active");
+};
 
-  handleCardFormSubmit(evt);
-});
+const hideInputError = (formElement, inputElement) => {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+
+  inputElement.classList.remove("popup__form_input_type_error");
+  errorElement.classList.add("popup__form_input_type_active");
+  errorElement.textContent = "";
+};
+
+const checkInputValidity = (formElement, inputElement) => {
+  if (!inputElement.validity.valid) {
+    showInputError(formElement, inputElement, inputElement.validationMessage);
+  } else {
+    hideInputError(formElement, inputElement);
+  }
+};
+
+const setEventListeners = (formElement) => {
+  const inputList = Array.from(formElement.querySelectorAll(".input"));
+  inputList.forEach((inputElement) => {
+    inputElement.addEventListener("input", function () {
+      checkInputValidity(formElement, inputElement);
+    });
+  });
+};
+
+function enableValidation() {
+  const formList = Array.from(document.querySelectorAll(".form"));
+  formList.forEach((formElement) => {
+    formElement.addEventListener("submit", (evt) => {
+      evt.preventDefault();
+    });
+    setEventListeners(formElement);
+  });
+}
+
+enableValidation();

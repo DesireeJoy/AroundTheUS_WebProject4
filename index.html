@@ -11,9 +11,6 @@
   </head>
 
   <body class="body">
-    <script src="pages/initialCards.js" defer></script>
-    <script src="pages/validate.js" defer></script>
-    <script src="pages/index.js" defer></script>
     <div class="page">
       <header class="header">
         <img
@@ -60,7 +57,9 @@
       </main>
 
       <!-- Footer -->
-      <footer class="footer"><p>&#169; 2020 Around The U.S.</p></footer>
+      <footer class="footer">
+        <p>&#169; 2020 Around The U.S.</p>
+      </footer>
 
       <!-- Div closure for Page-->
     </div>
@@ -68,11 +67,11 @@
     <!-- Edit name & title -->
     <div class="popup">
       <div class="popup__form">
-        <form class="popup__form-selector" name="profileForm">
+        <form class="popup__form-selector form" name="profileForm">
           <h3 class="popup__heading">Edit Profile</h3>
           <input
             type="text"
-            class="popup__input"
+            class="popup__input input"
             id="inputName"
             value="Jacques Cousteau"
             name="profileName"
@@ -81,10 +80,13 @@
             maxlength="40"
             required
           />
-
+          <span
+            class="popup__form_input_type_active inputName-error error"
+            name="inputName-error"
+          ></span>
           <input
             type="text"
-            class="popup__input"
+            class="popup__input input"
             id="inputTitle"
             value="Explorer"
             name="profileTitle"
@@ -93,6 +95,10 @@
             maxlength="200"
             required
           />
+          <span
+            class="popup__form_input_type_active inputTitle-error error"
+            name="inputTitle-error"
+          ></span>
           <button type="submit" class="popup__submit" value="Save">Save</button>
           <button
             type="button"
@@ -108,12 +114,12 @@
 
     <div class="popup__card">
       <div class="popup__form popup__card_form">
-        <form class="popup__card_form-selector" name="addForm">
+        <form class="popup__card_form-selector form" name="addForm">
           <h3 class="popup__card_heading">New Place</h3>
 
           <input
             type="text"
-            class="popup__card_input"
+            class="popup__card_input input"
             id="inputPlace"
             name="placeName"
             placeholder="Title"
@@ -122,28 +128,26 @@
             maxlength="30"
             required
           />
-          <div
-            class="popup__card_error error"
-            id="titleError"
-            name="titleError"
-          ></div>
+          <span
+            class="popup__form_input_type_active inputPlace-error error"
+            name="inputPlace-error"
+          ></span>
           <input
             type="url"
-            class="popup__card_input"
+            class="popup__card_input input"
             id="inputFile"
             name="placeFileName"
             placeholder="Image link"
             value=""
             required
           />
-          <div
-            class="popup__card_error error"
-            id="picError"
-            name="picError"
-          ></div>
+          <span
+            class="popup__form_input_type_active inputFile-error error"
+            name="inputFile-error"
+          ></span>
           <button
             type="submit"
-            class="popup__card_submit"
+            class="popup__card_submit-disabled popup__card_submit"
             value="Save"
             name="create_btn"
           >
@@ -197,5 +201,8 @@
     </div>
 
     <!-- Script here so HTML loads first -->
+    <script src="pages/initialCards.js"></script>
+    <script src="pages/validate.js" async></script>
+    <script src="pages/index.js" async></script>
   </body>
 </html>
