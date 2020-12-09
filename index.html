@@ -67,7 +67,11 @@
     <!-- Edit name & title -->
     <div class="popup">
       <div class="popup__form">
-        <form class="popup__form-selector form" name="profileForm">
+        <form
+          class="popup__form-selector form"
+          id="userForm"
+          name="profileForm"
+        >
           <h3 class="popup__heading">Edit Profile</h3>
           <input
             type="text"
@@ -99,7 +103,9 @@
             class="popup__form_input_type_active inputTitle-error error"
             name="inputTitle-error"
           ></span>
-          <button type="submit" class="popup__submit" value="Save">Save</button>
+          <button type="submit" class="popup__submit form-submit" value="Save">
+            Save
+          </button>
           <button
             type="button"
             class="popup__close button"
@@ -114,7 +120,11 @@
 
     <div class="popup__card">
       <div class="popup__form popup__card_form">
-        <form class="popup__card_form-selector form" name="addForm">
+        <form
+          class="popup__card_form-selector form"
+          id="addForm"
+          name="addForm"
+        >
           <h3 class="popup__card_heading">New Place</h3>
 
           <input
@@ -147,9 +157,9 @@
           ></span>
           <button
             type="submit"
-            class="popup__card_submit-disabled popup__card_submit"
+            class="popup__card_submit-disabled popup__card_submit form__submit"
             value="Save"
-            name="create_btn"
+            name="addForm-submit"
           >
             Save
           </button>
