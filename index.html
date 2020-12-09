@@ -119,6 +119,9 @@
             maxlength="30"
             required
           />
+          <div class="popup__card_error error" name="titleError">
+            Please fill out this field.
+          </div>
           <input
             type="text"
             class="popup__card_input"
@@ -128,13 +131,16 @@
             value=""
             required
           />
+          <div class="popup__card_error error" name="picError">
+            Please enter a web address.
+          </div>
           <button
             type="submit"
-            class="popup__card_submit"
+            class="popup__card_submit-disabled popup__card_submit"
             value="Save"
             name="create_btn"
           >
-            Create
+            Save
           </button>
           <button
             type="button"
