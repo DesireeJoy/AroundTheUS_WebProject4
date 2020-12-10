@@ -172,7 +172,7 @@ profileForm.querySelector(".popup__close").addEventListener("click", () => {
 });
 addForm.querySelector(".popup__close").addEventListener("click", () => {
   closePopUp(popUpCard);
-  popUpCard.removeventListener("keydown", (evt) => {
+  popUpCard.removeEventListener("keydown", (evt) => {
     if (evt.key === "Escape") {
       closePopUp(popUpCard);
     }
