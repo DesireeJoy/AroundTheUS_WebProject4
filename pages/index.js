@@ -85,7 +85,7 @@ function resetCardForm() {
   addForm.reset();
 }
 
-function userFormSubmitHandler(evt) {
+function handleUserFormSubmit(evt) {
   // This line stops the browser from submitting the form in the default way.
   evt.preventDefault();
 
@@ -139,7 +139,7 @@ function deletePlace(ele) {
 
 // Open Popups
 
-profileForm.addEventListener("submit", userFormSubmitHandler);
+profileForm.addEventListener("submit", handleUserFormSubmit);
 popUpCard.addEventListener("submit", handleCardFormSubmit);
 addBtn.addEventListener("click", () => {
   openPopUp(popUpCard);
