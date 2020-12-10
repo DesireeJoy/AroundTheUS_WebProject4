@@ -150,3 +150,33 @@ addForm.querySelector(".popup__close").addEventListener("click", () => {
 closeImage.addEventListener("click", function (evt) {
   closePopUp(popupImageBlock);
 });
+
+popUpCard.addEventListener("click", (evt) => {
+  if (evt.target === popUpCard) {
+    closePopUp(popUpCard);
+  }
+});
+
+popUpProfile.addEventListener("click", (evt) => {
+  if (evt.target === popUpProfile) {
+    closePopUp(popUpProfile);
+  }
+});
+
+popupImageBlock.addEventListener("click", (evt) => {
+  if (evt.target === popupImageBlock) {
+    closePopUp(popupImageBlock);
+  }
+});
+
+popUpCard.addEventListener("keydown", (evt) => {
+  if (evt.key === "Escape") {
+    closePopUp(popUpCard);
+  }
+});
+
+popUpProfile.addEventListener("keydown", (evt) => {
+  if (evt.key === "Escape") {
+    closePopUp(popUpProfile);
+  }
+});
