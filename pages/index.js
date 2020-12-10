@@ -49,6 +49,7 @@ function handleCardFormSubmit(evt) {
   });
 
   addCardToDom(cardElement);
+  resetCardForm();
   closePopUp(popUpCard); //
 }
 
@@ -77,6 +78,11 @@ function createCard(cardDatum) {
 
 function addCardToDom(cardElement) {
   gridList.prepend(cardElement);
+}
+
+// Reset the Form
+function resetCardForm() {
+  addForm.reset();
 }
 
 function userFormSubmitHandler(evt) {
@@ -131,6 +137,8 @@ function deletePlace(ele) {
 // Connect the handler to the form:
 // it will watch the submit event
 
+// Open Popups
+
 profileForm.addEventListener("submit", userFormSubmitHandler);
 popUpCard.addEventListener("submit", handleCardFormSubmit);
 addBtn.addEventListener("click", () => {
@@ -141,6 +149,8 @@ editBtn.addEventListener("click", () => {
   inputTitle.value = currentTitle.textContent;
   openPopUp(popUpProfile);
 });
+
+// Close Popups
 profileForm.querySelector(".popup__close").addEventListener("click", () => {
   closePopUp(popUpProfile);
 });
