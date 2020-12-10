@@ -143,19 +143,40 @@ profileForm.addEventListener("submit", userFormSubmitHandler);
 popUpCard.addEventListener("submit", handleCardFormSubmit);
 addBtn.addEventListener("click", () => {
   openPopUp(popUpCard);
+  popUpCard.addEventListener("keydown", (evt) => {
+    if (evt.key === "Escape") {
+      closePopUp(popUpCard);
+    }
+  });
 });
+
 editBtn.addEventListener("click", () => {
   inputName.value = currentName.textContent;
   inputTitle.value = currentTitle.textContent;
   openPopUp(popUpProfile);
+  popUpProfile.addEventListener("keydown", (evt) => {
+    if (evt.key === "Escape") {
+      closePopUp(popUpProfile);
+    }
+  });
 });
 
 // Close Popups
 profileForm.querySelector(".popup__close").addEventListener("click", () => {
   closePopUp(popUpProfile);
+  popUpProfile.removeEventListener("keydown", (evt) => {
+    if (evt.key === "Escape") {
+      closePopUp(popUpProfile);
+    }
+  });
 });
 addForm.querySelector(".popup__close").addEventListener("click", () => {
   closePopUp(popUpCard);
+  popUpCard.removeventListener("keydown", (evt) => {
+    if (evt.key === "Escape") {
+      closePopUp(popUpCard);
+    }
+  });
 });
 closeImage.addEventListener("click", function (evt) {
   closePopUp(popupImageBlock);
@@ -176,17 +197,5 @@ popUpProfile.addEventListener("click", (evt) => {
 popupImageBlock.addEventListener("click", (evt) => {
   if (evt.target === popupImageBlock) {
     closePopUp(popupImageBlock);
-  }
-});
-
-popUpCard.addEventListener("keydown", (evt) => {
-  if (evt.key === "Escape") {
-    closePopUp(popUpCard);
-  }
-});
-
-popUpProfile.addEventListener("keydown", (evt) => {
-  if (evt.key === "Escape") {
-    closePopUp(popUpProfile);
   }
 });
