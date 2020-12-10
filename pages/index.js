@@ -143,7 +143,7 @@ profileForm.addEventListener("submit", userFormSubmitHandler);
 popUpCard.addEventListener("submit", handleCardFormSubmit);
 addBtn.addEventListener("click", () => {
   openPopUp(popUpCard);
-  popUpCard.addEventListener("keydown", (evt) => {
+  document.addEventListener("keydown", (evt) => {
     if (evt.key === "Escape") {
       closePopUp(popUpCard);
     }
@@ -154,7 +154,7 @@ editBtn.addEventListener("click", () => {
   inputName.value = currentName.textContent;
   inputTitle.value = currentTitle.textContent;
   openPopUp(popUpProfile);
-  popUpProfile.addEventListener("keydown", (evt) => {
+  document.addEventListener("keydown", (evt) => {
     if (evt.key === "Escape") {
       closePopUp(popUpProfile);
     }
@@ -164,7 +164,7 @@ editBtn.addEventListener("click", () => {
 // Close Popups
 profileForm.querySelector(".popup__close").addEventListener("click", () => {
   closePopUp(popUpProfile);
-  popUpProfile.removeEventListener("keydown", (evt) => {
+  document.removeEventListener("keydown", (evt) => {
     if (evt.key === "Escape") {
       closePopUp(popUpProfile);
     }
@@ -172,7 +172,7 @@ profileForm.querySelector(".popup__close").addEventListener("click", () => {
 });
 addForm.querySelector(".popup__close").addEventListener("click", () => {
   closePopUp(popUpCard);
-  popUpCard.removeEventListener("keydown", (evt) => {
+  document.removeEventListener("keydown", (evt) => {
     if (evt.key === "Escape") {
       closePopUp(popUpCard);
     }
