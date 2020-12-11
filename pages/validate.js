@@ -8,10 +8,13 @@ const hasInvalidInput = (inputList) => {
 };
 // STEP FOUR
 const toggleButtonState = (inputList, buttonElement, settingsObject) => {
+  console.log("Running Toggle");
   if (hasInvalidInput(inputList)) {
     buttonElement.classList.add(settingsObject.inactiveButtonClass);
+    buttonElement.disabled = true;
   } else {
     buttonElement.classList.remove(settingsObject.inactiveButtonClass);
+    buttonElement.disabled = false;
   }
 };
 
@@ -54,6 +57,7 @@ const setEventListeners = (formElement, settingsObject) => {
   inputsList.forEach((inputElement) => {
     //If that input is touched, we immediately check validity
     inputElement.addEventListener("input", function () {
+      console.log("Running Inputs Event LIstener");
       checkInputValidity(formElement, inputElement); // Step 3
       toggleButtonState(inputsList, buttonElement, settingsObject); // Step 4
     });
