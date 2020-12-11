@@ -85,6 +85,8 @@ function resetCardForm() {
   addForm.reset();
 }
 
+// Reset the Button
+
 function handleUserFormSubmit(evt) {
   // This line stops the browser from submitting the form in the default way.
   evt.preventDefault();
