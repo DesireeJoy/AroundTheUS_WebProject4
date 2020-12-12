@@ -106,15 +106,17 @@ function enlarge(ele) {
       popupImage.src = pic.target.src;
       popupCaption.innerHTML = pic.target.alt;
     });
+  document.addEventListener("keydown", closeWithEsc, false);
 }
 
 //Show and Hide all Modal Windows
 function openPopUp(popUpSelect) {
   popUpSelect.classList.add("popup_visible");
-  const submitBtn = popUpSelect.querySelector(".form__submit");
-  console.log(submitBtn);
-  submitBtn.classList.add("popup__card_submit-disabled");
-  submitBtn.disabled = true;
+  if (popUpSelect != popupImageBlock) {
+    const submitBtn = popUpSelect.querySelector(".form__submit");
+    submitBtn.classList.add("popup__card_submit-disabled");
+    submitBtn.disabled = true;
+  }
 }
 
 //Closes Modal Window
@@ -158,11 +160,17 @@ editBtn.addEventListener("click", () => {
 
 function closeWithEsc(evt) {
   if (evt.key === "Escape") {
-    console.log("No");
-    closePopUp(popUpProfile);
+    if (popUpProfile.classList.contains("popup_visible")) {
+      closePopUp(popUpProfile);
+    }
+    if (popUpCard.classList.contains("popup_visible")) {
+      closePopUp(popUpCard);
+    }
+    if (popupImageBlock.classList.contains("popup_visible")) {
+      closePopUp(popupImageBlock);
+    }
   }
 }
-document.addEventListener("keydown", closeWithEsc, false);
 
 // Close Popups
 profileForm.querySelector(".popup__close").addEventListener("click", () => {
