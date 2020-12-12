@@ -23,6 +23,7 @@ const addForm = document.forms.addForm;
 const placeName = addForm.elements.placeName;
 const fileName = addForm.elements.placeFileName;
 const addButton = addForm.elements.create_btn;
+const submitPlaceBtn = addForm.elements.addFormSubmit;
 
 const formList = document.forms;
 
@@ -106,22 +107,19 @@ function enlarge(ele) {
       popupImage.src = pic.target.src;
       popupCaption.innerHTML = pic.target.alt;
     });
-  document.addEventListener("keydown", closeWithEsc, false);
 }
 
 //Show and Hide all Modal Windows
 function openPopUp(popUpSelect) {
   popUpSelect.classList.add("popup_visible");
-  if (popUpSelect != popupImageBlock) {
-    const submitBtn = popUpSelect.querySelector(".form__submit");
-    submitBtn.classList.add("popup__card_submit-disabled");
-    submitBtn.disabled = true;
-  }
+  document.addEventListener("keydown", closeWithEsc, false);
+  resetSubmitBtn(addButton);
 }
 
 //Closes Modal Window
 function closePopUp(popUpSelect) {
   popUpSelect.classList.remove("popup_visible");
+  document.removeEventListener("keydown", closeWithEsc, false);
 }
 
 // Function for Like Callback
@@ -148,14 +146,13 @@ profileForm.addEventListener("submit", handleUserFormSubmit);
 popUpCard.addEventListener("submit", handleCardFormSubmit);
 addBtn.addEventListener("click", () => {
   openPopUp(popUpCard);
-  document.addEventListener("keydown", closeWithEsc, false);
+  resetSubmitBtn;
 });
 
 editBtn.addEventListener("click", () => {
   inputName.value = currentName.textContent;
   inputTitle.value = currentTitle.textContent;
   openPopUp(popUpProfile);
-  document.addEventListener("keydown", closeWithEsc, false);
 });
 
 function closeWithEsc(evt) {
@@ -175,12 +172,10 @@ function closeWithEsc(evt) {
 // Close Popups
 profileForm.querySelector(".popup__close").addEventListener("click", () => {
   closePopUp(popUpProfile);
-  document.removeEventListener("keydown", closeWithEsc, false);
 });
 
 addForm.querySelector(".popup__close").addEventListener("click", () => {
   closePopUp(popUpCard);
-  document.removeEventListener("keydown", closeWithEsc, false);
 });
 closeImage.addEventListener("click", function (evt) {
   closePopUp(popupImageBlock);

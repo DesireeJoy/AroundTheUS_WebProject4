@@ -9,13 +9,16 @@ const hasInvalidInput = (inputList) => {
 // STEP FOUR
 const toggleButtonState = (inputList, buttonElement, settingsObject) => {
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add(settingsObject.inactiveButtonClass);
-    buttonElement.disabled = true;
+    resetSubmitBtn;
   } else {
     buttonElement.classList.remove(settingsObject.inactiveButtonClass);
     buttonElement.disabled = false;
   }
 };
+function resetSubmitBtn() {
+  submitPlaceBtn.classList.add("popup__card_submit-disabled");
+  submitPlaceBtn.disabled = true;
+}
 
 //STEP 3.1
 const showInputError = (formElement, inputElement, errorMessage) => {
