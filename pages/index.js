@@ -146,41 +146,33 @@ profileForm.addEventListener("submit", handleUserFormSubmit);
 popUpCard.addEventListener("submit", handleCardFormSubmit);
 addBtn.addEventListener("click", () => {
   openPopUp(popUpCard);
-  document.addEventListener("keydown", (evt) => {
-    if (evt.key === "Escape") {
-      closePopUp(popUpCard);
-    }
-  });
+  document.addEventListener("keydown", closeWithEsc, false);
 });
 
 editBtn.addEventListener("click", () => {
   inputName.value = currentName.textContent;
   inputTitle.value = currentTitle.textContent;
   openPopUp(popUpProfile);
-  document.addEventListener("keydown", (evt) => {
-    if (evt.key === "Escape") {
-      closePopUp(popUpProfile);
-    }
-  });
+  document.addEventListener("keydown", closeWithEsc, false);
 });
+
+function closeWithEsc(evt) {
+  if (evt.key === "Escape") {
+    console.log("No");
+    closePopUp(popUpProfile);
+  }
+}
+document.addEventListener("keydown", closeWithEsc, false);
 
 // Close Popups
 profileForm.querySelector(".popup__close").addEventListener("click", () => {
   closePopUp(popUpProfile);
-
-  document.removeEventListener("keydown", (evt) => {
-    if (evt.key === "Escape") {
-      closePopUp(popUpProfile);
-    }
-  });
+  document.removeEventListener("keydown", closeWithEsc, false);
 });
+
 addForm.querySelector(".popup__close").addEventListener("click", () => {
   closePopUp(popUpCard);
-  document.removeEventListener("keydown", (evt) => {
-    if (evt.key === "Escape") {
-      closePopUp(popUpCard);
-    }
-  });
+  document.removeEventListener("keydown", closeWithEsc, false);
 });
 closeImage.addEventListener("click", function (evt) {
   closePopUp(popupImageBlock);
