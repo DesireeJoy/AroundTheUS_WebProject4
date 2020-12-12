@@ -2,13 +2,14 @@
 
 //STEP FIVE
 const hasInvalidInput = (inputList) => {
+  console.log("e");
   return inputList.some((inputElement) => {
     return !inputElement.validity.valid;
   });
 };
 // STEP FOUR
 const toggleButtonState = (inputList, buttonElement, settingsObject) => {
-  console.log("Running Toggle");
+  console.log("d");
   if (hasInvalidInput(inputList)) {
     buttonElement.classList.add(settingsObject.inactiveButtonClass);
     buttonElement.disabled = true;
@@ -22,18 +23,19 @@ const toggleButtonState = (inputList, buttonElement, settingsObject) => {
 const showInputError = (formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   errorElement.textContent = errorMessage;
-  errorElement.classList.remove("popup__form_input_type_active");
+  errorElement.classList.add("popup__form_input_type_disabled");
 };
 
 //STEP 3.2
 const hideInputError = (formElement, inputElement) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  errorElement.classList.add("popup__form_input_type_active");
+  errorElement.classList.remove("popup__form_input_type_disabled");
   errorElement.textContent = "";
 };
 
 //STEP THREE Check Validity of Input Toggle error on or off
 const checkInputValidity = (formElement, inputElement) => {
+  console.log("c");
   if (!inputElement.validity.valid) {
     showInputError(formElement, inputElement, inputElement.validationMessage);
   } else {
@@ -44,11 +46,12 @@ const checkInputValidity = (formElement, inputElement) => {
 //STEP TWO Setting Event Listeners
 
 const setEventListeners = (formElement, settingsObject) => {
+  console.log("b");
   //Make an array of all the inputs that are in the formElement
   const inputsList = Array.from(
     formElement.querySelectorAll(settingsObject.inputSelector)
   );
-  console.log("setEventLIsteners element");
+
   //Submit Button associated with that form
   const buttonElement = formElement.querySelector(
     settingsObject.submitButtonSelector
@@ -66,6 +69,7 @@ const setEventListeners = (formElement, settingsObject) => {
 
 // STEP ONE Looking at the input information
 function enableValidation(settingsObject) {
+  console.log("a");
   const formsList = Array.from(
     document.querySelectorAll(settingsObject.formSelector)
   );

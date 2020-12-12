@@ -111,6 +111,10 @@ function enlarge(ele) {
 //Show and Hide all Modal Windows
 function openPopUp(popUpSelect) {
   popUpSelect.classList.add("popup_visible");
+  const submitBtn = popUpSelect.querySelector(".form__submit");
+  console.log(submitBtn);
+  submitBtn.classList.add("popup__card_submit-disabled");
+  submitBtn.disabled = true;
 }
 
 //Closes Modal Window
@@ -163,6 +167,7 @@ editBtn.addEventListener("click", () => {
 // Close Popups
 profileForm.querySelector(".popup__close").addEventListener("click", () => {
   closePopUp(popUpProfile);
+
   document.removeEventListener("keydown", (evt) => {
     if (evt.key === "Escape") {
       closePopUp(popUpProfile);
