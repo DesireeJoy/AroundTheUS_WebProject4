@@ -9,7 +9,7 @@ const hasInvalidInput = (inputList) => {
 // STEP FOUR
 const toggleButtonState = (inputList, buttonElement, settingsObject) => {
   if (hasInvalidInput(inputList)) {
-    resetSubmitBtn;
+    resetSubmitBtn();
   } else {
     buttonElement.classList.remove(settingsObject.inactiveButtonClass);
     buttonElement.disabled = false;
