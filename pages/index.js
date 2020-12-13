@@ -38,8 +38,8 @@ function handleCardFormSubmit(evt) {
   // This line stops the browser from submitting the form in the default way.
   evt.preventDefault();
   //Form Values
-  const inputPlace = document.querySelector("#inputPlace");
-  const inputUrl = document.querySelector("#inputFile");
+  let inputPlace = document.querySelector("#inputPlace");
+  let inputUrl = document.querySelector("#inputFile");
 
   //Store Card Information
   const cardElement = createCard({
@@ -51,6 +51,8 @@ function handleCardFormSubmit(evt) {
   addCardToDom(cardElement);
   resetCardForm();
   closePopUp(popUpCard); //
+  inputPlace = "";
+  inputUrl = "";
 }
 
 // Create the Card for adding to the Dom
