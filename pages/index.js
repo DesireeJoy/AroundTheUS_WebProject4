@@ -27,10 +27,13 @@ const submitPlaceBtn = addForm.elements.addFormSubmit;
 
 const formList = document.forms;
 
+import enlarge from utils.js;
+
 //Create Initial Cards
-initialCards.forEach((element) => {
-  const cardElement = createCard(element);
-  addCardToDom(cardElement);
+initialCards.forEach((cardData) => {
+  const thisCard = new Card(cardData, "#cardTemplate");
+  const cardElement = thisCard.generateCard();
+  gridList.prepend(cardElement);
 });
 
 //Accepts Submit Event for Adding a New Card
@@ -97,17 +100,6 @@ function handleUserFormSubmit(evt) {
 }
 
 //FUNCTIONS FOR ALL PLACE CARDS
-
-//Function for Enlarge Callback
-function enlarge(ele) {
-  ele
-    .querySelector(".grid__btn_popup")
-    .addEventListener("click", function (pic) {
-      openPopUp(popupImageBlock);
-      popupImage.src = pic.target.src;
-      popupCaption.innerHTML = pic.target.alt;
-    });
-}
 
 //Show and Hide all Modal Windows
 function openPopUp(popUpSelect) {

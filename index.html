@@ -176,7 +176,7 @@
     <!-- Card Template  -->
 
     <template id="cardTemplate">
-      <li class="grid__card">
+      <li class="ew1`ZS">
         <button
           class="grid__btn_del button"
           type="button"
@@ -212,9 +212,10 @@
     </div>
 
     <!-- Script here so HTML loads first -->
-    <script src="pages/initialCards.js"></script>
-
-    <script src="pages/index.js" async></script>
-    <script src="pages/validate.js" async></script>
+    <script type="module" src="pages/utils.js" async></script>
+    <script type="module" src="pages/card.js" async></script>
+    <script type="module" src="pages/initialCards.js"></script>
+    <script type="module" src="pages/index.js" async></script>
+    <script type="module" src="pages/validate.js" async></script>
   </body>
 </html>
