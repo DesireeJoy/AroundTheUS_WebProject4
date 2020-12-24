@@ -27,7 +27,7 @@ const submitPlaceBtn = addForm.elements.addFormSubmit;
 
 const formList = document.forms;
 
-import enlarge from utils.js;
+import {enlarge} from utils.js;
 
 //Create Initial Cards
 initialCards.forEach((cardData) => {
