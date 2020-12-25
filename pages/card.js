@@ -10,9 +10,10 @@ class Card {
     this._templateElement = templateElement;
   }
   _getTemplate() {
+    console.log(this._templateElement);
     const cardElement = document
       .querySelector(this._templateElement)
-      .content.querySelector(".grid__card")
+      .textContent.querySelector(".grid__card")
       .cloneNode(true);
     console.log(CardElement);
     return cardElement;
