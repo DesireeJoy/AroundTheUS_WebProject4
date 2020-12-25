@@ -29,6 +29,7 @@ const formList = document.forms;
 
 //Create Initial Cards
 initialCards.forEach((cardData) => {
+  console.log(cardData);
   const thisCard = new Card(cardData, "#cardTemplate");
   const cardElement = thisCard.generateCard();
   gridList.prepend(cardElement);
