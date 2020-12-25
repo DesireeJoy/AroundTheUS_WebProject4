@@ -13,7 +13,7 @@ class Card {
     console.log(this._templateElement);
     const cardElement = document
       .querySelector(this._templateElement)
-      .textContent.querySelector(".grid__card")
+      .innerHTML.querySelector(".grid__card")
       .cloneNode(true);
     console.log(CardElement);
     return cardElement;
