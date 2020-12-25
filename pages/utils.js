@@ -1,4 +1,5 @@
 export function enlarge(ele) {
+  console.log(ele);
   ele
     .querySelector(".grid__btn_popup")
     .addEventListener("click", function (pic) {
