@@ -27,7 +27,7 @@ import { enlarge } from "./utils.js";
   const addButton = addForm.elements.create_btn;
   const submitPlaceBtn = addForm.elements.addFormSubmit;
   const formList = document.forms;
-});
+})();
 
 //Create Initial Cards
 initialCards.forEach((cardData) => {
