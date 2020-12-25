@@ -1,5 +1,5 @@
 export function enlarge(ele) {
-  this._templateElement
+  ele
     .querySelector(".grid__btn_popup")
     .addEventListener("click", function (pic) {
       popupImageBlock.classList.add("popup_visible");
