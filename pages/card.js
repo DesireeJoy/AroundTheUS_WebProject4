@@ -1,4 +1,4 @@
-//import { enlarge } from "./utils.js";
+import { enlarge } from "./utils.js";
 
 class Card {
   constructor(cardData, templateElement) {
@@ -8,7 +8,6 @@ class Card {
     this._link = cardData.link;
     this._alt = cardData.name;
     this._templateElement = templateElement;
-    console.log(this._name, this._link, this._alt, this._templateElement);
   }
   _getTemplate() {
     const cardElement = document
