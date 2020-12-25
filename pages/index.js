@@ -1,6 +1,6 @@
 "use strict";
 import { enlarge } from "./utils.js";
-import Card from "./card.js";
+//import Card from "./card.js";
 
 const editBtn = document.querySelector(".profile__editbtn");
 const addBtn = document.querySelector(".profile__addbtn");
