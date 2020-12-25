@@ -1,6 +1,7 @@
 "use strict";
 import { enlarge } from "./utils.js";
-import { Card } from "./card.js";
+import Card from "./card.js";
+
 (function () {
   const editBtn = document.querySelector(".profile__editbtn");
   const addBtn = document.querySelector(".profile__addbtn");
@@ -27,6 +28,7 @@ import { Card } from "./card.js";
   const submitPlaceBtn = addForm.elements.addFormSubmit;
   const formList = document.forms;
 })();
+
 //Create Initial Cards
 initialCards.forEach((cardData) => {
   const thisCard = new Card(cardData, "#cardTemplate");
