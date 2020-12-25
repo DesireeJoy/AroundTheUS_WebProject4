@@ -45,45 +45,16 @@ function handleCardFormSubmit(evt) {
     name: inputPlace.value,
     link: inputUrl.value,
     alt: inputPlace.value,
-  };
+    };
   //Form Values
   const inputPlace = document.querySelector("#inputPlace");
   const inputUrl = document.querySelector("#inputFile");
-const newCard = new Card(cardData, '#cardTemplate'){
-
-}
+  const newCard = new Card(cardData, '#cardTemplate');
   const cardElement = newCard.generateCard();
   closePopUp(cardElement); //
-}
-
-// Create the Card for adding to the Dom
-function createCard(cardDatum) {
-  const cardTemplate = document.querySelector("#cardTemplate").content;
-  const cardElement = cardTemplate.cloneNode(true);
-  const cloneName = cardElement.querySelector(".grid__caption");
-  const cloneImage = cardElement.querySelector(".grid__image");
-  cloneName.textContent = cardDatum.name;
-  cloneImage.src = cardDatum.link;
-  cloneImage.alt = cardDatum.alt;
-  //Like Callback
-  likePlace(cardElement);
-
-  //Enlarge Callback
-  enlarge(cardElement);
-
-  //Delete Callback
-  deletePlace(cardElement);
-  return cardElement;
-}
-
-// Add the Created Card to the Dom
-
-function addCardToDom(cardElement) {
   gridList.prepend(cardElement);
-}
-
-// Reset the Form
-function resetCardForm() {
+  resetCardForm();
+  function resetCardForm() {
   addForm.reset();
 }
 
