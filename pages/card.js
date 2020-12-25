@@ -11,7 +11,6 @@ class Card {
   }
 
   _getTemplate() {
-    console.log(this._templateElement);
     const cardElement = document
       .querySelector(this._templateElement)
       .content.querySelector(".grid__card")
@@ -40,6 +39,7 @@ class Card {
   generateCard() {
     this._templateElement = this._getTemplate();
     this._setEventListeners();
+    enlarge(this._templateElement);
     this._templateElement.querySelector(
       ".grid__caption"
     ).textContent = this._name;
