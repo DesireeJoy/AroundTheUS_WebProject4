@@ -48,3 +48,4 @@ class Card {
     return this._templateElement;
   }
 }
+export default Card;
