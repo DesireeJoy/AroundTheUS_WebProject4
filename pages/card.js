@@ -1,5 +1,5 @@
 import { enlarge } from "./utils.js";
-//test
+
 class Card {
   constructor(cardData, templateElement) {
     // the text and the image are private fields,
@@ -14,6 +14,7 @@ class Card {
       .querySelector(this._templateElement)
       .content.querySelector(".grid__card")
       .cloneNode(true);
+    console.log(document.querySelector("#cardTemplate").content);
 
     return cardElement;
   }
