@@ -32,24 +32,28 @@ initialCards.forEach((cardData) => {
   gridList.prepend(cardElement);
 });
 
+
+
+
+
+
 //Accepts Submit Event for Adding a New Card
 function handleCardFormSubmit(evt) {
   // This line stops the browser from submitting the form in the default way.
   evt.preventDefault();
-  //Form Values
-  const inputPlace = document.querySelector("#inputPlace");
-  const inputUrl = document.querySelector("#inputFile");
-
-  //Store Card Information
-  const cardElement = createCard({
+  const cardData = {
     name: inputPlace.value,
     link: inputUrl.value,
     alt: inputPlace.value,
-  });
+  };
+  //Form Values
+  const inputPlace = document.querySelector("#inputPlace");
+  const inputUrl = document.querySelector("#inputFile");
+const newCard = new Card(cardData, '#cardTemplate'){
 
-  addCardToDom(cardElement);
-  resetCardForm();
-  closePopUp(popUpCard); //
+}
+  const cardElement = newCard.generateCard();
+  closePopUp(cardElement); //
 }
 
 // Create the Card for adding to the Dom
