@@ -1,11 +1,14 @@
 export function enlarge(ele) {
-  console.log(ele);
   ele
     .querySelector(".grid__btn_popup")
     .addEventListener("click", function (pic) {
-      document.querySelector(".popup__image".classList.add("popup_visible");
+      document.querySelector(".popup__image").classList.add("popup_visible");
       document.addEventListener("keydown", closeWithEsc, false);
-      popupImage.src = pic.target.src;
-      popupCaption.innerHTML = pic.target.alt;
+      document
+        .querySelector(".popup__image")
+        .querySelector(".grid__image_active").src = pic.target.src;
+      document
+        .querySelector(".popup__image")
+        .querySelector(".popup__image_capt").innerHTML = pic.target.alt;
     });
 }
