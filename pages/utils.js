@@ -10,3 +10,10 @@ export function enlarge(ele) {
       popupCaption.innerHTML = pic.target.alt;
     });
 }
+
+function closeWithEsc(evt) {
+  if (evt.key === "Escape") {
+    const findCurrent = document.querySelector(".popup_visible");
+    closePopUp(findCurrent);
+  }
+}
