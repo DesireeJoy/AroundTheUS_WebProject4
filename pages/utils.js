@@ -1,5 +1,5 @@
 //Function for Enlarge Callback
-function enlarge(ele) {
+export function enlarge(ele) {
   ele
     .querySelector(".grid__btn_popup")
     .addEventListener("click", function (pic) {
@@ -8,4 +8,3 @@ function enlarge(ele) {
       popupCaption.innerHTML = pic.target.alt;
     });
 }
-export { enlarge };

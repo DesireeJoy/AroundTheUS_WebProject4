@@ -1,6 +1,6 @@
 "use strict";
 // Let's set all the constant we need
-import {enlarge} from ''./utils.js';
+import {enlarge} from './utils.js';
 
 (function () {
 const editBtn = document.querySelector(".profile__editbtn");
