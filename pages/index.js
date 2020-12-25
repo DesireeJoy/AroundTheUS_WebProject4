@@ -1,6 +1,6 @@
 "use strict";
 import { enlarge } from "./utils.js";
-//import Card from "./card.js";
+import Card from "./card.js";
 
 const editBtn = document.querySelector(".profile__editbtn");
 const addBtn = document.querySelector(".profile__addbtn");
@@ -30,9 +30,9 @@ const formList = document.forms;
 //Create Initial Cards
 initialCards.forEach((cardData) => {
   console.log(cardData);
-  //const thisCard = new Card(cardData, "#cardTemplate");
-  //const cardElement = thisCard.generateCard();
-  //gridList.prepend(cardElement);
+  const thisCard = new Card(cardData, "#cardTemplate");
+  const cardElement = thisCard.generateCard();
+  gridList.prepend(cardElement);
 });
 
 //Accepts Submit Event for Adding a New Card
