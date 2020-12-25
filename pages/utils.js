@@ -1,8 +1,5 @@
-//Function for Enlarge Callback
-const popupImageBlock = document.querySelector(".popup__image");
-
 export function enlarge(ele) {
-  ele
+  this._templateElement
     .querySelector(".grid__btn_popup")
     .addEventListener("click", function (pic) {
       popupImageBlock.classList.add("popup_visible");
