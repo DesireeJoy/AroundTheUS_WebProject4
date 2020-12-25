@@ -1,79 +1,32 @@
 "use strict";
+import { enlarge } from "./utils.js";
+import { Card } from "./card.js";
+(function () {
+  const editBtn = document.querySelector(".profile__editbtn");
+  const addBtn = document.querySelector(".profile__addbtn");
+  const inputName = document.querySelector("#inputName");
+  const inputTitle = document.querySelector("#inputTitle");
+  const currentName = document.querySelector(".profile__name");
+  const currentTitle = document.querySelector(".profile__title");
+  const cardTemplate = document.querySelector("#cardTemplate").content;
+  const gridList = document.querySelector(".grid__list");
+  const popUpProfile = document.querySelector(".popup");
+  const popUpCard = document.querySelector(".popup__card");
+  const popupImageBlock = document.querySelector(".popup__image");
+  const popupImage = popupImageBlock.querySelector(".grid__image_active");
+  const popupCaption = popupImageBlock.querySelector(".popup__image_capt");
+  const closeImage = popupImageBlock.querySelector(".popup__image_close");
 
-class Card {
-  constructor(cardData, templateElement) {
-    // the text and the image are private fields,
-    // they're only needed inside the class
-    this._name = cardData.name;
-    this._link = cardData.link;
-    this._alt = cardData.name;
-    this._templateElement = templateElement;
-  }
-  _getTemplate() {
-    const cardElement = document
-      .querySelector(this._templateElement)
-      .content.querySelector(".grid__card")
-      .cloneNode(true);
-
-    return cardElement;
-  }
-
-  _setEventListeners() {
-    //like
-    this._templateElement
-      .querySelector(".grid__heart")
-      .addEventListener("click", function (evt) {
-        evt.target.classList.toggle("grid__heart_active");
-      });
-
-    //delete
-    this._templateElement
-      .querySelector(".grid__btn_del")
-      .addEventListener("click", function (evt) {
-        const item = evt.target.closest(".grid__card");
-        item.remove();
-      });
-  }
-
-  generateCard() {
-    this._templateElement = this._getTemplate();
-    this._setEventListeners();
-    this._templateElement.querySelector(
-      ".grid__caption"
-    ).textContent = this._name;
-    this._templateElement.querySelector(".grid__image").src = this._link;
-    this._templateElement.querySelector(".grid__image").alt = this._alt;
-    enlarge(this._templateElement);
-
-    return this._templateElement;
-  }
-}
-
-const editBtn = document.querySelector(".profile__editbtn");
-const addBtn = document.querySelector(".profile__addbtn");
-const inputName = document.querySelector("#inputName");
-const inputTitle = document.querySelector("#inputTitle");
-const currentName = document.querySelector(".profile__name");
-const currentTitle = document.querySelector(".profile__title");
-const cardTemplate = document.querySelector("#cardTemplate").content;
-const gridList = document.querySelector(".grid__list");
-const popUpProfile = document.querySelector(".popup");
-const popUpCard = document.querySelector(".popup__card");
-const popupImageBlock = document.querySelector(".popup__image");
-const popupImage = popupImageBlock.querySelector(".grid__image_active");
-const popupCaption = popupImageBlock.querySelector(".popup__image_capt");
-const closeImage = popupImageBlock.querySelector(".popup__image_close");
-
-const profileForm = document.forms.profileForm;
-const name = profileForm.elements.profileName;
-const title = profileForm.elements.profileTitle;
-const addForm = document.forms.addForm;
-const placeName = addForm.elements.placeName;
-const fileName = addForm.elements.placeFileName;
-const addButton = addForm.elements.create_btn;
-const submitPlaceBtn = addForm.elements.addFormSubmit;
-const formList = document.forms;
-
+  const profileForm = document.forms.profileForm;
+  const name = profileForm.elements.profileName;
+  const title = profileForm.elements.profileTitle;
+  const addForm = document.forms.addForm;
+  const placeName = addForm.elements.placeName;
+  const fileName = addForm.elements.placeFileName;
+  const addButton = addForm.elements.create_btn;
+  const submitPlaceBtn = addForm.elements.addFormSubmit;
+  const formList = document.forms;
+})();
 //Create Initial Cards
 initialCards.forEach((cardData) => {
   const thisCard = new Card(cardData, "#cardTemplate");
