@@ -12,7 +12,7 @@ class Card {
 
   _getTemplate() {
     const cardElement = document
-      .querySelector(this._cardSelector)
+      .querySelector(this._templateElement)
       .content.querySelector(".grid__card")
       .cloneNode(true);
 
