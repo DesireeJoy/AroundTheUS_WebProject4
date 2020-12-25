@@ -2,6 +2,8 @@
 // Let's set all the constant we need
 import { enlarge } from "./utils.js";
 
+const proveLie = "It's a lie";
+
 const editBtn = document.querySelector(".profile__editbtn");
 const addBtn = document.querySelector(".profile__addbtn");
 const inputName = document.querySelector("#inputName");
@@ -55,7 +57,6 @@ function handleCardFormSubmit(evt) {
 }
 
 // Create the Card for adding to the Dom
-
 function createCard(cardDatum) {
   const cardTemplate = document.querySelector("#cardTemplate").content;
   const cardElement = cardTemplate.cloneNode(true);
