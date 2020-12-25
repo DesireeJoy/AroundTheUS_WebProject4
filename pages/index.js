@@ -26,9 +26,7 @@ const placeName = addForm.elements.placeName;
 const fileName = addForm.elements.placeFileName;
 const addButton = addForm.elements.create_btn;
 const submitPlaceBtn = addForm.elements.addFormSubmit;
-
 const formList = document.forms;
-
 }
 
 //Create Initial Cards
