@@ -13,8 +13,6 @@ const gridList = document.querySelector(".grid__list");
 const popUpProfile = document.querySelector(".popup");
 const popUpCard = document.querySelector(".popup__card");
 const popupImageBlock = document.querySelector(".popup__image");
-const popupImage = popupImageBlock.querySelector(".grid__image_active");
-const popupCaption = popupImageBlock.querySelector(".popup__image_capt");
 const closeImage = popupImageBlock.querySelector(".popup__image_close");
 
 const profileForm = document.forms.profileForm;
