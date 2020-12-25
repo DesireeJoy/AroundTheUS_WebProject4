@@ -11,6 +11,7 @@ class Card {
   }
 
   _getTemplate() {
+    console.log(this._templateElement);
     const cardElement = document
       .querySelector(this._templateElement)
       .content.querySelector(".grid__card")
