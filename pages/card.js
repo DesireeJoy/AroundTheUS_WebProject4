@@ -9,12 +9,13 @@ class Card {
     this._alt = cardData.name;
     this._templateElement = templateElement;
   }
+
   _getTemplate() {
-    console.log(this._templateElement);
     const cardElement = document
-      .querySelector(this._templateElement)
+      .querySelector(this._cardSelector)
       .content.querySelector(".grid__card")
       .cloneNode(true);
+
     return cardElement;
   }
 
