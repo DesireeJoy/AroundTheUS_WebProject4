@@ -1,6 +1,8 @@
 "use strict";
 // Let's set all the constant we need
+import {enlarge} from ''./utils.js';
 
+(function () {
 const editBtn = document.querySelector(".profile__editbtn");
 const addBtn = document.querySelector(".profile__addbtn");
 const inputName = document.querySelector("#inputName");
@@ -27,7 +29,7 @@ const submitPlaceBtn = addForm.elements.addFormSubmit;
 
 const formList = document.forms;
 
-import {enlarge} from utils.js;
+}
 
 //Create Initial Cards
 initialCards.forEach((cardData) => {
