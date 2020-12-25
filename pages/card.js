@@ -14,8 +14,7 @@ class Card {
       .querySelector(this._templateElement)
       .content.querySelector(".grid__card")
       .cloneNode(true);
-    console.log(document.querySelector("#cardTemplate").content);
-
+    console.log(CardElement);
     return cardElement;
   }
 
