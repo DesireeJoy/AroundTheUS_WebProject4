@@ -1,5 +1,4 @@
 //import { enlarge } from "./utils.js";
-//console.log(enlarge());
 
 class Card {
   constructor(cardData, templateElement) {

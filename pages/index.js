@@ -1,8 +1,6 @@
 "use strict";
 // Let's set all the constant we need
-import { enlarge } from "./utils.js";
-
-const proveLie = "It's a lie";
+//import { enlarge } from "./utils.js";
 
 const editBtn = document.querySelector(".profile__editbtn");
 const addBtn = document.querySelector(".profile__addbtn");
