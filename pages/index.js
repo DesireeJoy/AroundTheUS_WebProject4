@@ -1,7 +1,7 @@
 "use strict";
 // Let's set all the constant we need
 import { enlarge } from "./utils.js";
-import { Card } from "../Card.js";
+import { Card } from "./Card.js";
 const editBtn = document.querySelector(".profile__editbtn");
 const addBtn = document.querySelector(".profile__addbtn");
 const inputName = document.querySelector("#inputName");
