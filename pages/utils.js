@@ -1,3 +1,4 @@
+const popupImageBlock = document.querySelector(".popup__image");
 const popupImage = popupImageBlock.querySelector(".grid__image_active");
 const popupCaption = popupImageBlock.querySelector(".popup__image_capt");
 export function enlarge(ele) {
