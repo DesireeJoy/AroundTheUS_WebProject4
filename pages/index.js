@@ -32,11 +32,6 @@ initialCards.forEach((cardData) => {
   gridList.prepend(cardElement);
 });
 
-
-
-
-
-
 //Accepts Submit Event for Adding a New Card
 function handleCardFormSubmit(evt) {
   // This line stops the browser from submitting the form in the default way.
@@ -45,16 +40,17 @@ function handleCardFormSubmit(evt) {
     name: inputPlace.value,
     link: inputUrl.value,
     alt: inputPlace.value,
-    };
+  };
   //Form Values
   const inputPlace = document.querySelector("#inputPlace");
   const inputUrl = document.querySelector("#inputFile");
-  const newCard = new Card(cardData, '#cardTemplate');
+  const newCard = new Card(cardData, "#cardTemplate");
   const cardElement = newCard.generateCard();
   closePopUp(cardElement); //
   gridList.prepend(cardElement);
   resetCardForm();
-  function resetCardForm() {
+}
+function resetCardForm() {
   addForm.reset();
 }
 
