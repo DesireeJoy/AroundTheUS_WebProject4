@@ -50,6 +50,7 @@ function handleCardFormSubmit(evt) {
   gridList.prepend(cardElement);
   resetCardForm();
 }
+
 function resetCardForm() {
   addForm.reset();
 }
