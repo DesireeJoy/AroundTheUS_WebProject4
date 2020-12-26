@@ -34,6 +34,9 @@ initialCards.forEach((cardData) => {
 
 //Accepts Submit Event for Adding a New Card
 function handleCardFormSubmit(evt) {
+  const inputPlace = document.querySelector("#inputPlace");
+  const inputUrl = document.querySelector("#inputFile");
+  const newCard = new Card(cardData, "#cardTemplate");
   // This line stops the browser from submitting the form in the default way.
   evt.preventDefault();
   const cardData = {
@@ -42,9 +45,6 @@ function handleCardFormSubmit(evt) {
     alt: inputPlace.value,
   };
   //Form Values
-  const inputPlace = document.querySelector("#inputPlace");
-  const inputUrl = document.querySelector("#inputFile");
-  const newCard = new Card(cardData, "#cardTemplate");
   const cardElement = newCard.generateCard();
   closePopUp(cardElement); //
   gridList.prepend(cardElement);
