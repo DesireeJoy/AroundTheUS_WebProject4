@@ -13,7 +13,8 @@ const gridList = document.querySelector(".grid__list");
 const popUpProfile = document.querySelector(".popup");
 const popUpCard = document.querySelector(".popup__card");
 const popupImageBlock = document.querySelector(".popup__image");
-const closeImage = popupImageBlock.querySelector(".popup__image_close");
+const closeImage = popupImageBlock.querySelector(".popup__image_close"); \ const inputPlace = document.querySelector("#inputPlace");
+const inputUrl = document.querySelector("#inputFile");
 
 const profileForm = document.forms.profileForm;
 const name = profileForm.elements.profileName;
@@ -34,8 +35,7 @@ initialCards.forEach((cardData) => {
 
 //Accepts Submit Event for Adding a New Card
 function handleCardFormSubmit(evt) {
-  const inputPlace = document.querySelector("#inputPlace");
-  const inputUrl = document.querySelector("#inputFile");
+ 
   const newCard = new Card(cardData, "#cardTemplate");
   // This line stops the browser from submitting the form in the default way.
   evt.preventDefault();
