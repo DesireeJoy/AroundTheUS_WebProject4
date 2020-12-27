@@ -1,4 +1,6 @@
 import { enlarge closePopUp openPopUp} from "./utils.js";
+import { closePopUp } from "./utils.js";
+import { openPopUp } from "./utils.js";
 
 class Card {
   constructor(cardData, templateElement) {
