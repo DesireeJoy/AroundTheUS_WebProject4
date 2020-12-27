@@ -19,3 +19,15 @@ function closeWithEsc(evt) {
     closePopUp(findCurrent);
   }
 }
+
+//Show and Hide all Modal Windows
+export function openPopUp(popUpSelect) {
+  popUpSelect.classList.add("popup_visible");
+  document.addEventListener("keydown", closeWithEsc, false);
+}
+
+//Closes Modal Window
+export function closePopUp(popUpSelect) {
+  popUpSelect.classList.remove("popup_visible");
+  document.removeEventListener("keydown", closeWithEsc, false);
+}
