@@ -46,7 +46,7 @@ function handleCardFormSubmit(evt) {
 
   //Form Values
   const cardElement = newCard.generateCard();
-  closePopUp(addForm); //
+  closePopUp(addForms); //
   gridList.prepend(cardElement);
   resetCardForm();
 }
