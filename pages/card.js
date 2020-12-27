@@ -1,4 +1,4 @@
-import { enlarge, closePopUp, openPopUp, closeWithEsc } from "./utils.js";
+import { enlarge } from "./utils.js";
 
 class Card {
   constructor(cardData, templateElement) {
@@ -34,13 +34,6 @@ class Card {
         const item = evt.target.closest(".grid__card");
         item.remove();
       });
-    //closePopup
-    this._templateElement
-      .querySelector(".popup__image_close")
-      .addEventListener("click", function (evt) {
-        console.log("You clicked");
-        closePopUp(popupImageBlock);
-      });
   }
 
   generateCard() {
@@ -57,10 +50,3 @@ class Card {
   }
 }
 export default Card;
-
-function closeWithEsc(evt, popUpSelect) {
-  if (evt.key === "Escape") {
-    const findCurrent = document.querySelector(".popup_visible");
-    closePopUp(findCurrent);
-  }
-}
