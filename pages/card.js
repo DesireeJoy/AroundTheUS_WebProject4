@@ -1,4 +1,4 @@
-import { enlarge closePopUp openPopUp} from "./utils.js";
+import { enlarge } from "./utils.js";
 import { closePopUp } from "./utils.js";
 import { openPopUp } from "./utils.js";
 
@@ -36,14 +36,13 @@ class Card {
         const item = evt.target.closest(".grid__card");
         item.remove();
       });
-      //closePopup
-      this._templateElement.querySelector('.popup__image_close').addEventListener("click", function (evt) {
+    //closePopup
+    this._templateElement
+      .querySelector(".popup__image_close")
+      .addEventListener("click", function (evt) {
         console.log("You clicked");
         closePopUp(popupImageBlock);
-        });
-
-
-
+      });
   }
 
   generateCard() {
@@ -60,9 +59,6 @@ class Card {
   }
 }
 export default Card;
-
-
-
 
 function closeWithEsc(evt, popUpSelect) {
   if (evt.key === "Escape") {
