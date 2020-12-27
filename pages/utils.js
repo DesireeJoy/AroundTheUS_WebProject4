@@ -12,3 +12,22 @@ export function enlarge(ele) {
       popupCaption.innerHTML = pic.target.alt;
     });
 }
+
+export function closeWithEsc(evt) {
+  if (evt.key === "Escape") {
+    const findCurrent = document.querySelector(".popup_visible");
+    closePopUp(findCurrent);
+  }
+}
+
+//Show and Hide all Modal Windows
+export function openPopUp(popUpSelect) {
+  popUpSelect.classList.add("popup_visible");
+  document.addEventListener("keydown", closeWithEsc, false);
+}
+
+//Closes Modal Window
+export function closePopUp(popUpSelect) {
+  popUpSelect.classList.remove("popup_visible");
+  document.removeEventListener("keydown", closeWithEsc, false);
+}
