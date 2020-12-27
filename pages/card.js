@@ -36,6 +36,7 @@ class Card {
       });
       //closePopup
       this._templateElement.querySelector('.popup__image_close').addEventListener("click", function (evt) {
+        console.log("You clicked");
         closePopUp(popupImageBlock);
         });
 
