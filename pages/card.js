@@ -1,4 +1,11 @@
-import { enlarge } from "./utils.js";
+import {
+  handlePreviewPic,
+  imageModalWindow,
+  imageEl,
+  imageCap,
+  openPopup,
+  closePopUp,
+} from "./utils.js";
 
 class Card {
   constructor(cardData, templateElement) {
@@ -6,47 +13,46 @@ class Card {
     // they're only needed inside the class
     this._name = cardData.name;
     this._link = cardData.link;
-    this._alt = cardData.name;
     this._templateElement = templateElement;
   }
+  _handlePreviewPic() {
+    handlePreviewPic(this);
+  }
 
-  _getTemplate() {
-    const cardElement = document
-      .querySelector(this._templateElement)
-      .content.querySelector(".grid__card")
-      .cloneNode(true);
-
-    return cardElement;
+  _handleLike(evt) {
+    evt.target.classList.toggle("grid__heart_active");
+  }
+  _handleDelete(evt) {
+    evt.target.closest(".grid__card").remove();
   }
 
   _setEventListeners() {
-    //like
-    this._templateElement
-      .querySelector(".grid__heart")
-      .addEventListener("click", function (evt) {
-        evt.target.classList.toggle("grid__heart_active");
-      });
+    //Search for Elements
+    const likeBtn = this._cardElement.querySelector(".grid__heart");
+    const delBtn = this._cardElement.querySelector(".grid__btn_del");
+    const cardImage = this._cardElement.querySelector(".grid__image");
 
-    //delete
-    this._templateElement
-      .querySelector(".grid__btn_del")
-      .addEventListener("click", function (evt) {
-        const item = evt.target.closest(".grid__card");
-        item.remove();
-      });
+    //Subscribe to Elements
+    likeBtn.addEventListener("click", this._handleLike);
+    delBtn.addEventListener("click", this._handleDelete);
+    cardImage.addEventListener("click", this._handlePreviewPic);
   }
 
   generateCard() {
-    this._templateElement = this._getTemplate();
-    this._setEventListeners();
-    this._templateElement.querySelector(
-      ".grid__caption"
-    ).textContent = this._name;
-    this._templateElement.querySelector(".grid__image").src = this._link;
-    this._templateElement.querySelector(".grid__image").alt = this._alt;
-    enlarge(this._templateElement);
+    const cardTemplate = document
+      .querySelector(this._templateElement)
+      .content.querySelector(".grid__card");
 
-    return this._templateElement;
+    const cardElement = cardTemplate.cloneNode(true);
+
+    this._cardElement = cardElement;
+    this._cardElement.querySelector(".grid__caption").textContent = this._name;
+    this._cardElement.querySelector(".grid__image").src = this._link;
+    this._cardElement.querySelector(".grid__image").alt = this._name;
+
+    this._setEventListeners();
+
+    return this._cardElement;
   }
 }
 export default Card;

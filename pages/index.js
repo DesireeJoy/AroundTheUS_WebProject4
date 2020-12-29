@@ -1,6 +1,13 @@
 "use strict";
-import { enlarge } from "./utils.js";
 import Card from "./card.js";
+import formValidator from "./formValidator.js";
+import {
+  imageEl,
+  imageCap,
+  openPopup,
+  closePopUp,
+  closeWithEsc,
+} from "./utils.js";
 
 const editBtn = document.querySelector(".profile__editbtn");
 const addBtn = document.querySelector(".profile__addbtn");
@@ -8,7 +15,7 @@ const inputName = document.querySelector("#inputName");
 const inputTitle = document.querySelector("#inputTitle");
 const currentName = document.querySelector(".profile__name");
 const currentTitle = document.querySelector(".profile__title");
-const cardTemplate = document.querySelector("#cardTemplate").content;
+
 const gridList = document.querySelector(".grid__list");
 const popUpProfile = document.querySelector(".popup");
 const popUpCard = document.querySelector(".popup__card");
@@ -18,16 +25,26 @@ const inputPlace = document.querySelector("#inputPlace");
 const inputUrl = document.querySelector("#inputFile");
 
 const profileForm = document.forms.profileForm;
-const name = profileForm.elements.profileName;
-const title = profileForm.elements.profileTitle;
-const addForm = document.forms.addForm;
-const placeName = addForm.elements.placeName;
-const fileName = addForm.elements.placeFileName;
-const addButton = addForm.elements.create_btn;
-const submitPlaceBtn = addForm.elements.addFormSubmit;
-const formList = document.forms;
 
-//Create Initial Cards
+const addForm = document.forms.addForm;
+
+const editProfileForm = document.querySelector(".popup__form-selector");
+const addCardForm = document.querySelector(".popup__card_form-selector");
+
+const config = {
+  formSelector: ".form",
+  inputSelector: ".input",
+  submitButtonSelector: ".form__submit",
+  inactiveButtonClass: "popup__card_submit-disabled",
+  inputErrorClass: "popup__form_input_type_error",
+};
+
+const editProfileValidator = new formValidator(config, editProfileForm);
+const addCardValidator = new formValidator(config, addCardForm);
+
+editProfileValidator.enableValidation();
+addCardValidator.enableValidation();
+
 initialCards.forEach((cardData) => {
   const thisCard = new Card(cardData, "#cardTemplate");
   const cardElement = thisCard.generateCard();
@@ -46,7 +63,7 @@ function handleCardFormSubmit(evt) {
 
   //Form Values
   const cardElement = newCard.generateCard();
-  closePopUp(addForms); //
+  closePopUp(popUpCard); //
   gridList.prepend(cardElement);
   resetCardForm();
 }
@@ -74,27 +91,6 @@ function openPopUp(popUpSelect) {
   document.addEventListener("keydown", closeWithEsc, false);
 }
 
-//Closes Modal Window
-function closePopUp(popUpSelect) {
-  popUpSelect.classList.remove("popup_visible");
-  document.removeEventListener("keydown", closeWithEsc, false);
-}
-
-// Function for Like Callback
-function likePlace(ele) {
-  ele.querySelector(".grid__heart").addEventListener("click", function (evt) {
-    evt.target.classList.toggle("grid__heart_active");
-  });
-}
-
-// Function for Delete Callback
-function deletePlace(ele) {
-  ele.querySelector(".grid__btn_del").addEventListener("click", function (evt) {
-    const item = evt.target.closest(".grid__card");
-    item.remove();
-  });
-}
-
 // Connect the handler to the form:
 // it will watch the submit event
 
@@ -104,7 +100,6 @@ profileForm.addEventListener("submit", handleUserFormSubmit);
 popUpCard.addEventListener("submit", handleCardFormSubmit);
 addBtn.addEventListener("click", () => {
   openPopUp(popUpCard);
-  resetSubmitBtn();
 });
 
 editBtn.addEventListener("click", () => {
@@ -112,14 +107,6 @@ editBtn.addEventListener("click", () => {
   inputTitle.value = currentTitle.textContent;
   openPopUp(popUpProfile);
 });
-
-function closeWithEsc(evt, popUpSelect) {
-  if (evt.key === "Escape") {
-    const findCurrent = document.querySelector(".popup_visible");
-    closePopUp(findCurrent);
-  }
-}
-
 // Close Popups
 profileForm.querySelector(".popup__close").addEventListener("click", () => {
   closePopUp(popUpProfile);

@@ -1,33 +1,28 @@
-const popupImageBlock = document.querySelector(".popup__image");
-const popupImage = popupImageBlock.querySelector(".grid__image_active");
-const popupCaption = popupImageBlock.querySelector(".popup__image_capt");
+export const openPopup = (popUpSelect) => {
+  popUpSelect.classList.add("popup_visible");
+  document.addEventListener("keyup", closeWithEsc);
+};
+const ESC_KEYCODE = 27;
 
-export function enlarge(ele) {
-  ele
-    .querySelector(".grid__btn_popup")
-    .addEventListener("click", function (pic) {
-      document.querySelector(".popup__image").classList.add("popup_visible");
-      document.addEventListener("keydown", closeWithEsc, false);
-      popupImage.src = pic.target.src;
-      popupCaption.innerHTML = pic.target.alt;
-    });
-}
-
-export function closeWithEsc(evt) {
-  if (evt.key === "Escape") {
+export const closeWithEsc = (evt) => {
+  if (evt.which === ESC_KEYCODE) {
     const findCurrent = document.querySelector(".popup_visible");
     closePopUp(findCurrent);
   }
-}
+};
 
-//Show and Hide all Modal Windows
-export function openPopUp(popUpSelect) {
-  popUpSelect.classList.add("popup_visible");
-  document.addEventListener("keydown", closeWithEsc, false);
-}
-
-//Closes Modal Window
-export function closePopUp(popUpSelect) {
+export const closePopUp = (popUpSelect) => {
   popUpSelect.classList.remove("popup_visible");
   document.removeEventListener("keydown", closeWithEsc, false);
+};
+export const imageModalWindow = document.querySelector(".popup__image");
+export const imageEl = imageModalWindow.querySelector(".grid__image_active");
+export const imageCap = imageModalWindow.querySelector(".popup__image_capt");
+
+export function handlePreviewPic(data) {
+  imageEl.src = data.src;
+  imageCap.innerHTML = data.alt;
+  imageEl.alt = data.alt;
+
+  openPopup(imageModalWindow);
 }

@@ -1,97 +1,77 @@
-settingsObject({
-  formSelector: ".form",
-  inputSelector: ".input",
-  submitButtonSelector: ".form__submit",
-  inactiveButtonClass: "popup__card_submit-disabled",
-  inputErrorClass: "popup__form_input_type_error",
-});
-
 class formValidator {
-  constructor(settingsObject, templateElement) {
+  constructor(settingsObject, formElement) {
     // the text and the image are private fields,
     // they're only needed inside the class
-    this._name = cardData.name;
-    this._link = cardData.link;
-    this._alt = cardData.name;
-    this._templateElement = templateElement;
+    this._settings = settingsObject;
+    this._formElement = formElement;
   }
-  //Step 1
-  _enableValidation() {
-    const formsList = Array.from(
-      document.querySelectorAll(settingsObject.formSelector)
+
+  _showInputError(inputElement, errorMessage) {
+    const errorElement = this._formElement.querySelector(
+      `.${inputElement.id}-error`
     );
-    formsList.forEach((formElement) => {
-      formElement.addEventListener("submit", (evt) => {
-        evt.preventDefault();
+    errorElement.textContent = errorMessage;
+    errorElement.classList.add(this._settings.inputErrorClass);
+  }
+
+  _hideInputError(inputElement) {
+    const errorElement = this._formElement.querySelector(
+      `.${inputElement.id}-error`
+    );
+    errorElement.classList.remove(this._settings.inputErrorClass);
+    errorElement.textContent = "";
+  }
+
+  _toggleButtonState(inputsList, buttonElement) {
+    if (this._hasInvalidInput(inputsList)) {
+      buttonElement.classList.add(this._settings.inactiveButtonClass);
+      buttonElement.disabled = true;
+    } else {
+      buttonElement.classList.remove(this._settings.inactiveButtonClass);
+      buttonElement.disabled = false;
+    }
+  }
+
+  _hasInvalidInput(inputsList) {
+    return inputsList.some((inputElement) => {
+      return !inputElement.validity.valid;
+    });
+  }
+
+  _checkInputValidity(inputElement) {
+    if (!inputElement.validity.valid) {
+      this._showInputError(inputElement, inputElement.validationMessage);
+    } else {
+      this._hideInputError(inputElement);
+    }
+  }
+
+  _setEventListeners() {
+    //Make an array of all the inputs that are in the formElement
+    const inputsList = Array.from(
+      this._formElement.querySelectorAll(this._settings.inputSelector)
+    );
+
+    //Submit Button associated with that form
+    const buttonElement = this._formElement.querySelector(
+      this._settings.submitButtonSelector
+    );
+
+    //Go through each input individually
+    inputsList.forEach((inputElement) => {
+      //If that input is touched, we immediately check validity
+      inputElement.addEventListener("input", () => {
+        this._checkInputValidity(inputElement); // Step 3
+        this._toggleButtonState(inputsList, buttonElement); // Step 4
       });
-      setEventListeners(formElement, settingsObject);
     });
+  }
+  enableValidation() {
+    this._formElement.addEventListener("submit", (evt) => {
+      evt.preventDefault();
+    });
+    this._setEventListeners(this._formElement, this._settings);
   }
 }
 
-// validate stuff
-
-//STEP FIVE
-const hasInvalidInput = (inputList) => {
-  return inputList.some((inputElement) => {
-    return !inputElement.validity.valid;
-  });
-};
-// STEP FOUR
-const toggleButtonState = (inputList, buttonElement, settingsObject) => {
-  if (hasInvalidInput(inputList)) {
-    resetSubmitBtn();
-  } else {
-    buttonElement.classList.remove(settingsObject.inactiveButtonClass);
-    buttonElement.disabled = false;
-  }
-};
-function resetSubmitBtn() {
-  submitPlaceBtn.classList.add("popup__card_submit-disabled");
-  submitPlaceBtn.disabled = true;
-}
-
-//STEP 3.1
-const showInputError = (formElement, inputElement, errorMessage) => {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  errorElement.textContent = errorMessage;
-  errorElement.classList.add("popup__form_input_type_error");
-};
-
-//STEP 3.2
-const hideInputError = (formElement, inputElement) => {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  errorElement.classList.remove("popup__form_input_type_disabled");
-  errorElement.textContent = "";
-};
-
-//STEP THREE Check Validity of Input Toggle error on or off
-const checkInputValidity = (formElement, inputElement) => {
-  if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage);
-  } else {
-    hideInputError(formElement, inputElement);
-  }
-};
-
-//STEP TWO Setting Event Listeners
-
-const setEventListeners = (formElement, settingsObject) => {
-  //Make an array of all the inputs that are in the formElement
-  const inputsList = Array.from(
-    formElement.querySelectorAll(settingsObject.inputSelector)
-  );
-
-  //Submit Button associated with that form
-  const buttonElement = formElement.querySelector(
-    settingsObject.submitButtonSelector
-  );
-  //Go through each input individuall
-  inputsList.forEach((inputElement) => {
-    //If that input is touched, we immediately check validity
-    inputElement.addEventListener("input", function () {
-      checkInputValidity(formElement, inputElement); // Step 3
-      toggleButtonState(inputsList, buttonElement, settingsObject); // Step 4
-    });
-  });
-};
+export default formValidator;
