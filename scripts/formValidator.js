@@ -1,4 +1,4 @@
-class formValidator {
+class FormValidator {
   constructor(settingsObject, formElement) {
     // the text and the image are private fields,
     // they're only needed inside the class

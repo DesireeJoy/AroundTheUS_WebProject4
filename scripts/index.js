@@ -1,6 +1,6 @@
 "use strict";
 import Card from "./card.js";
-import formValidator from "./formValidator.js";
+import FormValidator from "./formValidator.js";
 import {
   imageEl,
   imageCap,

@@ -13,7 +13,7 @@ export const closeWithEsc = (evt) => {
 
 export const closePopUp = (popUpSelect) => {
   popUpSelect.classList.remove("popup_visible");
-  document.removeEventListener("keydown", closeWithEsc, false);
+  document.removeEventListener("keyup", closeWithEsc, false);
 };
 export const imageModalWindow = document.querySelector(".popup__image");
 export const imageEl = imageModalWindow.querySelector(".grid__image_active");
