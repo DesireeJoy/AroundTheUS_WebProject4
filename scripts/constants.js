@@ -11,7 +11,6 @@ const popUpCard = document.querySelector(".popup__card");
 const popupImageBlock = document.querySelector(".popup__image");
 const popupImage = popupImageBlock.querySelector(".grid__image_active");
 const popupCaption = popupImageBlock.querySelector(".popup__image_capt");
-const closeImage = popupImageBlock.querySelector(".popup__image_close");
 
 const profileForm = document.forms.profileForm;
 const name = profileForm.elements.profileName;
@@ -21,5 +20,3 @@ const placeName = addForm.elements.placeName;
 const fileName = addForm.elements.placeFileName;
 const addButton = addForm.elements.create_btn;
 const submitPlaceBtn = addForm.elements.addFormSubmit;
-
-const formList = document.forms;

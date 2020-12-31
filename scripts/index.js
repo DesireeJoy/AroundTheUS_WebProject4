@@ -1,7 +1,12 @@
 "use strict";
 import Card from "./card.js";
 import FormValidator from "./FormValidator.js";
-import { imageModalWindow, closePopUp, closeWithEsc } from "./utils.js";
+import {
+  imageModalWindow,
+  openPopUp,
+  closePopUp,
+  closeWithEsc,
+} from "./utils.js";
 
 const inputPlace = document.querySelector("#inputPlace");
 const inputUrl = document.querySelector("#inputFile");
@@ -41,7 +46,7 @@ function handleCardFormSubmit(evt) {
 
   //Form Values
   const cardElement = newCard.generateCard();
-  closePopUp(popUpCard); //
+  closePopUp(); //
   gridList.prepend(cardElement);
   resetCardForm();
 }
@@ -58,16 +63,10 @@ function handleUserFormSubmit(evt) {
   // querySelector() method
   currentName.textContent = inputName.value;
   currentTitle.textContent = inputTitle.value;
-  closePopUp(popUpProfile); //
+  closePopUp(); //
 }
 
 //FUNCTIONS FOR ALL PLACE CARDS
-
-//Show and Hide all Modal Windows
-function openPopUp(popUpSelect) {
-  popUpSelect.classList.add("popup_visible");
-  document.addEventListener("keydown", closeWithEsc, false);
-}
 
 // Connect the handler to the form:
 // it will watch the submit event
@@ -86,31 +85,30 @@ editBtn.addEventListener("click", () => {
   openPopUp(popUpProfile);
 });
 // Close Popups
-profileForm.querySelector(".popup__close").addEventListener("click", () => {
-  closePopUp(popUpProfile);
-});
+//profileForm.querySelector(".popup__close").addEventListener("click", () => {
+//  const popupName = evt.closest(".popup");
+//  console.log(popupName);
+//  closePopUp(popUpName);
+//});
 
-addForm.querySelector(".popup__close").addEventListener("click", () => {
-  closePopUp(popUpCard);
-});
-closeImage.addEventListener("click", function (evt) {
-  closePopUp(imageModalWindow);
-});
+// addForm.querySelector(".popup__close").addEventListener("click", () => {
+//   closePopUp(popUpCard);
+// });
 
 popUpCard.addEventListener("click", (evt) => {
   if (evt.target === popUpCard) {
-    closePopUp(popUpCard);
+    closePopUp();
   }
 });
 
-popUpProfile.addEventListener("click", (evt) => {
-  if (evt.target === popUpProfile) {
-    closePopUp(popUpProfile);
-  }
-});
+// popUpProfile.addEventListener("click", (evt) => {
+//   if (evt.target === popUpProfile) {
+//     closePopUp(popUpProfile);
+//   }
+// });
 
-imageModalWindow.addEventListener("click", (evt) => {
-  if (evt.target === imageModalWindow) {
-    closePopUp(imageModalWindow);
-  }
-});
+// imageModalWindow.addEventListener("click", (evt) => {
+//   if (evt.target === imageModalWindow) {
+//     closePopUp(imageModalWindow);
+//   }
+// });

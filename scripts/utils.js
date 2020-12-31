@@ -1,18 +1,23 @@
-export const openPopup = (popUpSelect) => {
+export const closeBtns = document.querySelector(".popup__close");
+
+export const openPopUp = (popUpSelect) => {
   popUpSelect.classList.add("popup_visible");
   document.addEventListener("keyup", closeWithEsc);
+  popUpSelect
+    .querySelector(".popup__close")
+    .addEventListener("click", closePopUp);
 };
 const ESC_KEYCODE = 27;
 
 export const closeWithEsc = (evt) => {
   if (evt.which === ESC_KEYCODE) {
-    const findCurrent = document.querySelector(".popup_visible");
-    closePopUp(findCurrent);
+    closePopUp();
   }
 };
 
-export const closePopUp = (popUpSelect) => {
-  popUpSelect.classList.remove("popup_visible");
+export const closePopUp = () => {
+  const findCurrent = document.querySelector(".popup_visible");
+  findCurrent.classList.remove("popup_visible");
   document.removeEventListener("keyup", closeWithEsc, false);
 };
 export const imageModalWindow = document.querySelector(".popup__image");
@@ -24,5 +29,5 @@ export function handlePreviewPic(data) {
   imageCap.innerHTML = data.alt;
   imageEl.alt = data.alt;
 
-  openPopup(imageModalWindow);
+  openPopUp(imageModalWindow);
 }
