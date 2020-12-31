@@ -16,7 +16,7 @@ const addCardForm = document.querySelector(".popup__card_form-selector");
 
 const config = {
   formSelector: ".form",
-  inputSelector: ".input",
+  inputSelector: ".form_input",
   submitButtonSelector: ".form__submit",
   inactiveButtonClass: "popup__card_submit-disabled",
   inputErrorClass: "popup__form_input_type_error",
