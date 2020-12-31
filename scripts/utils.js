@@ -6,7 +6,13 @@ export const openPopUp = (popUpSelect) => {
   popUpSelect
     .querySelector(".popup__close")
     .addEventListener("click", closePopUp);
+  popUpSelect.addEventListener("click", (evt) => {
+    if (evt.target === popUpSelect) {
+      closePopUp();
+    }
+  });
 };
+
 const ESC_KEYCODE = 27;
 
 export const closeWithEsc = (evt) => {

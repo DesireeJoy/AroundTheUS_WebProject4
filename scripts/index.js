@@ -28,9 +28,14 @@ const addCardValidator = new FormValidator(config, addCardForm);
 editProfileValidator.enableValidation();
 addCardValidator.enableValidation();
 
+function createCard(cardData) {
+  const newCard = new Card(cardData, "#cardTemplate");
+  const cardElement = newCard.generateCard();
+  return cardElement;
+}
+
 initialCards.forEach((cardData) => {
-  const thisCard = new Card(cardData, "#cardTemplate");
-  const cardElement = thisCard.generateCard();
+  const cardElement = createCard(cardData);
   gridList.prepend(cardElement);
 });
 
@@ -84,31 +89,3 @@ editBtn.addEventListener("click", () => {
   inputTitle.value = currentTitle.textContent;
   openPopUp(popUpProfile);
 });
-// Close Popups
-//profileForm.querySelector(".popup__close").addEventListener("click", () => {
-//  const popupName = evt.closest(".popup");
-//  console.log(popupName);
-//  closePopUp(popUpName);
-//});
-
-// addForm.querySelector(".popup__close").addEventListener("click", () => {
-//   closePopUp(popUpCard);
-// });
-
-popUpCard.addEventListener("click", (evt) => {
-  if (evt.target === popUpCard) {
-    closePopUp();
-  }
-});
-
-// popUpProfile.addEventListener("click", (evt) => {
-//   if (evt.target === popUpProfile) {
-//     closePopUp(popUpProfile);
-//   }
-// });
-
-// imageModalWindow.addEventListener("click", (evt) => {
-//   if (evt.target === imageModalWindow) {
-//     closePopUp(imageModalWindow);
-//   }
-// });
