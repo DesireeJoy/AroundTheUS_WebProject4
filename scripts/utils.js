@@ -16,8 +16,8 @@ export const closePopUp = (popUpSelect) => {
   document.removeEventListener("keyup", closeWithEsc, false);
 };
 export const imageModalWindow = document.querySelector(".popup__image");
-export const imageEl = imageModalWindow.querySelector(".grid__image_active");
-export const imageCap = imageModalWindow.querySelector(".popup__image_capt");
+const imageEl = imageModalWindow.querySelector(".grid__image_active");
+const imageCap = imageModalWindow.querySelector(".popup__image_capt");
 
 export function handlePreviewPic(data) {
   imageEl.src = data.src;

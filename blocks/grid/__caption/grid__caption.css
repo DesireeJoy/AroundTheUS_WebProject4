@@ -1,5 +1,4 @@
 .grid__caption {
-  margin: 0;
   padding: 25px 0 27px 0;
   color: black;
   font-size: 24px;
@@ -8,4 +7,6 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  align-self: flex-start;
+  margin: 0;
 }

@@ -1,11 +1,4 @@
-import {
-  handlePreviewPic,
-  imageModalWindow,
-  imageEl,
-  imageCap,
-  openPopup,
-  closePopUp,
-} from "./utils.js";
+import { handlePreviewPic } from "./utils.js";
 
 class Card {
   constructor(cardData, templateElement) {

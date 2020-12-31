@@ -1,32 +1,10 @@
 "use strict";
 import Card from "./card.js";
-import FormValidator from "./formValidator.js";
-import {
-  imageEl,
-  imageCap,
-  openPopup,
-  closePopUp,
-  closeWithEsc,
-} from "./utils.js";
+import FormValidator from "./FormValidator.js";
+import { imageModalWindow, closePopUp, closeWithEsc } from "./utils.js";
 
-const editBtn = document.querySelector(".profile__editbtn");
-const addBtn = document.querySelector(".profile__addbtn");
-const inputName = document.querySelector("#inputName");
-const inputTitle = document.querySelector("#inputTitle");
-const currentName = document.querySelector(".profile__name");
-const currentTitle = document.querySelector(".profile__title");
-
-const gridList = document.querySelector(".grid__list");
-const popUpProfile = document.querySelector(".popup");
-const popUpCard = document.querySelector(".popup__card");
-const popupImageBlock = document.querySelector(".popup__image");
-const closeImage = popupImageBlock.querySelector(".popup__image_close");
 const inputPlace = document.querySelector("#inputPlace");
 const inputUrl = document.querySelector("#inputFile");
-
-const profileForm = document.forms.profileForm;
-
-const addForm = document.forms.addForm;
 
 const editProfileForm = document.querySelector(".popup__form-selector");
 const addCardForm = document.querySelector(".popup__card_form-selector");
@@ -39,8 +17,8 @@ const config = {
   inputErrorClass: "popup__form_input_type_error",
 };
 
-const editProfileValidator = new formValidator(config, editProfileForm);
-const addCardValidator = new formValidator(config, addCardForm);
+const editProfileValidator = new FormValidator(config, editProfileForm);
+const addCardValidator = new FormValidator(config, addCardForm);
 
 editProfileValidator.enableValidation();
 addCardValidator.enableValidation();
@@ -116,7 +94,7 @@ addForm.querySelector(".popup__close").addEventListener("click", () => {
   closePopUp(popUpCard);
 });
 closeImage.addEventListener("click", function (evt) {
-  closePopUp(popupImageBlock);
+  closePopUp(imageModalWindow);
 });
 
 popUpCard.addEventListener("click", (evt) => {
@@ -131,8 +109,8 @@ popUpProfile.addEventListener("click", (evt) => {
   }
 });
 
-popupImageBlock.addEventListener("click", (evt) => {
-  if (evt.target === popupImageBlock) {
-    closePopUp(popupImageBlock);
+imageModalWindow.addEventListener("click", (evt) => {
+  if (evt.target === imageModalWindow) {
+    closePopUp(imageModalWindow);
   }
 });
