@@ -1,4 +1,4 @@
-export const openPopup = (popUpSelect) => {
+export const openPopUp = (popUpSelect) => {
   popUpSelect.classList.add("popup_visible");
   document.addEventListener("keyup", closeWithEsc);
 };
