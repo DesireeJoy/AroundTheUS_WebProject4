@@ -79,3 +79,16 @@ editBtn.addEventListener("click", () => {
   inputTitle.value = currentTitle.textContent;
   openPopUp(popUpProfile);
 });
+
+const popups = document.querySelectorAll(".popup");
+
+popups.forEach((popup) => {
+  popup.addEventListener("click", (evt) => {
+    if (evt.target.classList.contains("popup_visible")) {
+      closePopUp(popup);
+    }
+    if (evt.target.classList.contains("popup__close")) {
+      closePopUp(evt.target);
+    }
+  });
+});

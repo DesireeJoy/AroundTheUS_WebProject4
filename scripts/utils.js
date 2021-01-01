@@ -1,16 +1,6 @@
-export const closeBtns = document.querySelector(".popup__close");
-
-export const openPopUp = (popUpSelect) => {
+export const openPopup = (popUpSelect) => {
   popUpSelect.classList.add("popup_visible");
   document.addEventListener("keyup", closeWithEsc);
-  popUpSelect
-    .querySelector(".popup__close")
-    .addEventListener("click", closePopUp);
-  popUpSelect.addEventListener("click", (evt) => {
-    if (evt.target === popUpSelect) {
-      closePopUp();
-    }
-  });
 };
 
 const ESC_KEYCODE = 27;
