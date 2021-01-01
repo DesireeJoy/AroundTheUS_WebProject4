@@ -47,11 +47,8 @@ function handleCardFormSubmit(evt) {
     link: inputUrl.value,
     alt: inputPlace.value,
   };
-  const newCard = new Card(cardData, "#cardTemplate");
-
-  //Form Values
-  const cardElement = newCard.generateCard();
-  closePopUp(); //
+  const cardElement = createCard(cardData);
+  closePopUp(popUpCard); //
   gridList.prepend(cardElement);
   resetCardForm();
 }
@@ -70,13 +67,6 @@ function handleUserFormSubmit(evt) {
   currentTitle.textContent = inputTitle.value;
   closePopUp(); //
 }
-
-//FUNCTIONS FOR ALL PLACE CARDS
-
-// Connect the handler to the form:
-// it will watch the submit event
-
-// Open Popups
 
 profileForm.addEventListener("submit", handleUserFormSubmit);
 popUpCard.addEventListener("submit", handleCardFormSubmit);
