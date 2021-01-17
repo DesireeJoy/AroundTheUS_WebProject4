@@ -4,7 +4,7 @@ import FormValidator from "./FormValidator.js";
 import PopupWithForm from "./PopupWithForm,js";
 import PopupWithImage from "./PopupWithImage";
 
-import "../pages/index.css";
+require("../pages/index.css");
 import "../scripts/constants.js";
 import "../scripts/initialCards";
 
