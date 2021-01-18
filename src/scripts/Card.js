@@ -1,5 +1,3 @@
-import { handlePreviewPic } from "./utils.js";
-
 class Card {
   constructor(cardData, templateElement, handleCardClick) {
     // the text and the image are private fields,

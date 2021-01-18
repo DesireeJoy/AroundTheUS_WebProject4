@@ -2,9 +2,9 @@
   "name": "ls",
   "version": "0.0.1",
   "description": "Educational platform",
-  "main": "index.js",
+  "main": "./pages/index.js",
   "scripts": {
-    "build": "webpack --mode production",
+    "build": "rm -rf dist && webpack",
     "dev": "webpack serve"
   },
   "keywords": [],
@@ -30,7 +30,7 @@
     "postcss-loader": "^4.1.0",
     "webpack": "^5.15.0",
     "webpack-cli": "^4.3.1",
-    "webpack-dev-server": "^3.11.1",
+    "webpack-dev-server": "^3.11.2",
     "webpack-serve": "^3.2.0"
   },
   "dependencies": {

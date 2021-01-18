@@ -3,10 +3,20 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  entry: { main: "./scripts/index.js" },
+  entry: { main: "./src/pages/index.js" },
+  devtool: "inline-source-map",
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "main.js",
+    publicPath: "",
+  },
+  mode: "development",
+  devServer: {
+    contentBase: path.resolve(__dirname, "./dist"), // tell the server where to serve content from in dev mode
+    compress: true, // this will speed up file loading in development mode
+    port: 8080, // will open your site at localhost:8080 (you can use another port)
+
+    open: true, // site will open automatically in the browser after executing npm run dev
   },
   module: {
     rules: [
@@ -33,8 +43,9 @@ module.exports = {
         loader: "html-loader",
       },
       {
-        test: /\.(png|svg|jpg|gif|woff2)$/,
+        test: /\.(png|svg|jpg|gif|woff(2)?|eot|ttf|otf)$/,
         loader: "file-loader",
+        type: "asset/resource",
       },
     ],
   },

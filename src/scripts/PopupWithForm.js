@@ -1,7 +1,5 @@
 const { default: Popup } = require("./Popup");
 
-import Popup from "./Popup.js";
-
 class PopupWithForm extends Popup {
   constructor(popupSelector, submitHandler) {
     super(popupSelector);
@@ -30,3 +28,4 @@ class PopupWithForm extends Popup {
     });
   }
 }
+export default PopupWithForm;

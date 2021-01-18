@@ -14,7 +14,6 @@
   width: 358px;
 }
 
-
 @media screen and (max-width: 800px) {
   .popup__card_input {
     width: 300px;
@@ -31,4 +30,3 @@
     margin-bottom: 20px;
   }
 }
-\

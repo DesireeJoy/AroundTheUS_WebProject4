@@ -1,12 +1,18 @@
 "use strict";
-import Card from "./Card.js";
-import FormValidator from "./FormValidator.js";
-import PopupWithForm from "./PopupWithForm,js";
-import PopupWithImage from "./PopupWithImage";
+import Card from "../scripts/Card.js";
+import FormValidator from "../scripts/FormValidator.js";
+import PopupWithForm from "../scripts/PopupWithForm.js";
+import PopupWithImage from "../scripts/PopupWithImage.js";
 
-require("../pages/index.css");
+require("./index.css");
 import "../scripts/constants.js";
 import "../scripts/initialCards";
+import jaqSrc from "../images/jacques.png";
+import logoSrc from "../images/Logo.svg";
+const jaqImage = document.getElementById("jacques-img");
+jaqImage.src = jaqSrc;
+const logoImage = document.getElementById("logo-img");
+logoImage.src = logoSrc;
 
 const editProfileForm = document.querySelector(".popup__form-selector");
 const addCardForm = document.querySelector(".popup__card_form-selector");
