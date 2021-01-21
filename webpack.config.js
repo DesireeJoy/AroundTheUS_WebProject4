@@ -12,7 +12,8 @@ module.exports = {
   },
   mode: "development",
   devServer: {
-    contentBase: path.resolve(__dirname, "./dist"), // tell the server where to serve content from in dev mode
+    contentBase: path.resolve(__dirname, "./dist"), // tell the server where to
+    //serve content from in dev mode
     compress: true, // this will speed up file loading in development mode
     port: 8080, // will open your site at localhost:8080 (you can use another port)
 

@@ -32,3 +32,4 @@ const initialCards = [
     alt: "Valley of Fire State Park",
   },
 ];
+export default initialCards;

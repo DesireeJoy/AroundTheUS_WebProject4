@@ -5,14 +5,32 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 
 import "./index.css";
-import "../scripts/constants.js";
-import "../scripts/initialCards";
-import jaqSrc from "../images/jacques.png";
-import logoSrc from "../images/Logo.svg";
-const jaqImage = document.getElementById("jacques-img");
-jaqImage.src = jaqSrc;
-const logoImage = document.getElementById("logo-img");
-logoImage.src = logoSrc;
+
+import {
+  editBtn,
+  addBtn,
+  inputName,
+  inputTitle,
+  currentName,
+  currentTitle,
+  cardTemplate,
+  gridList,
+  popUpProfile,
+  popUpCard,
+  popupImageBlock,
+  popupImage,
+  popupCaption,
+  profileForm,
+  name,
+  title,
+  addForm,
+  placeName,
+  fileName,
+  addButton,
+  submitPlaceBtn,
+} from "../scripts/constants.js";
+
+import initialCards from "../scripts/initialCards";
 
 const editProfileForm = document.querySelector(".popup__form-selector");
 const addCardForm = document.querySelector(".popup__card_form-selector");

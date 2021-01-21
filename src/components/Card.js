@@ -7,6 +7,12 @@ class Card {
     this._templateElement = templateElement;
     this._handleCardClick = handleCardClick;
   }
+  _getTemplate() {
+    const cardElement = document
+      .querySelector(this._templateElement)
+      .content.querySelector(".grid__card");
+    return cardElement;
+  }
   _handlePreviewPic() {
     handlePreviewPic(this);
   }
@@ -20,27 +26,28 @@ class Card {
 
   _setEventListeners() {
     //Search for Elements
-    const likeBtn = this._cardElement.querySelector(".grid__heart");
-    const delBtn = this._cardElement.querySelector(".grid__btn_del");
-    const crdImage = this._cardElement.querySelector(".card__image");
-
-    //Subscribe to Elements
-    likeBtn.addEventListener("click", this._handleLike);
-    delBtn.addEventListener("click", this._handleDelete);
-    this._cardImage.addEventListener("click", this._handlePreviewPic);
-    crdImage.addEventListener("click", () =>
-      this._handleCardClick(this._link, this._name)
-    );
+    this._cardElement
+      .querySelector(".grid__heart")
+      .addEventListener("click", () => this._handleLikeIcon());
+    this._cardElement
+      .querySelector(".grid__btn_del")
+      .addEventListener("click", () => this._handleDeleteCard());
+    this._cardElement
+      .querySelector(".grid__image")
+      .addEventListener("click", () =>
+        this._handlePreviewPicture(this._link, this._text)
+      );
   }
-
+  _handleLikeIcon() {
+    this._cardElement
+      .querySelector(".grid__heart")
+      .classList.toggle("grid__heart_active");
+  }
+  _handleDeleteCard() {
+    this.remove;
+  }
   generateCard() {
-    const cardTemplate = document
-      .querySelector(this._templateElement)
-      .content.querySelector(".grid__card");
-
-    const cardElement = cardTemplate.cloneNode(true);
-
-    this._cardElement = cardElement;
+    this._cardElement = this._getTemplate().cloneNode(true);
     this._cardElement.querySelector(".grid__caption").textContent = this._name;
     this._cardImage = this._cardElement.querySelector(".grid__image");
 
