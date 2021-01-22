@@ -18,7 +18,6 @@ class Popup {
   }
 
   setEventListeners() {
-    console.log("Runn");
     this._popup.addEventListener("click", (e) => {
       if (
         e.target.classList.contains("popup__close") ||

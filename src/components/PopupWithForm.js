@@ -3,14 +3,14 @@ const { default: Popup } = require("./Popup");
 class PopupWithForm extends Popup {
   constructor(popupSelector, submitHandler) {
     super(popupSelector);
-    super(this._popup);
+    this._form = this._popup.querySelector(".popup__card_form-selector");
     this._submitHandler = submitHandler;
     this._submitHandler = this._submitHandler.bind(this);
   }
-  _getInputValues() {
-    const inputs = this._form.querySelectorAll(".popup__input");
-    const values = {};
 
+  _getInputValues() {
+    const inputs = this._form.querySelectorAll(".form_input");
+    const values = {};
     inputs.forEach((input) => {
       values[input.name] = input.value;
     });
@@ -25,8 +25,8 @@ class PopupWithForm extends Popup {
   setEventListeners() {
     super.setEventListeners();
     const form = this._popup.querySelector(".form");
-    formBtn = form.querySelector(".popup__close");
-    formBtn.addEventListener("submit", () => {
+    const formBtn = form.querySelector(".popup__close");
+    form.addEventListener("submit", () => {
       this._submitHandler();
     });
   }
