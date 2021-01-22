@@ -58,31 +58,39 @@ function createCard(cardData) {
   const cardElement = newCard.generateCard();
   return cardElement;
 }
-//Create Default Carts
+
+//Create Default Cards
 initialCards.forEach((cardData) => {
   const cardElement = createCard(cardData);
   gridList.prepend(cardElement);
 });
-//Create Popups with Forms
-const addCardPopup = new PopupWithForm(".popup__card_form-selector", () => {
-  const cardData = this._getInputValues;
-  const card = new Card(cardData, "#cardTemplate", (link, text) => {
-    imagePopup.open(link, text);
-  });
-  const cardElement = newCard.generateCard();
-  this._close();
-  gridList.prepend(cardElement);
-});
-
-const editProfilePopup = new PopupWithForm(".popup__form-selector", () => {
-  const userData = this._getInputValues;
-  this._close();
-  currentName.textContent = userData.profileName;
-  currentTitle.textContent = userData.profileTitle;
-  resetCardForm();
-});
 
 const imagePopup = new PopupWithImage(".popup__image");
+imagePopup.setEventListeners();
+// //Create Popups with Forms
+// const addCardPopup = new PopupWithForm(".popup__card", () => {
+//   const values = addCardPopup._getInputValues;
+//   const card = createCard(values);
+//   gridList.prepend(cardElement);
+//   addCardPopup.close();
+// });
+
+// addCardPopup.setEventListeners();
+
+// addBtn.addEventListener("click", () => {
+//   cardFormValidator.resetValidation();
+//   console.log("Works");
+//   addCardPopup.open();
+// });
+
+// const editProfilePopup = new PopupWithForm(".popup__edit", () => {
+//   console.log("Jesszzzzeee");
+//   const userData = this._getInputValues;
+//   this._close();
+//   currentName.textContent = userData.profileName;
+//   currentTitle.textContent = userData.profileTitle;
+//   resetCardForm();
+// });
 
 // //Accepts Submit Event for Adding a New Card
 // function handleCardFormSubmit(evt) {
@@ -120,6 +128,7 @@ const imagePopup = new PopupWithImage(".popup__image");
 // });
 
 // editBtn.addEventListener("click", () => {
+//   console.log("It worked");
 //   inputName.value = currentName.textContent;
 //   inputTitle.value = currentTitle.textContent;
 //   openPopUp(popUpProfile);

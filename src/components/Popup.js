@@ -4,22 +4,28 @@ class Popup {
     this._handleEscClose = this._handleEscClose.bind(this);
   }
   open() {
-    this._popup.classLIst.add("popup_visible");
+    this._popup.classList.add("popup_visible");
     document.addEventListener("keyup", this._handleEscClose);
   }
   close() {
-    this._popup.classLIst.remove("popup_visible");
+    this._popup.classList.remove("popup_visible");
     document.removeEventListener("keyup", this._handleEscClose);
   }
-  _handleEscClose(evt) {
-    if (evt.which === ESC_KEYCODE) {
-      close();
+  _handleEscClose(e) {
+    if (e.key === "Escape") {
+      this.close();
     }
   }
+
   setEventListeners() {
-    const closeBtn = this._popup.querySelector(".popup__close");
-    closeButn.addEventListener("click", () => {
-      this.close();
+    console.log("Runn");
+    this._popup.addEventListener("click", (e) => {
+      if (
+        e.target.classList.contains("popup__close") ||
+        e.target.classList.contains("popup_visible")
+      ) {
+        this.close();
+      }
     });
   }
 }

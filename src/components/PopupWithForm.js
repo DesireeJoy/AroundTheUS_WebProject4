@@ -3,6 +3,7 @@ const { default: Popup } = require("./Popup");
 class PopupWithForm extends Popup {
   constructor(popupSelector, submitHandler) {
     super(popupSelector);
+    super(this._popup);
     this._submitHandler = submitHandler;
     this._submitHandler = this._submitHandler.bind(this);
   }
@@ -22,9 +23,10 @@ class PopupWithForm extends Popup {
   }
 
   setEventListeners() {
-    super.setEventLIsteners();
-    this._form = this._popup.querySelector(".form");
-    this._form.addEventListener("submit", () => {
+    super.setEventListeners();
+    const form = this._popup.querySelector(".form");
+    formBtn = form.querySelector(".popup__close");
+    formBtn.addEventListener("submit", () => {
       this._submitHandler();
     });
   }

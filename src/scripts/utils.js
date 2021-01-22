@@ -3,7 +3,7 @@ export const openPopUp = (popUpSelect) => {
   document.addEventListener("keyup", closeWithEsc);
 };
 
-const ESC_KEYCODE = 27;
+export const ESC_KEYCODE = 27;
 
 export const closeWithEsc = (evt) => {
   if (evt.which === ESC_KEYCODE) {

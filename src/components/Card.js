@@ -1,11 +1,11 @@
 class Card {
-  constructor(cardData, templateElement, handleCardClick) {
+  constructor(cardData, templateElement, handleCardImgClick) {
     // the text and the image are private fields,
     // they're only needed inside the class
     this._name = cardData.name;
     this._link = cardData.link;
     this._templateElement = templateElement;
-    this._handleCardClick = handleCardClick;
+    this._handleCardImgClick = handleCardImgClick;
   }
   _getTemplate() {
     const cardElement = document
@@ -13,15 +13,9 @@ class Card {
       .content.querySelector(".grid__card");
     return cardElement;
   }
-  _handlePreviewPic() {
-    handlePreviewPic(this);
-  }
 
   _handleLike(evt) {
     evt.target.classList.toggle("grid__heart_active");
-  }
-  _handleDelete(evt) {
-    evt.target.closest(".grid__card").remove();
   }
 
   _setEventListeners() {
@@ -31,11 +25,14 @@ class Card {
       .addEventListener("click", () => this._handleLikeIcon());
     this._cardElement
       .querySelector(".grid__btn_del")
-      .addEventListener("click", () => this._handleDeleteCard());
+      .addEventListener("click", (e) => {
+        e.target.closest(".grid__card").remove();
+      });
+
     this._cardElement
       .querySelector(".grid__image")
       .addEventListener("click", () =>
-        this._handlePreviewPicture(this._link, this._text)
+        this._handleCardImgClick(this._link, this._text)
       );
   }
   _handleLikeIcon() {

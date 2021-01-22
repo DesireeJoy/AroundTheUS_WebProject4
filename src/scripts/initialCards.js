@@ -1,34 +1,40 @@
 //Initial Array
+import EcolaStatePark from "../images/EcolaStatePark.jpeg";
+import FontainePark from "../images/FontainebleauStatePark.jpeg";
+import GovernorPark from "../images/GovernorDodgeStatePark.jpeg";
+import HockingHillsPark from "../images/HockingHillsStatePark.jpeg";
+import StonePark from "../images/StoneMountainStatePark.jpeg";
+import ValleyPark from "../images/ValleyOfFireStatePark.jpeg";
 
 const initialCards = [
   {
     name: "Ecola State Park",
-    link: "images/EcolaStatePark.jpeg",
+    link: EcolaStatePark,
     alt: "Ecola State Park",
   },
   {
     name: "Fontainebleau State Park",
-    link: "images/FontainebleauStatePark.jpeg",
+    link: FontainePark,
     alt: "Fontainebleau State Park",
   },
   {
     name: "Governor Dodge State Park",
-    link: "images/GovernorDodgeStatePark.jpeg",
+    link: GovernorPark,
     alt: "Governor Dodge State Park",
   },
   {
     name: "Hocking Hills State Park",
-    link: "images/HockingHillsStatePark.jpeg",
+    link: HockingHillsPark,
     alt: "Hocking Hills State Park",
   },
   {
     name: "Stone Mountain State Park",
-    link: "images/StoneMountainStatePark.jpeg",
+    link: StonePark,
     alt: "Stone Mountain State Park",
   },
   {
     name: "Valley of Fire State Park",
-    link: "images/ValleyOfFireStatePark.jpeg",
+    link: ValleyPark,
     alt: "Valley of Fire State Park",
   },
 ];
