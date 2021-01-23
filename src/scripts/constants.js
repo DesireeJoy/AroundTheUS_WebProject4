@@ -6,17 +6,3 @@ export const currentName = document.querySelector(".profile__name");
 export const currentTitle = document.querySelector(".profile__title");
 export const cardTemplate = document.querySelector("#cardTemplate").content;
 export const gridList = document.querySelector(".grid__list");
-export const popUpProfile = document.querySelector(".popup");
-export const popUpCard = document.querySelector(".popup__card");
-export const popupImageBlock = document.querySelector(".popup__image");
-export const popupImage = popupImageBlock.querySelector(".grid__image_active");
-export const popupCaption = popupImageBlock.querySelector(".popup__image_capt");
-
-export const profileForm = document.forms.profileForm;
-export const name = profileForm.elements.profileName;
-export const title = profileForm.elements.profileTitle;
-export const addForm = document.forms.addForm;
-export const placeName = addForm.elements.placeName;
-export const fileName = addForm.elements.placeFileName;
-export const addButton = addForm.elements.create_btn;
-export const submitPlaceBtn = addForm.elements.addFormSubmit;

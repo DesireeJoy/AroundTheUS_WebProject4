@@ -51,12 +51,6 @@ function createCard(cardData) {
   return cardElement;
 }
 
-// //Create Default Cards
-// initialCards.forEach((cardData) => {
-//   const cardElement = createCard(cardData);
-//   gridList.prepend(cardElement);
-// });
-
 const initialCardList = new Section(
   {
     items: initialCards,
@@ -85,19 +79,6 @@ addBtn.addEventListener("click", () => {
   addCardPopup.open();
 });
 
-// const editProfilePopup = new PopupWithForm(".popup_edit", () => {
-
-//   const userData = editProfilePopup._getInputValues();
-//   editProfilePopup.close();
-//   currentName.textContent = userData.profileName;
-//   currentTitle.textContent = userData.profileTitle;
-// });
-// editProfilePopup.setEventListeners();
-
-// editBtn.addEventListener("click", () => {
-//   editProfilePopup.open();
-// });
-
 const editProfilePopup = new PopupWithForm(".popup_edit", () => {
   userInfo.setUserInfo({ name: inputName.value, about: inputTitle.value });
   editProfilePopup.close();
@@ -117,61 +98,3 @@ editBtn.addEventListener("click", () => {
   editProfileValidator.resetValidation();
   editProfilePopup.open();
 });
-
-// const editPopup = new PopupWithForm(".popup__type_edit-profile", () => {
-//   userInfo.setUserInfo({ name: nameInput.value, about: aboutMeInput.value });
-//   editPopup.close();
-// });
-
-// const userInfo = new UserInfo({
-//   nameSelector: ".profile__name",
-//   aboutSelector: ".profile__occupation",
-// });
-
-// //Accepts Submit Event for Adding a New Card
-// function handleCardFormSubmit(evt) {
-//   evt.preventDefault();
-//   const cardData = {
-//     name: inputPlace.value,
-//     link: inputUrl.value,
-//     alt: inputPlace.value,
-//   };
-//   const cardElement = createCard(cardData);
-//   closePopUp(popUpCard); //
-//   gridList.prepend(cardElement);
-//   resetCardForm();
-// }
-
-// function resetCardForm() {
-//   addForm.reset();
-// }
-
-// function handleUserFormSubmit(evt) {
-//   // This line stops the browser from submitting the form in the default way.
-//   evt.preventDefault();
-
-// Insert new values using the textContent property of the
-// querySelector() method
-// currentName.textContent = inputName.value;
-//   currentTitle.textContent = inputTitle.value;
-//   closePopUp(); //
-// }
-
-// profileForm.addEventListener("submit", handleUserFormSubmit);
-// popUpCard.addEventListener("submit", handleCardFormSubmit);
-// addBtn.addEventListener("click", () => {
-//   openPopUp(popUpCard);
-// });
-
-// const popups = document.querySelectorAll(".popup");
-
-// popups.forEach((popup) => {
-//   popup.addEventListener("click", (evt) => {
-//     if (evt.target.classList.contains("popup_visible")) {
-//       closePopUp(popup);
-//     }
-//     if (evt.target.classList.contains("popup__close")) {
-//       closePopUp(evt.target);
-//     }
-//   });
-// });
