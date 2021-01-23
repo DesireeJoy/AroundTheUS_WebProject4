@@ -3,6 +3,8 @@ import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
+import Section from "../components/Section.js";
+import UserInfo from "../components/UserInfo.js";
 
 import "./index.css";
 
@@ -11,23 +13,7 @@ import {
   addBtn,
   inputName,
   inputTitle,
-  currentName,
-  currentTitle,
-  cardTemplate,
   gridList,
-  popUpProfile,
-  popUpCard,
-  popupImageBlock,
-  popupImage,
-  popupCaption,
-  profileForm,
-  name,
-  title,
-  addForm,
-  placeName,
-  fileName,
-  addButton,
-  submitPlaceBtn,
 } from "../scripts/constants.js";
 
 import initialCards from "../scripts/initialCards";
@@ -65,11 +51,23 @@ function createCard(cardData) {
   return cardElement;
 }
 
-//Create Default Cards
-initialCards.forEach((cardData) => {
-  const cardElement = createCard(cardData);
-  gridList.prepend(cardElement);
-});
+// //Create Default Cards
+// initialCards.forEach((cardData) => {
+//   const cardElement = createCard(cardData);
+//   gridList.prepend(cardElement);
+// });
+
+const initialCardList = new Section(
+  {
+    items: initialCards,
+    renderer: (item) => {
+      const cardElement = createCard(item);
+      initialCardList.addItem(cardElement);
+    },
+  },
+  ".grid__list"
+);
+initialCardList.renderItems();
 
 const imagePopup = new PopupWithImage(".popup__image");
 imagePopup.setEventListeners();
@@ -82,19 +80,52 @@ const addCardPopup = new PopupWithForm(".popup__card", () => {
   addCardPopup.close();
 });
 addCardPopup.setEventListeners();
-// addCardPopup.setEventListeners();
 
 addBtn.addEventListener("click", () => {
   addCardPopup.open();
 });
 
-// const editProfilePopup = new PopupWithForm(".popup__edit", () => {
-//   console.log("Jesszzzzeee");
-//   const userData = this._getInputValues;
-//   this._close();
+// const editProfilePopup = new PopupWithForm(".popup_edit", () => {
+
+//   const userData = editProfilePopup._getInputValues();
+//   editProfilePopup.close();
 //   currentName.textContent = userData.profileName;
 //   currentTitle.textContent = userData.profileTitle;
-//   resetCardForm();
+// });
+// editProfilePopup.setEventListeners();
+
+// editBtn.addEventListener("click", () => {
+//   editProfilePopup.open();
+// });
+
+const editProfilePopup = new PopupWithForm(".popup_edit", () => {
+  userInfo.setUserInfo({ name: inputName.value, about: inputTitle.value });
+  editProfilePopup.close();
+});
+
+const userInfo = new UserInfo({
+  nameSelector: ".profile__name",
+  aboutSelector: ".profiletitle",
+});
+
+editProfilePopup.setEventListeners();
+
+editBtn.addEventListener("click", () => {
+  const { name, about } = userInfo.getUserInfo();
+  inputName.value = name;
+  inputTitle.value = about;
+  editProfileValidator.resetValidation();
+  editProfilePopup.open();
+});
+
+// const editPopup = new PopupWithForm(".popup__type_edit-profile", () => {
+//   userInfo.setUserInfo({ name: nameInput.value, about: aboutMeInput.value });
+//   editPopup.close();
+// });
+
+// const userInfo = new UserInfo({
+//   nameSelector: ".profile__name",
+//   aboutSelector: ".profile__occupation",
 // });
 
 // //Accepts Submit Event for Adding a New Card
@@ -130,13 +161,6 @@ addBtn.addEventListener("click", () => {
 // popUpCard.addEventListener("submit", handleCardFormSubmit);
 // addBtn.addEventListener("click", () => {
 //   openPopUp(popUpCard);
-// });
-
-// editBtn.addEventListener("click", () => {
-//   console.log("It worked");
-//   inputName.value = currentName.textContent;
-//   inputTitle.value = currentTitle.textContent;
-//   openPopUp(popUpProfile);
 // });
 
 // const popups = document.querySelectorAll(".popup");

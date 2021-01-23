@@ -4,6 +4,11 @@ class FormValidator {
     // they're only needed inside the class
     this._settings = settingsObject;
     this._formElement = formElement;
+    this._inputSelector = settingsObject.inputSelector;
+    this._inputs = [...this._formElement.querySelectorAll(this._inputSelector)];
+    this._subButton = this._formElement.querySelector(
+      this._settings.submitButtonSelector
+    );
   }
 
   _showInputError(inputElement, errorMessage) {
@@ -22,18 +27,31 @@ class FormValidator {
     errorElement.textContent = "";
   }
 
-  _toggleButtonState(inputsList, buttonElement) {
-    if (this._hasInvalidInput(inputsList)) {
-      buttonElement.classList.add(this._settings.inactiveButtonClass);
-      buttonElement.disabled = true;
+  _toggleButtonState() {
+    if (this._hasInvalidInput(this._inputs)) {
+      this._subButton.classList.add(this._settings.inactiveButtonClass);
+      this._subButton.disabled = true;
     } else {
-      buttonElement.classList.remove(this._settings.inactiveButtonClass);
-      buttonElement.disabled = false;
+      this._subButton.classList.remove(this._settings.inactiveButtonClass);
+      this._subButton.disabled = false;
     }
   }
 
-  _hasInvalidInput(inputsList) {
-    return inputsList.some((inputElement) => {
+  // _toggleButtonState() {
+  //   const isFormValid = this._inputs.every((input) => {
+  //     return input.validity.valid;
+  //   });
+  //   if (isFormValid) {
+  //     this._button.classList.remove(this._inactiveButtonClass);
+  //     this._button.disabled = false;
+  //   } else {
+  //     this._button.classList.add(this._inactiveButtonClass);
+  //     this._button.disabled = true;
+  //   }
+  // }
+
+  _hasInvalidInput() {
+    return this._inputs.some((inputElement) => {
       return !inputElement.validity.valid;
     });
   }
@@ -52,17 +70,12 @@ class FormValidator {
       this._formElement.querySelectorAll(this._settings.inputSelector)
     );
 
-    //Submit Button associated with that form
-    const buttonElement = this._formElement.querySelector(
-      this._settings.submitButtonSelector
-    );
-
     //Go through each input individually
     inputsList.forEach((inputElement) => {
       //If that input is touched, we immediately check validity
       inputElement.addEventListener("input", () => {
         this._checkInputValidity(inputElement); // Step 3
-        this._toggleButtonState(inputsList, buttonElement); // Step 4
+        this._toggleButtonState(); // Step 4
       });
     });
   }
@@ -71,6 +84,12 @@ class FormValidator {
       evt.preventDefault();
     });
     this._setEventListeners(this._formElement, this._settings);
+  }
+  resetValidation() {
+    this._inputs.forEach((input) => {
+      this._hideInputError(input);
+    });
+    this._toggleButtonState();
   }
 }
 

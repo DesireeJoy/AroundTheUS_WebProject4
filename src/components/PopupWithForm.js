@@ -3,7 +3,7 @@ const { default: Popup } = require("./Popup");
 class PopupWithForm extends Popup {
   constructor(popupSelector, submitHandler) {
     super(popupSelector);
-    this._form = this._popup.querySelector(".popup__card_form-selector");
+    this._form = this._popup.querySelector(".form");
     this._submitHandler = submitHandler;
     this._submitHandler = this._submitHandler.bind(this);
   }
@@ -15,6 +15,7 @@ class PopupWithForm extends Popup {
       values[input.name] = input.value;
     });
     return values;
+    console.log(values);
   }
 
   close() {
