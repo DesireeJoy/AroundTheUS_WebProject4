@@ -29,15 +29,9 @@ addCardValidator.enableValidation();
 
 //CreateCards
 function createCard(cardData) {
-  const link = cardData.link;
-  const text = cardData.name;
-  const newCard = new Card(
-    { name: text, link: link },
-    "#cardTemplate",
-    (link, text) => {
-      imagePopup.open(link, text);
-    }
-  );
+  const newCard = new Card(cardData, "#cardTemplate", (link, text) => {
+    imagePopup.open(cardData.link, cardData.name);
+  });
   const cardElement = newCard.generateCard();
   return cardElement;
 }
