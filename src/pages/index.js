@@ -13,13 +13,11 @@ import {
   addBtn,
   inputName,
   inputTitle,
-  gridList,
+  editProfileForm,
+  addCardForm,
 } from "../scripts/constants.js";
 
 import initialCards from "../scripts/initialCards";
-
-const editProfileForm = document.querySelector(".popup__form-selector");
-const addCardForm = document.querySelector(".popup__card_form-selector");
 
 const config = {
   formSelector: ".form",
@@ -66,16 +64,17 @@ initialCardList.renderItems();
 const imagePopup = new PopupWithImage(".popup__image");
 imagePopup.setEventListeners();
 
-const addCardPopup = new PopupWithForm(".popup__card", () => {
-  const values = addCardPopup._getInputValues();
+const addCardPopup = new PopupWithForm(".popup__card", (values) => {
   const cardData = { name: values.placeName, link: values.placeFileName };
   const card = createCard(cardData);
-  gridList.prepend(card);
+  initialCardList.addItem(card);
   addCardPopup.close();
 });
+
 addCardPopup.setEventListeners();
 
 addBtn.addEventListener("click", () => {
+  addCardValidator.resetValidation();
   addCardPopup.open();
 });
 
@@ -86,15 +85,15 @@ const editProfilePopup = new PopupWithForm(".popup_edit", () => {
 
 const userInfo = new UserInfo({
   nameSelector: ".profile__name",
-  aboutSelector: ".profiletitle",
+  titleSelector: ".profile__title",
 });
 
 editProfilePopup.setEventListeners();
 
 editBtn.addEventListener("click", () => {
-  const { name, about } = userInfo.getUserInfo();
+  const { name, title } = userInfo.getUserInfo();
   inputName.value = name;
-  inputTitle.value = about;
+  inputTitle.value = title;
   editProfileValidator.resetValidation();
   editProfilePopup.open();
 });

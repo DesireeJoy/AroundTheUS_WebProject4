@@ -5,4 +5,5 @@ export const inputTitle = document.querySelector("#inputTitle");
 export const currentName = document.querySelector(".profile__name");
 export const currentTitle = document.querySelector(".profile__title");
 export const cardTemplate = document.querySelector("#cardTemplate").content;
-export const gridList = document.querySelector(".grid__list");
+export const editProfileForm = document.querySelector(".popup__form-selector");
+export const addCardForm = document.querySelector(".popup__card_form-selector");
