@@ -15,17 +15,10 @@ import {
   inputTitle,
   editProfileForm,
   addCardForm,
+  config,
 } from "../scripts/constants.js";
 
 import initialCards from "../scripts/initialCards";
-
-const config = {
-  formSelector: ".form",
-  inputSelector: ".form_input",
-  submitButtonSelector: ".form__submit",
-  inactiveButtonClass: "popup__card_submit-disabled",
-  inputErrorClass: "popup__form_input_type_error",
-};
 
 //Create Form Validation
 const editProfileValidator = new FormValidator(config, editProfileForm);

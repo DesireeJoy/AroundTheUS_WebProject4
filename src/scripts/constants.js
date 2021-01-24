@@ -5,5 +5,13 @@ export const inputTitle = document.querySelector("#inputTitle");
 export const currentName = document.querySelector(".profile__name");
 export const currentTitle = document.querySelector(".profile__title");
 export const cardTemplate = document.querySelector("#cardTemplate").content;
+export const imagePopup = new PopupWithImage(".popup__image");
 export const editProfileForm = document.querySelector(".popup__form-selector");
 export const addCardForm = document.querySelector(".popup__card_form-selector");
+export const config = {
+  formSelector: ".form",
+  inputSelector: ".form_input",
+  submitButtonSelector: ".form__submit",
+  inactiveButtonClass: "popup__card_submit-disabled",
+  inputErrorClass: "popup__form_input_type_error",
+};
