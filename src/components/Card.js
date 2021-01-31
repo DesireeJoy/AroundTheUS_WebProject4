@@ -1,11 +1,22 @@
 class Card {
-  constructor(cardData, templateElement, handleCardImgClick) {
+  constructor(
+    cardData,
+    templateElement,
+    handleCardImgClick,
+    handleDeleteClick,
+    handleLikes,
+    myId
+  ) {
     // the text and the image are private fields,
     // they're only needed inside the class
     this._name = cardData.name;
     this._link = cardData.link;
     this._templateElement = templateElement;
     this._handleCardImgClick = handleCardImgClick;
+    this._id = cardData.id;
+    this._handleDeleteClick = handleDeleteClick;
+    this._handleLikes = handleLikes;
+    this._myId = myId;
   }
   _getTemplate() {
     const cardElement = document
@@ -16,6 +27,13 @@ class Card {
 
   _handleLike(evt) {
     evt.target.classList.toggle("grid__heart_active");
+  }
+  id() {
+    return this._id;
+  }
+
+  deleteCard() {
+    this._cardElem.remove(".card");
   }
 
   _setEventListeners() {
@@ -41,7 +59,7 @@ class Card {
       .classList.toggle("grid__heart_active");
   }
   _handleDeleteCard() {
-    this.remove;
+    handleDeleteClick;
   }
   generateCard() {
     this._cardElement = this._getTemplate().cloneNode(true);

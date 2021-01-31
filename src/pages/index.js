@@ -7,14 +7,6 @@ import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import Api from "../components/Api.js";
 
-const Api = new Api({
-  baseUrl: "https://around.nomoreparties.co/v1/group-8/",
-  headers: {
-    authorization: "d687320c-42a6-463a-9f18-8c281b207460",
-    "Content-Type": "application/json",
-  },
-});
-
 import "./index.css";
 
 import {
@@ -27,10 +19,73 @@ import {
   config,
 } from "../scripts/constants.js";
 
-import initialCards from "../scripts/initialCards";
+const api = new Api({
+  baseUrl: "https://around.nomoreparties.co/v1/group-8",
+  headers: {
+    authorization: "d687320c-42a6-463a-9f18-8c281b207460",
+    "Content-Type": "application/json",
+  },
+});
 
-// Token: d687320c-42a6-463a-9f18-8c281b207460
-// Group ID: group-8
+api.getInitialCards().then((res) => {
+  const initialCardList = new Section(
+    {
+      items: res,
+      renderer: (cardData) => {
+        const newCard = new Card(
+          cardData,
+          "#cardTemplate",
+          (link, text) => {
+            imagePopup.open(cardData.link, cardData.name);
+          }
+          // handleDeleteClick
+          // handleLikes,
+          // myId
+        );
+        const cardElement = newCard.generateCard();
+        initialCardList.addItem(cardElement);
+      },
+    },
+    ".grid__list"
+  );
+  initialCardList.renderItems();
+
+  //Add Card
+
+  const addCardPopup = new PopupWithForm(".popup__card", (values) => {
+    const cardData = { name: values.placeName, link: values.placeFileName };
+    api.addCard(cardData).then((res) => {
+      const newCard = new Card(
+        cardData,
+        "#cardTemplate",
+        (link, text) => {
+          imagePopup.open(cardData.link, cardData.name);
+        }
+        // handleDeleteClick
+        // handleLikes,
+        // myId
+      );
+      const cardElement = newCard.generateCard();
+
+      initialCardList.addItem(cardElement);
+    });
+    addCardPopup.close();
+  });
+  addCardPopup.setEventListeners();
+  addBtn.addEventListener("click", () => {
+    addCardValidator.resetValidation();
+    addCardPopup.open();
+  });
+});
+
+const userInfo = new UserInfo({
+  nameSelector: ".profile__name",
+  titleSelector: ".profile__title",
+});
+
+api.getUserInfo().then((res) => {
+  userInfo.setUserInfo({ name: res.name, about: res.about });
+});
 
 //Create Form Validation
 const editProfileValidator = new FormValidator(config, editProfileForm);
@@ -39,52 +94,12 @@ const addCardValidator = new FormValidator(config, addCardForm);
 editProfileValidator.enableValidation();
 addCardValidator.enableValidation();
 
-//CreateCards
-function createCard(cardData) {
-  const newCard = new Card(cardData, "#cardTemplate", (link, text) => {
-    imagePopup.open(cardData.link, cardData.name);
-  });
-  const cardElement = newCard.generateCard();
-  return cardElement;
-}
-
-const initialCardList = new Section(
-  {
-    items: initialCards,
-    renderer: (item) => {
-      const cardElement = createCard(item);
-      initialCardList.addItem(cardElement);
-    },
-  },
-  ".grid__list"
-);
-initialCardList.renderItems();
-
 const imagePopup = new PopupWithImage(".popup__image");
 imagePopup.setEventListeners();
-
-const addCardPopup = new PopupWithForm(".popup__card", (values) => {
-  const cardData = { name: values.placeName, link: values.placeFileName };
-  const card = createCard(cardData);
-  initialCardList.addItem(card);
-  addCardPopup.close();
-});
-
-addCardPopup.setEventListeners();
-
-addBtn.addEventListener("click", () => {
-  addCardValidator.resetValidation();
-  addCardPopup.open();
-});
 
 const editProfilePopup = new PopupWithForm(".popup_edit", () => {
   userInfo.setUserInfo({ name: inputName.value, about: inputTitle.value });
   editProfilePopup.close();
-});
-
-const userInfo = new UserInfo({
-  nameSelector: ".profile__name",
-  titleSelector: ".profile__title",
 });
 
 editProfilePopup.setEventListeners();
