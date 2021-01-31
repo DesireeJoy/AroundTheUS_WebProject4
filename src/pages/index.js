@@ -5,6 +5,15 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
+import Api from "../components/Api.js";
+
+const Api = new Api({
+  baseUrl: "https://around.nomoreparties.co/v1/group-8/",
+  headers: {
+    authorization: "d687320c-42a6-463a-9f18-8c281b207460",
+    "Content-Type": "application/json",
+  },
+});
 
 import "./index.css";
 
@@ -19,6 +28,9 @@ import {
 } from "../scripts/constants.js";
 
 import initialCards from "../scripts/initialCards";
+
+// Token: d687320c-42a6-463a-9f18-8c281b207460
+// Group ID: group-8
 
 //Create Form Validation
 const editProfileValidator = new FormValidator(config, editProfileForm);
