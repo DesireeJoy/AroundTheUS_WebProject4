@@ -32,16 +32,21 @@ api.getInitialCards().then((res) => {
     {
       items: res,
       renderer: (cardData) => {
-        const newCard = new Card(
+        const newCard = new Card({
           cardData,
-          "#cardTemplate",
-          (link, text) => {
+          templateElement: "#cardTemplate",
+          handleCardImgClick: () => {
             imagePopup.open(cardData.link, cardData.name);
-          }
+          },
+          handleDeleteClick: (cardId) => {
+            api.removeCard(cardId).then(() => {
+              newCard.deleteCard();
+            });
+          },
           // handleDeleteClick
           // handleLikes,
           // myId
-        );
+        });
         const cardElement = newCard.generateCard();
         initialCardList.addItem(cardElement);
       },
@@ -50,21 +55,24 @@ api.getInitialCards().then((res) => {
   );
   initialCardList.renderItems();
 
-  //Add Card
-
   const addCardPopup = new PopupWithForm(".popup__card", (values) => {
     const cardData = { name: values.placeName, link: values.placeFileName };
     api.addCard(cardData).then((res) => {
-      const newCard = new Card(
+      const newCard = new Card({
         cardData,
-        "#cardTemplate",
-        (link, text) => {
+        templateElement: "#cardTemplate",
+        handleCardImgClick: () => {
           imagePopup.open(cardData.link, cardData.name);
-        }
+        },
+        handleDeleteClick: (cardId) => {
+          api.removeCard(cardId).then(() => {
+            newCard.deleteCard();
+          });
+        },
         // handleDeleteClick
         // handleLikes,
         // myId
-      );
+      });
       const cardElement = newCard.generateCard();
 
       initialCardList.addItem(cardElement);
@@ -99,6 +107,16 @@ imagePopup.setEventListeners();
 
 const editProfilePopup = new PopupWithForm(".popup_edit", () => {
   userInfo.setUserInfo({ name: inputName.value, about: inputTitle.value });
+  api
+    .setUserInfo({
+      name: inputName.value,
+      about: inputTitle.value,
+    })
+    .then((res) => {
+      userInfo.setUserInfo({ name: res.name, about: res.about });
+      editProfilePopup.close();
+    })
+    .catch((err) => console.log("Error! " + err));
   editProfilePopup.close();
 });
 

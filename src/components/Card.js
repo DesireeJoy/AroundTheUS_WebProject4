@@ -1,19 +1,19 @@
 class Card {
-  constructor(
+  constructor({
     cardData,
     templateElement,
     handleCardImgClick,
     handleDeleteClick,
     handleLikes,
-    myId
-  ) {
+    myId,
+  }) {
     // the text and the image are private fields,
     // they're only needed inside the class
     this._name = cardData.name;
     this._link = cardData.link;
     this._templateElement = templateElement;
     this._handleCardImgClick = handleCardImgClick;
-    this._id = cardData.id;
+    this._id = cardData._id;
     this._handleDeleteClick = handleDeleteClick;
     this._handleLikes = handleLikes;
     this._myId = myId;
@@ -32,10 +32,6 @@ class Card {
     return this._id;
   }
 
-  deleteCard() {
-    this._cardElem.remove(".card");
-  }
-
   _setEventListeners() {
     //Search for Elements
     this._cardElement
@@ -44,7 +40,7 @@ class Card {
     this._cardElement
       .querySelector(".grid__btn_del")
       .addEventListener("click", (e) => {
-        e.target.closest(".grid__card").remove();
+        this._handleDeleteClick(this.id());
       });
 
     this._cardElement
@@ -53,13 +49,16 @@ class Card {
         this._handleCardImgClick(this._link, this._text)
       );
   }
+  deleteCard() {
+    this._cardElement.remove;
+  }
   _handleLikeIcon() {
     this._cardElement
       .querySelector(".grid__heart")
       .classList.toggle("grid__heart_active");
   }
   _handleDeleteCard() {
-    handleDeleteClick;
+    this._handleDeleteClick();
   }
   generateCard() {
     this._cardElement = this._getTemplate().cloneNode(true);
