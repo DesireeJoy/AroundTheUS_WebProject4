@@ -1,7 +1,8 @@
 class UserInfo {
-  constructor({ nameSelector, titleSelector }) {
+  constructor({ nameSelector, titleSelector, myId }) {
     this._nameEl = document.querySelector(nameSelector);
     this._titleEl = document.querySelector(titleSelector);
+    this._myId = myId;
   }
 
   getUserInfo() {

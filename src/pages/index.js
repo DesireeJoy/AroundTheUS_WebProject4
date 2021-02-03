@@ -18,6 +18,7 @@ import {
   addCardForm,
   config,
 } from "../scripts/constants.js";
+let myId;
 
 const api = new Api({
   baseUrl: "https://around.nomoreparties.co/v1/group-8",
@@ -25,6 +26,25 @@ const api = new Api({
     authorization: "d687320c-42a6-463a-9f18-8c281b207460",
     "Content-Type": "application/json",
   },
+});
+
+const userInfo = new UserInfo({
+  nameSelector: ".profile__name",
+  titleSelector: ".profile__title",
+});
+
+// api
+//   .getAllInfo()
+//   .then(([userData, initialCardData]) => {
+//     myId = userData._id;
+//     userInfo.setUserInfo({ name: userData.name, about: userData.about });
+//     userInfo.changeAvatar(userData.avatar);
+//     defaultCardList.renderItems(initialCardData);
+//   })
+api.getUserInfo().then((res) => {
+  userInfo.setUserInfo({ name: res.name, about: res.about });
+
+  myId = res._id;
 });
 
 api.getInitialCards().then((res) => {
@@ -44,8 +64,31 @@ api.getInitialCards().then((res) => {
             });
           },
           // handleDeleteClick
-          // handleLikes,
-          // myId
+          handleLikes: (cardId) => {
+            if (newCard.isLiked(myId)) {
+              api
+                .changeLikeCardStatus(cardId, true)
+                .then((res) => {
+                  newCard.getLikeCount(res.likes.length);
+                })
+                .then(() => {
+                  newCard.dislikeCard();
+                })
+                .catch((err) => console.log("Error! " + err));
+            } else {
+              console.log(newCard.isLiked());
+              api
+                .changeLikeCardStatus(cardId, false)
+                .then((res) => {
+                  newCard.getLikeCount(res.likes.length);
+                })
+                .then(() => {
+                  newCard.likeCard();
+                })
+                .catch((err) => console.log("Error! " + err));
+            }
+          },
+          myId,
         });
         const cardElement = newCard.generateCard();
         initialCardList.addItem(cardElement);
@@ -55,9 +98,17 @@ api.getInitialCards().then((res) => {
   );
   initialCardList.renderItems();
 
+  // cardData,
+  //   templateElement,
+  //   handleCardImgClick,
+  //   handleDeleteClick,
+  //   handleLikes,
+  //   myId,
+
   const addCardPopup = new PopupWithForm(".popup__card", (values) => {
     const cardData = { name: values.placeName, link: values.placeFileName };
     api.addCard(cardData).then((res) => {
+      console.log(myID);
       const newCard = new Card({
         cardData,
         templateElement: "#cardTemplate",
@@ -69,9 +120,30 @@ api.getInitialCards().then((res) => {
             newCard.deleteCard();
           });
         },
-        // handleDeleteClick
-        // handleLikes,
-        // myId
+        handleLikes: (cardId) => {
+          if (card.isLiked()) {
+            api
+              .changeLikeCardStatus(cardId, true)
+              .then((res) => {
+                card.getLikeCount(res.likes.length);
+              })
+              .then(() => {
+                card.dislikeCard();
+              })
+              .catch((err) => console.log("Error! " + err));
+          } else {
+            api
+              .changeLikeCardStatus(cardId, false)
+              .then((res) => {
+                card.getLikeCount(res.likes.length);
+              })
+              .then(() => {
+                card.likeCard();
+              })
+              .catch((err) => console.log("Error! " + err));
+          }
+        },
+        myId,
       });
       const cardElement = newCard.generateCard();
 
@@ -84,15 +156,6 @@ api.getInitialCards().then((res) => {
     addCardValidator.resetValidation();
     addCardPopup.open();
   });
-});
-
-const userInfo = new UserInfo({
-  nameSelector: ".profile__name",
-  titleSelector: ".profile__title",
-});
-
-api.getUserInfo().then((res) => {
-  userInfo.setUserInfo({ name: res.name, about: res.about });
 });
 
 //Create Form Validation

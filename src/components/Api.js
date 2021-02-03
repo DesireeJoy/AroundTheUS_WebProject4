@@ -23,9 +23,7 @@ class Api {
       )
       .catch((err) => console.log(err));
   }
-  getAllInfo() {
-    return Promise.all([this.getUserInfo(), this.getInitialCards()]);
-  }
+
   //PATCH https://around.nomoreparties.co/v1/groupId/users/me
   setUserInfo({ name, about }) {
     return fetch(this._baseUrl + "/users/me", {
@@ -86,6 +84,7 @@ class Api {
   changeLikeCardStatus(cardId, like) {
     //PUT AND DELETE
     const whichMethod = like ? "DELETE" : "PUT";
+    console.log(whichMethod);
     return fetch(this._baseUrl + "/cards/likes/" + cardId, {
       method: whichMethod,
       headers: this._headers,

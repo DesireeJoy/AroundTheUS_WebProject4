@@ -1,4 +1,5 @@
 .grid__btn_del {
+  display: block;
   height: 19px;
   width: 18px;
   background-size: cover;
