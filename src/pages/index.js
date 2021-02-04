@@ -17,9 +17,12 @@ import {
   editProfileForm,
   addCardForm,
   config,
-  avatarPopup,
+  addPopup,
   avEditBtn,
   avatarForm,
+  delPopup,
+  avatarPopup,
+  edProfPopup,
 } from "../scripts/constants.js";
 import Popup from "../components/Popup.js";
 let myId;
@@ -37,6 +40,12 @@ const userInfo = new UserInfo({
   titleSelector: ".profile__title",
   avatarSelector: ".profile__avatar",
 });
+
+function handleLoad(isLoading, popup, text) {
+  if (isLoading) {
+    popup.querySelector(".form__submit").textContent = text;
+  }
+}
 
 api.getAllInfo().then(([userData, initialCardData]) => {
   myId = userData._id;
@@ -57,62 +66,65 @@ const deletePopup = new PopupWithForm(".popup__delete", (values) => {
 });
 deletePopup.setEventListeners();
 
+function createNewCard(cardData, myId) {
+  const newCard = new Card({
+    cardData,
+    templateElement: "#cardTemplate",
+    handleCardImgClick: () => {
+      imagePopup.open(cardData.link, cardData.name);
+    },
+    handleDeleteClick: (cardId) => {
+      deletePopup.open();
+      deletePopup.replSubmitHandler(() => {
+        //remove the card
+        handleLoad(true, delPopup, "Deleting...");
+        api
+          .removeCard(cardId)
+          .then(() => {
+            newCard.deleteCard();
+            deletePopup.close();
+            handleLoad(true, delPopup, "Yes");
+          })
+          .catch((err) => console.log("Error! " + err));
+      });
+    },
+    handleLikes: (cardId) => {
+      if (newCard.isLiked(myId)) {
+        api
+          .changeLikeCardStatus(cardId, true)
+          .then((res) => {
+            console.log(res);
+            newCard.getLikeCount(res.likes.length);
+          })
+          .then(() => {
+            newCard.dislikeCard();
+          })
+          .catch((err) => console.log("Error! " + err));
+      } else {
+        api
+          .changeLikeCardStatus(cardId, false)
+          .then((res) => {
+            newCard.getLikeCount(res.likes.length);
+          })
+          .then(() => {
+            newCard.likeCard();
+          })
+          .catch((err) => console.log("Error! " + err));
+      }
+    },
+    myId,
+  });
+  const cardElement = newCard.generateCard();
+  return cardElement;
+}
+
 api.getInitialCards().then((res) => {
   const initialCardList = new Section(
     {
       items: res,
       renderer: (cardData) => {
-        const newCard = new Card({
-          cardData,
-          templateElement: "#cardTemplate",
-          handleCardImgClick: () => {
-            imagePopup.open(cardData.link, cardData.name);
-          },
-          handleDeleteClick: (cardId) => {
-            deletePopup.open();
-            deletePopup.replSubmitHandler(() => {
-              //remove the card
-              console.log("We're part way");
-              api
-                .removeCard(cardId)
-                .then(() => {
-                  newCard.deleteCard();
-                  deletePopup.close();
-                })
-                .catch((err) => console.log("Error! " + err));
-            });
-            // api.removeCard(cardId).then(() => {
-            //   newCard.deleteCard();
-          },
-          // handleDeleteClick
-          handleLikes: (cardId) => {
-            if (newCard.isLiked(myId)) {
-              api
-                .changeLikeCardStatus(cardId, true)
-                .then((res) => {
-                  newCard.getLikeCount(res.likes.length);
-                })
-                .then(() => {
-                  newCard.dislikeCard();
-                })
-                .catch((err) => console.log("Error! " + err));
-            } else {
-              console.log(newCard.isLiked());
-              api
-                .changeLikeCardStatus(cardId, false)
-                .then((res) => {
-                  newCard.getLikeCount(res.likes.length);
-                })
-                .then(() => {
-                  newCard.likeCard();
-                })
-                .catch((err) => console.log("Error! " + err));
-            }
-          },
-          myId,
-        });
-        const cardElement = newCard.generateCard();
-        initialCardList.addItem(cardElement);
+        const cardEl = createNewCard(cardData, myId);
+        initialCardList.addItem(cardEl);
       },
     },
     ".grid__list"
@@ -120,52 +132,21 @@ api.getInitialCards().then((res) => {
   initialCardList.renderItems();
 
   const addCardPopup = new PopupWithForm(".popup__card", (values) => {
-    const cardData = { name: values.placeName, link: values.placeFileName };
-    api.addCard(cardData).then((res) => {
-      const newCard = new Card({
-        cardData,
-        templateElement: "#cardTemplate",
-        handleCardImgClick: () => {
-          imagePopup.open(cardData.link, cardData.name);
-        },
-        handleDeleteClick: (cardId) => {
-          deleteConfirmPopup.open(cardId);
-          deleteConfirmPopup.setSubmitHandler(() => {
-            api.removeCard(cardId).then(() => {
-              newCard.deleteCard();
-            });
-          });
-        },
-        handleLikes: (cardId) => {
-          if (card.isLiked()) {
-            api
-              .changeLikeCardStatus(cardId, true)
-              .then((res) => {
-                card.getLikeCount(res.likes.length);
-              })
-              .then(() => {
-                card.dislikeCard();
-              })
-              .catch((err) => console.log("Error! " + err));
-          } else {
-            api
-              .changeLikeCardStatus(cardId, false)
-              .then((res) => {
-                card.getLikeCount(res.likes.length);
-              })
-              .then(() => {
-                card.likeCard();
-              })
-              .catch((err) => console.log("Error! " + err));
-          }
-        },
-        myId,
-      });
-      const cardElement = newCard.generateCard();
+    handleLoad(true, addPopup, "Creating...");
+    const cardData = {
+      name: values.placeName,
+      link: values.placeFileName,
+    };
+    api
+      .addCard(cardData)
+      .then((res) => {
+        const cardEl2 = createNewCard(res, myId);
+        initialCardList.addItem(cardEl2);
+      })
+      .catch((err) => console.log("Error!" + err));
 
-      initialCardList.addItem(cardElement);
-    });
     addCardPopup.close();
+    handleLoad(true, addPopup, "Create");
   });
   addCardPopup.setEventListeners();
   addBtn.addEventListener("click", () => {
@@ -189,17 +170,21 @@ imagePopup.setEventListeners();
 
 const editProfilePopup = new PopupWithForm(".popup_edit", () => {
   userInfo.setUserInfo({ name: inputName.value, about: inputTitle.value });
+  handleLoad(true, edProfPopup, "Saving...");
   api
     .setUserInfo({
       name: inputName.value,
       about: inputTitle.value,
     })
     .then((res) => {
+      handleLoad(true, edProfPopup, "Saving...");
       userInfo.setUserInfo({ name: res.name, about: res.about });
       editProfilePopup.close();
+      handleLoad(true, edProfPopup, "Save");
     })
     .catch((err) => console.log("Error! " + err));
   editProfilePopup.close();
+  handleLoad(true, edProfPopup, "Save");
 });
 
 editProfilePopup.setEventListeners();
@@ -212,7 +197,6 @@ editBtn.addEventListener("click", () => {
   editProfilePopup.open();
 });
 
-//FIgure out why Data comes into the other forms but not this
 const avPopup = new PopupWithForm(".popup__avatar", (data) => {
   api
     .setAvatar({

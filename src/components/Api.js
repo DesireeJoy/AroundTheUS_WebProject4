@@ -90,7 +90,6 @@ class Api {
   changeLikeCardStatus(cardId, like) {
     //PUT AND DELETE
     const whichMethod = like ? "DELETE" : "PUT";
-    console.log(whichMethod);
     return fetch(this._baseUrl + "/cards/likes/" + cardId, {
       method: whichMethod,
       headers: this._headers,
