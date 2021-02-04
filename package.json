@@ -39,7 +39,8 @@
     "core-js": "^3.8.2",
     "joi": "^17.3.0",
     "lodash": "^4.17.20",
-    "serve": "^11.3.2"
+    "serve": "^11.3.2",
+    "util": "^0.12.3"
   },
   "repository": {
     "type": "git",

@@ -23,6 +23,9 @@ class Api {
       )
       .catch((err) => console.log(err));
   }
+  getAllInfo() {
+    return Promise.all([this.getUserInfo(), this.getInitialCards()]);
+  }
 
   //PATCH https://around.nomoreparties.co/v1/groupId/users/me
   setUserInfo({ name, about }) {
@@ -74,10 +77,13 @@ class Api {
         avatar,
       }),
     })
-      .then((res) =>
-        res.ok ? res.json() : Promise.reject("Error!" + res.statusText)
-      )
-      .catch((err) => console.log(err));
+      .then((res) => {
+        if (res.ok) {
+          return res.json(); //this makes object out of response
+        }
+        return Promise.reject(`Error: ${res.status}`);
+      })
+      .catch((err) => console.log("Error! " + err));
   }
   // PUT https://around.nomoreparties.co/v1/groupId/cards/likes/cardId
   // DELETE https://around.nomoreparties.co/v1/groupId/cards/likes/cardId

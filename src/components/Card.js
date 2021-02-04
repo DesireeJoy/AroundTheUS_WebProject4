@@ -21,7 +21,6 @@ class Card {
     this._cardOwner = cardData.owner;
     this._id = cardData._id;
     this._cardElement = this._getTemplate();
-    this._delBtn = this._cardElement.querySelector(".grid__btn_del");
   }
   _getTemplate() {
     const cardElement = document

@@ -17,7 +17,11 @@ import {
   editProfileForm,
   addCardForm,
   config,
+  avatarPopup,
+  avEditBtn,
+  avatarForm,
 } from "../scripts/constants.js";
+import Popup from "../components/Popup.js";
 let myId;
 
 const api = new Api({
@@ -31,21 +35,27 @@ const api = new Api({
 const userInfo = new UserInfo({
   nameSelector: ".profile__name",
   titleSelector: ".profile__title",
+  avatarSelector: ".profile__avatar",
 });
 
-// api
-//   .getAllInfo()
-//   .then(([userData, initialCardData]) => {
-//     myId = userData._id;
-//     userInfo.setUserInfo({ name: userData.name, about: userData.about });
-//     userInfo.changeAvatar(userData.avatar);
-//     defaultCardList.renderItems(initialCardData);
-//   })
+api.getAllInfo().then(([userData, initialCardData]) => {
+  myId = userData._id;
+  userInfo.setUserInfo({ name: userData.name, about: userData.about });
+  userInfo.changeAvatar(userData.avatar);
+});
 api.getUserInfo().then((res) => {
-  userInfo.setUserInfo({ name: res.name, about: res.about });
-
+  userInfo.setUserInfo({
+    name: res.name,
+    about: res.about,
+    avatar: res.avatar,
+  });
   myId = res._id;
 });
+
+const deletePopup = new PopupWithForm(".popup__delete", (values) => {
+  console.log(values);
+});
+deletePopup.setEventListeners();
 
 api.getInitialCards().then((res) => {
   const initialCardList = new Section(
@@ -59,9 +69,19 @@ api.getInitialCards().then((res) => {
             imagePopup.open(cardData.link, cardData.name);
           },
           handleDeleteClick: (cardId) => {
-            api.removeCard(cardId).then(() => {
-              newCard.deleteCard();
+            deletePopup.open();
+            deletePopup.setSubmitHandler(() => {
+              //remove the card
+              api
+                .removeCard(cardId)
+                .then(() => {
+                  card.deleteCard();
+                  deleteConfirmPopup.close();
+                })
+                .catch((err) => console.log("Error! " + err));
             });
+            // api.removeCard(cardId).then(() => {
+            //   newCard.deleteCard();
           },
           // handleDeleteClick
           handleLikes: (cardId) => {
@@ -98,17 +118,9 @@ api.getInitialCards().then((res) => {
   );
   initialCardList.renderItems();
 
-  // cardData,
-  //   templateElement,
-  //   handleCardImgClick,
-  //   handleDeleteClick,
-  //   handleLikes,
-  //   myId,
-
   const addCardPopup = new PopupWithForm(".popup__card", (values) => {
     const cardData = { name: values.placeName, link: values.placeFileName };
     api.addCard(cardData).then((res) => {
-      console.log(myID);
       const newCard = new Card({
         cardData,
         templateElement: "#cardTemplate",
@@ -116,8 +128,11 @@ api.getInitialCards().then((res) => {
           imagePopup.open(cardData.link, cardData.name);
         },
         handleDeleteClick: (cardId) => {
-          api.removeCard(cardId).then(() => {
-            newCard.deleteCard();
+          deleteConfirmPopup.open(cardId);
+          deleteConfirmPopup.setSubmitHandler(() => {
+            api.removeCard(cardId).then(() => {
+              newCard.deleteCard();
+            });
           });
         },
         handleLikes: (cardId) => {
@@ -161,9 +176,12 @@ api.getInitialCards().then((res) => {
 //Create Form Validation
 const editProfileValidator = new FormValidator(config, editProfileForm);
 const addCardValidator = new FormValidator(config, addCardForm);
+const avatarFormValidator = new FormValidator(config, avatarForm);
 
+//Fire em up
 editProfileValidator.enableValidation();
 addCardValidator.enableValidation();
+avatarFormValidator.enableValidation();
 
 const imagePopup = new PopupWithImage(".popup__image");
 imagePopup.setEventListeners();
@@ -191,4 +209,24 @@ editBtn.addEventListener("click", () => {
   inputTitle.value = title;
   editProfileValidator.resetValidation();
   editProfilePopup.open();
+});
+
+//FIgure out why Data comes into the other forms but not this
+const avPopup = new PopupWithForm(".popup__avatar", (data) => {
+  api
+    .setAvatar({
+      avatar: data.link,
+    })
+    .then((res) => {
+      console.log(res.avatar);
+      userInfo.changeAvatar(res.avatar);
+      avPopup.close();
+    })
+    .catch((err) => console.log("Error! " + err));
+});
+
+avPopup.setEventListeners();
+avEditBtn.addEventListener("click", () => {
+  avatarFormValidator.resetValidation();
+  avPopup.open();
 });

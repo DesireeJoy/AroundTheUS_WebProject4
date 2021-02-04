@@ -8,6 +8,11 @@ export const cardTemplate = document.querySelector("#cardTemplate").content;
 export const editProfileForm = document.querySelector(".popup__form-selector");
 export const addCardForm = document.querySelector(".popup__card_form-selector");
 export const gridList = document.querySelector(".grid__list");
+export const avatarPopup = document.querySelector(".popup__avatar");
+export const avatarForm = document.querySelector(
+  ".popup__avatar_form-selector"
+);
+export const avEditBtn = document.querySelector(".profile__avatar-edit");
 export const config = {
   formSelector: ".form",
   inputSelector: ".form_input",

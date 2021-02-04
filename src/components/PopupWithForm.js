@@ -3,10 +3,15 @@ const { default: Popup } = require("./Popup");
 class PopupWithForm extends Popup {
   constructor(popupSelector, submitHandler) {
     super(popupSelector);
+
     this._form = this._popup.querySelector(".form");
+
     this._submitHandler = submitHandler;
     this._submitHandler = this._submitHandler.bind(this);
     this._inputs = this._form.querySelectorAll(".form_input");
+  }
+  replSubmitHandler(replSubmitHandler) {
+    this._submitHandler = replSubmitHandler;
   }
 
   _getInputValues() {
