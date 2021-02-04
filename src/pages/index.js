@@ -44,6 +44,8 @@ const userInfo = new UserInfo({
 function handleLoad(isLoading, popup, text) {
   if (isLoading) {
     popup.querySelector(".form__submit").textContent = text;
+  } else {
+    popup.querySelector(".form__submit").textContent = text;
   }
 }
 
@@ -93,7 +95,6 @@ function createNewCard(cardData, myId) {
         api
           .changeLikeCardStatus(cardId, true)
           .then((res) => {
-            console.log(res);
             newCard.getLikeCount(res.likes.length);
           })
           .then(() => {
@@ -146,7 +147,7 @@ api.getInitialCards().then((res) => {
       .catch((err) => console.log("Error!" + err));
 
     addCardPopup.close();
-    handleLoad(true, addPopup, "Create");
+    handleLoad(false, addPopup, "Create");
   });
   addCardPopup.setEventListeners();
   addBtn.addEventListener("click", () => {
@@ -169,22 +170,21 @@ const imagePopup = new PopupWithImage(".popup__image");
 imagePopup.setEventListeners();
 
 const editProfilePopup = new PopupWithForm(".popup_edit", () => {
-  userInfo.setUserInfo({ name: inputName.value, about: inputTitle.value });
   handleLoad(true, edProfPopup, "Saving...");
+
+  userInfo.setUserInfo({ name: inputName.value, about: inputTitle.value });
   api
     .setUserInfo({
       name: inputName.value,
       about: inputTitle.value,
     })
     .then((res) => {
-      handleLoad(true, edProfPopup, "Saving...");
       userInfo.setUserInfo({ name: res.name, about: res.about });
       editProfilePopup.close();
       handleLoad(true, edProfPopup, "Save");
     })
     .catch((err) => console.log("Error! " + err));
   editProfilePopup.close();
-  handleLoad(true, edProfPopup, "Save");
 });
 
 editProfilePopup.setEventListeners();
@@ -198,12 +198,12 @@ editBtn.addEventListener("click", () => {
 });
 
 const avPopup = new PopupWithForm(".popup__avatar", (data) => {
+  handleLoad(true, avatarPopup, "Saving...");
   api
     .setAvatar({
       avatar: data.link,
     })
     .then((res) => {
-      console.log(res.avatar);
       userInfo.changeAvatar(res.avatar);
       avPopup.close();
     })
@@ -214,4 +214,5 @@ avPopup.setEventListeners();
 avEditBtn.addEventListener("click", () => {
   avatarFormValidator.resetValidation();
   avPopup.open();
+  handleLoad(false, avatarPopup, "Save");
 });
