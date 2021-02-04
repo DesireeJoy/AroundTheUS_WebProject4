@@ -70,13 +70,14 @@ api.getInitialCards().then((res) => {
           },
           handleDeleteClick: (cardId) => {
             deletePopup.open();
-            deletePopup.setSubmitHandler(() => {
+            deletePopup.replSubmitHandler(() => {
               //remove the card
+              console.log("We're part way");
               api
                 .removeCard(cardId)
                 .then(() => {
-                  card.deleteCard();
-                  deleteConfirmPopup.close();
+                  newCard.deleteCard();
+                  deletePopup.close();
                 })
                 .catch((err) => console.log("Error! " + err));
             });

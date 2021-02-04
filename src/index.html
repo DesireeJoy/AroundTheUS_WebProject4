@@ -218,6 +218,7 @@
 
     <!-- Popup for Avatar Image -->
           <div class="popup popup__avatar">
+            <div class="popup__image_cont"></div>
             <div class="popup__form">
               <form class="popup__avatar_form-selector form" id="avatarForm" name="avatarForm">
                 <h3 class="popup__heading">Change profile picture</h3>
@@ -227,7 +228,7 @@
                   <button class="popup__card_submit-disabled popup__card_submit form__submit" type="submit" aria-label="Save ">Save</button>
               </form>
         </div>
-
+      </div>
 
         </div>
       </div>
@@ -237,22 +238,16 @@
 
 
     <div class="popup popup__delete">
-      <div class="popup__box">
-        <div class="popup__container popup__container_type_delete">
-          <h3 class="popup__title">Are you sure?</h3>
+    <div class="popup__image_cont">
+
           <form class="popup__form form">
-    
-            <button class="popup__save-btn" type="submit" aria-label="Yes"></button>
-            
+              <h3 class="popup__heading">Are you sure?</h3>
+            <button class="popup__card_submit form__submit" type="submit" aria-label="Yes">Yes</button>
+            <button type="button" class="popup__close button" aria-label="close" name="close_card"></button>
           </form>
         </div>
-        <button
-            type="button"
-            class="popup__close button"
-            aria-label="close"
-            name="close_card"
-          ></button>
-      </div>
+        
+
     </div>
 
   </body>
