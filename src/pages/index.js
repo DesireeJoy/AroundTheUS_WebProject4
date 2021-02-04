@@ -49,19 +49,49 @@ function handleLoad(isLoading, popup, text) {
   }
 }
 
-api.getAllInfo().then(([userData, initialCardData]) => {
-  myId = userData._id;
-  userInfo.setUserInfo({ name: userData.name, about: userData.about });
-  userInfo.changeAvatar(userData.avatar);
-});
-api.getUserInfo().then((res) => {
-  userInfo.setUserInfo({
-    name: res.name,
-    about: res.about,
-    avatar: res.avatar,
-  });
-  myId = res._id;
-});
+api
+  .getAllInfo()
+  .then(([userData, initialCardData]) => {
+    myId = userData._id;
+    userInfo.setUserInfo({ name: userData.name, about: userData.about });
+    userInfo.changeAvatar(userData.avatar);
+
+    const initialCardList = new Section(
+      {
+        items: initialCardData,
+        renderer: (cardData) => {
+          const cardEl = createNewCard(cardData, myId);
+          initialCardList.addItem(cardEl);
+        },
+      },
+      ".grid__list"
+    );
+    initialCardList.renderItems();
+
+    const addCardPopup = new PopupWithForm(".popup__card", (values) => {
+      handleLoad(true, addPopup, "Creating...");
+      const cardData = {
+        name: values.placeName,
+        link: values.placeFileName,
+      };
+      api
+        .addCard(cardData)
+        .then((res) => {
+          const cardEl2 = createNewCard(res, myId);
+          initialCardList.addItem(cardEl2);
+        })
+        .catch((err) => console.log("Error!" + err));
+
+      addCardPopup.close();
+      handleLoad(false, addPopup, "Create");
+    });
+    addCardPopup.setEventListeners();
+    addBtn.addEventListener("click", () => {
+      addCardValidator.resetValidation();
+      addCardPopup.open();
+    });
+  })
+  .catch((err) => console.log(err));
 
 const deletePopup = new PopupWithForm(".popup__delete", (values) => {
   console.log(values);
@@ -119,43 +149,6 @@ function createNewCard(cardData, myId) {
   return cardElement;
 }
 
-api.getInitialCards().then((res) => {
-  const initialCardList = new Section(
-    {
-      items: res,
-      renderer: (cardData) => {
-        const cardEl = createNewCard(cardData, myId);
-        initialCardList.addItem(cardEl);
-      },
-    },
-    ".grid__list"
-  );
-  initialCardList.renderItems();
-
-  const addCardPopup = new PopupWithForm(".popup__card", (values) => {
-    handleLoad(true, addPopup, "Creating...");
-    const cardData = {
-      name: values.placeName,
-      link: values.placeFileName,
-    };
-    api
-      .addCard(cardData)
-      .then((res) => {
-        const cardEl2 = createNewCard(res, myId);
-        initialCardList.addItem(cardEl2);
-      })
-      .catch((err) => console.log("Error!" + err));
-
-    addCardPopup.close();
-    handleLoad(false, addPopup, "Create");
-  });
-  addCardPopup.setEventListeners();
-  addBtn.addEventListener("click", () => {
-    addCardValidator.resetValidation();
-    addCardPopup.open();
-  });
-});
-
 //Create Form Validation
 const editProfileValidator = new FormValidator(config, editProfileForm);
 const addCardValidator = new FormValidator(config, addCardForm);
@@ -172,7 +165,6 @@ imagePopup.setEventListeners();
 const editProfilePopup = new PopupWithForm(".popup_edit", () => {
   handleLoad(true, edProfPopup, "Saving...");
 
-  userInfo.setUserInfo({ name: inputName.value, about: inputTitle.value });
   api
     .setUserInfo({
       name: inputName.value,

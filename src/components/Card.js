@@ -65,15 +65,9 @@ class Card {
     this._handleDeleteClick(this.id());
   }
   isLiked() {
-    if (
-      this._cardElement
-        .querySelector(".grid__heart")
-        .classList.contains("grid__heart_active")
-    ) {
-      return true;
-    } else {
-      return false;
-    }
+    return this._cardElement
+      .querySelector(".grid__heart")
+      .classList.contains("grid__heart_active");
   }
 
   showLiked(myId) {

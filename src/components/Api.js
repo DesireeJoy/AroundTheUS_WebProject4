@@ -3,24 +3,27 @@ class Api {
     this._baseUrl = baseUrl;
     this._headers = headers;
   }
+  _checkResponse(res) {
+    return res.ok ? res.json() : Promise.reject("Error!" + res.statusText);
+  }
 
   getInitialCards() {
     return fetch(this._baseUrl + "/cards", {
       headers: this._headers,
     })
-      .then((res) =>
-        res.ok ? res.json() : Promise.reject("Error!" + res.statusText)
-      )
+      .then(this._checkResponse)
       .catch((err) => console.log(err));
   }
+  _checkResponse(res) {
+    return res.ok ? res.json() : Promise.reject("Error!" + res.statusText);
+  }
+
   //GET https://around.nomoreparties.co/v1/groupId/users/me
   getUserInfo() {
     return fetch(this._baseUrl + "/users/me", {
       headers: this._headers,
     })
-      .then((res) =>
-        res.ok ? res.json() : Promise.reject("Error!" + res.statusText)
-      )
+      .then(this._checkResponse)
       .catch((err) => console.log(err));
   }
   getAllInfo() {
@@ -37,9 +40,7 @@ class Api {
         about,
       }),
     })
-      .then((res) =>
-        res.ok ? res.json() : Promise.reject("Error!" + res.statusText)
-      )
+      .then(this._checkResponse)
       .catch((err) => console.log(err));
   }
   //POST https://around.nomoreparties.co/v1/groupId/cards
@@ -52,9 +53,7 @@ class Api {
         link,
       }),
     })
-      .then((res) =>
-        res.ok ? res.json() : Promise.reject("Error!" + res.statusText)
-      )
+      .then(this._checkResponse)
       .catch((err) => console.log(err));
   }
   removeCard(cardId) {
@@ -63,9 +62,7 @@ class Api {
       method: "DELETE",
       headers: this._headers,
     })
-      .then((res) =>
-        res.ok ? res.json() : Promise.reject("Error!" + res.statusText)
-      )
+      .then(this._checkResponse)
       .catch((err) => console.log(err));
   }
   //PATCH https://around.nomoreparties.co/v1/groupId/users/me/avatar
@@ -77,12 +74,7 @@ class Api {
         avatar,
       }),
     })
-      .then((res) => {
-        if (res.ok) {
-          return res.json(); //this makes object out of response
-        }
-        return Promise.reject(`Error: ${res.status}`);
-      })
+      .then(this._checkResponse)
       .catch((err) => console.log("Error! " + err));
   }
   // PUT https://around.nomoreparties.co/v1/groupId/cards/likes/cardId
@@ -94,9 +86,7 @@ class Api {
       method: whichMethod,
       headers: this._headers,
     })
-      .then((res) =>
-        res.ok ? res.json() : Promise.reject("Error!" + res.statusText)
-      )
+      .then(this._checkResponse)
       .catch((err) => console.log(err));
   }
 }
