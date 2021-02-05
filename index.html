@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Web Project 4" />
+    <meta name="keywords" content="HTML and CSS" />
+    <meta name="author" content="Desiree Bradish" />
+    <title>Around The USA</title>
+  <link href="main.css" rel="stylesheet"></head>
+
+
+
+  <body class="body">
+    <div class="page">
+      <header class="header">
+        <img id="logo-img" alt="Around the US Logo" src="4e8e0a1d604782a0dff8.svg" class="header__logo" />
+      </header>
+      <main class="content">
+        <!-- Profile Section -->
+        <section class="profile">
+          <form class="profile__info-area">
+            <button class="profile__avatar-edit" aria-label="edit-avatar" type="button"></button>
+            <img
+              id="avatar Image"
+              alt="Avatar Image for User"
+              class="profile__avatar"
+              src="de7ddc492ce508383b46.png";
+            />
+            
+            <div class="profile__info">
+              <h1 class="profile__name"></h1>
+              <p class="profile__title"></p>
+            </div>
+            <button
+              class="profile__editbtn button"
+              aria-label="Edit"
+              type="button"
+              name="edit_btn"
+            ></button>
+          </form>
+          <button
+            aria-label="add"
+            class="profile__addbtn button"
+            type="button"
+            name="add_btn"
+          ></button>
+        </section>
+
+        <!-- Grid Section -->
+
+        <section class="grid">
+          <ul class="grid__list">
+            <!-- Generate the Cards here -->
+          </ul>
+        </section>
+      </main>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <p>&#169; 2020 Around The U.S.</p>
+      </footer>
+
+      <!-- Div closure for Page-->
+    </div>
+
+    <!-- Edit name & title -->
+    <div class="popup popup_edit">
+      <div class="popup__form">
+        <form
+          class="popup__form-selector form"
+          id="userForm"
+          name="profileForm"
+        >
+          <h3 class="popup__heading">Edit Profile</h3>
+          <input
+            type="text"
+            class="popup__input form_input"
+            id="inputName"
+            value=""
+            name="profileName"
+            placeholder=""
+            minlength="2"
+            maxlength="40"
+            required
+          />
+          <span
+            class="popup__form_input_type_active inputName-error error"
+            name="inputName-error"
+          ></span>
+          <input
+            type="text"
+            class="popup__input form_input"
+            id="inputTitle"
+            value="Explorer"
+            name="profileTitle"
+            placeholder=""
+            minlength="2"
+            maxlength="200"
+            required
+          />
+          <span
+            class="popup__form_input_type_active inputTitle-error error"
+            name="inputTitle-error"
+          ></span>
+          <button type="submit" class="popup__submit form__submit" value="Save">
+            Save
+          </button>
+          <button
+            type="button"
+            class="popup__close button"
+            aria-label="close"
+            name="close_profile"
+          ></button>
+        </form>
+      </div>
+    </div>
+
+    <!-- add Cards -->
+
+    <div class="popup__card popup">
+      <div class="popup__form popup__card_form">
+        <form
+          class="popup__card_form-selector form"
+          id="addForm"
+          name="addForm"
+        >
+          <h3 class="popup__card_heading">New Place</h3>
+
+          <input
+            type="text"
+            class="popup__card_input form_input"
+            id="inputPlace"
+            name="placeName"
+            placeholder="Title"
+            value=""
+            minlength="2"
+            maxlength="30"
+            required
+          />
+          <span
+            class="popup__form_input_type_active inputPlace-error error"
+            name="inputPlace-error"
+          ></span>
+          <input
+            type="url"
+            class="popup__card_input form_input"
+            id="inputFile"
+            name="placeFileName"
+            placeholder="Image link"
+            value=""
+            required
+          />
+          <span
+            class="popup__form_input_type_active inputFile-error error"
+            name="inputFile-error"
+          ></span>
+          <button
+            type="submit"
+            class="popup__card_submit-disabled popup__card_submit form__submit"
+            value="Save"
+            id="addFormSubmit"
+            disabled
+          >
+            Create
+          </button>
+          <button
+            type="button"
+            class="popup__close button"
+            aria-label="close"
+            name="close_card"
+          ></button>
+        </form>
+      </div>
+    </div>
+    <!-- Card Template  -->
+
+    <template id="cardTemplate">
+      <li class="grid__card">
+        <button
+          class="grid__btn_del button"
+          type="button"
+          aria-label="delete"
+        ></button>
+
+        <button class="grid__btn_popup" type="button" aria-label="view image">
+          <img class="grid__image" alt="Desc" />
+        </button>
+        <div class="grid__card-text">
+          <h2 class="grid__caption">Title</h2>
+          <div class='grid__likes'><button
+            class="grid__heart button"
+            type="button"
+            aria-label="like"
+          ></button>
+          <p class="grid__like-count"></p>
+          </div>
+        </div>
+        </div>
+      </li>
+    </template>
+
+    <!-- Popup for Enlarged Image -->
+
+    <div class="popup__image popup">
+      <div class="popup__image_cont">
+        <div class="popup__image_wrap">
+          <img class="grid__image_active" alt="" />
+          <button
+            type="button"
+            class="popup__close button"
+            aria-label="close"
+          ></button>
+        </div>
+        <div class="popup__image_capt"></div>
+      </div>
+    </div>
+
+    <!-- Popup for Avatar Image -->
+          <div class="popup popup__avatar">
+            <div class="popup__image_cont"></div>
+            <div class="popup__form">
+              <form class="popup__avatar_form-selector form" id="avatarForm" name="avatarForm">
+                <h3 class="popup__heading">Change profile picture</h3>
+                  <input class="form_input popup__input form__input_type_avatar-link" id="avatar-input" type="url" name="link"
+  placeholder="avatar" required>
+                  <span class="popup__form_input_type_error avatar-input-error error" name="inputFile-error">></span>
+                  <button class="popup__card_submit-disabled popup__card_submit form__submit" type="submit" aria-label="Save ">Save</button>
+              </form>
+              <button type="button" class="popup__close button" aria-label="close" name="close_card"></button>
+        </div>
+      </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div class="popup popup__delete">
+    <div class="popup__image_cont">
+
+          <form class="popup__form form">
+              <h3 class="popup__heading">Are you sure?</h3>
+            <button class="popup__delete_submit form__submit" type="submit" aria-label="Yes">Yes</button>
+            <button type="button" class="popup__close button" aria-label="close" name="close_card"></button>
+          </form>
+        </div>
+        
+
+    </div>
+
+  <script src="main.js"></script></body>
+</html>
